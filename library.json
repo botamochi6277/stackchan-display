@@ -1,0 +1,34 @@
+{
+  "name": "StackChan Facial Control",
+  "keywords": "avatar, lcd, cute, face, M5Stack",
+  "description": "An M5Stack library for rendering avatar faces",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/botamochi6277/stackchan-facial-control.git"
+  },
+  "authors": [
+    {
+      "name": "botamochi",
+      "email": "botamochi6277+github@gmail.com",
+      "url": "https://botamochi6277.github.io/",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "M5Unified",
+      "version": ">=0.1.11"
+    }
+  ],
+  "version": "0.1.0",
+  "frameworks": [
+    "arduino",
+    "espidf",
+    "*"
+  ],
+  "platforms": [
+    "espressif32",
+    "native"
+  ]
+}
