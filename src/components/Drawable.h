@@ -8,16 +8,18 @@
 
 namespace stackchan::avatar
 {
-    class FacialComponent
+
+    class Drawable
     {
     protected:
         m5::Vector2i _position{0, 0};
-        int _rotation = 0; // in degrees, counter-clockwise
+        int _rotation = 0;          // in degrees, counter-clockwise
+        m5::Size2i _size{100, 100}; // width and height, in pixels
         bool _visible = true;
         bool _ignore_expression = false;
 
     public:
-        virtual ~FacialComponent() = default;
+        virtual ~Drawable() = default;
         /**
          * @brief (-100 ~ 100, -100 ~ 100)
          *
@@ -52,6 +54,18 @@ namespace stackchan::avatar
             return _rotation;
         }
 
+        virtual void setSize(const m5::Size2i &size)
+        {
+            _size = size;
+            _size.width = constrain(_size.width, 1, 200);
+            _size.height = constrain(_size.height, 1, 200);
+        }
+
+        virtual m5::Size2i getSize()
+        {
+            return _size;
+        }
+
         virtual void setExpression(int expression, int weight) {}
         virtual int getExpression(int &expression) { return 0; }
 
@@ -80,6 +94,8 @@ namespace stackchan::avatar
         {
             return _ignore_expression;
         }
+
+        // virtual void draw(m5::M5Canvas &canvas) {}
 
         virtual void update() {}
     };

@@ -98,4 +98,20 @@ namespace m5
             }
         }
     };
+
+    class Size2i
+    {
+    public:
+        int width;
+        int height;
+
+        Size2i() : width(0), height(0) {}
+        Size2i(int width, int height) : width(width), height(height) {}
+
+        void operator*=(int scalar)
+        {
+            width *= scalar;
+            height *= scalar;
+        }
+    };
 }
