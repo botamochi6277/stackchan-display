@@ -1,4 +1,5 @@
 #pragma once
+#include <M5GFX.h>
 #include <M5Unified.h>
 
 #include "Vector.h"
@@ -95,7 +96,7 @@ namespace stackchan::avatar
             return _ignore_expression;
         }
 
-        // virtual void draw(m5::M5Canvas &canvas) {}
+        virtual void draw(M5Canvas &canvas) {}
 
         virtual void update() {}
     };
