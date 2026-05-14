@@ -113,5 +113,20 @@ namespace m5
             width *= scalar;
             height *= scalar;
         }
+
+        int area() const
+        {
+            return width * height;
+        }
+
+        int max() const
+        {
+            return width > height ? width : height;
+        }
+
+        int min() const
+        {
+            return width < height ? width : height;
+        }
     };
 }

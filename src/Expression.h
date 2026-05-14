@@ -1,4 +1,6 @@
 #pragma once
+
+#include <map>
 namespace stackchan::avatar
 {
   // facial expression keys
@@ -17,4 +19,18 @@ namespace stackchan::avatar
     kSurprised,
     kRelax,
   };
+
+  class ExpressionWeight
+  {
+  private:
+    std::map<Expression, int> weight_;
+
+  public:
+    ExpressionWeight();
+    void set(Expression expression, int weight);
+    int get(Expression expression);
+    bool contains(Expression expression) const;
+    void clear(void);
+  };
+
 } // namespace stackchan::avatar

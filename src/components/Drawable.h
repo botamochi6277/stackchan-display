@@ -9,15 +9,28 @@
 
 namespace stackchan::avatar
 {
+    template <typename T>
+    T clamp(T value, T min, T max)
+    {
+        if (value < min)
+        {
+            return min;
+        }
+        if (value > max)
+        {
+            return max;
+        }
+        return value;
+    }
 
     class Drawable
     {
     protected:
-        m5::Vector2i _position{0, 0};
-        int _rotation = 0;          // in degrees, counter-clockwise
-        m5::Size2i _size{100, 100}; // width and height, in pixels
-        bool _visible = true;
-        bool _ignore_expression = false;
+        m5::Vector2i position_{0, 0};
+        int rotation_ = 0;          // in degrees, counter-clockwise
+        m5::Size2i size_{100, 100}; // width and height, in pixels
+        bool visible_ = true;
+        bool ignore_expression_ = false;
 
     public:
         virtual ~Drawable() = default;
@@ -28,12 +41,12 @@ namespace stackchan::avatar
          */
         virtual void setPosition(const m5::Vector2i &position)
         {
-            _position = position;
-            _position.clamp({-100, -100}, {100, 100});
+            position_ = position;
+            position_.clamp({-100, -100}, {100, 100});
         }
         virtual m5::Vector2i getPosition()
         {
-            return _position;
+            return position_;
         }
 
         /**
@@ -43,7 +56,7 @@ namespace stackchan::avatar
          */
         virtual void setRotation(int rotation)
         {
-            _rotation = constrain(rotation, 0, 3600);
+            rotation_ = clamp(rotation, 0, 3600);
         }
         /**
          * @brief Get the Rotation in degrees, counter-clockwise
@@ -52,48 +65,48 @@ namespace stackchan::avatar
          */
         virtual int getRotation()
         {
-            return _rotation;
+            return rotation_;
         }
 
         virtual void setSize(const m5::Size2i &size)
         {
-            _size = size;
-            _size.width = constrain(_size.width, 1, 200);
-            _size.height = constrain(_size.height, 1, 200);
+            size_ = size;
+            size_.width = clamp(size_.width, 1, 200);
+            size_.height = clamp(size_.height, 1, 200);
         }
 
         virtual m5::Size2i getSize()
         {
-            return _size;
+            return size_;
         }
 
-        virtual void setExpression(int expression, int weight) {}
-        virtual int getExpression(int &expression) { return 0; }
+        virtual void setWeight(int weight) {}
+        virtual int getWeight() { return 0; }
 
         virtual void setVisible(bool visible)
         {
-            _visible = visible;
+            visible_ = visible;
         }
         virtual bool getVisible()
         {
-            return _visible;
+            return visible_;
         }
         virtual bool isVisible()
         {
-            return _visible;
+            return visible_;
         }
 
         virtual void setIgnoreExpression(bool ignore)
         {
-            _ignore_expression = ignore;
+            ignore_expression_ = ignore;
         }
         virtual bool getIgnoreExpression()
         {
-            return _ignore_expression;
+            return ignore_expression_;
         }
         virtual bool isIgnoreExpression()
         {
-            return _ignore_expression;
+            return ignore_expression_;
         }
 
         virtual void draw(M5Canvas &canvas) {}

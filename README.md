@@ -1,6 +1,6 @@
 # StackChan Facial Control
 
-*StachChan Facial Control* is an Arduino library to display stackchan faces.
+*StackChan Facial Control* is an Arduino library to display stackchan faces.
 
 This repository is based on [m5stack/StackChan](https://github.com/m5stack/StackChan) and [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar).
 
