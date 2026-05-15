@@ -1,7 +1,7 @@
 #pragma once
 
 #include <M5Unified.h>
-#include "components/Drawable.h"
+#include "Drawable.h"
 #include "components/PrimaryFacialDrawable.h"
 #include "Expression.h"
 #include "ColorPalette.h"
@@ -16,7 +16,6 @@ namespace stackchan::avatar
     protected:
         Avatar() = default;
         // Expression _emotion = Expression::Neutral;
-        PrimaryFacialDrawables_t primary_components_; // facial elements including eyes, eyebrows, and mouth
         // ObjectPool<Decorator> _decorator_pool;
 
         // bool _is_modify_locked = false;

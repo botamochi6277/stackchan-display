@@ -9,7 +9,7 @@ namespace stackchan::avatar
 
   using DLoc = DrawingLocation;
   ColorPalette::ColorPalette()
-      : palette_{{DLoc::kIrisBackground, TFT_WHITE},
+      : palette_{{DLoc::kIris1, TFT_WHITE},
                  {DLoc::kMouthBackground, TFT_WHITE},
                  {DLoc::kSkin, TFT_BLACK},
                  {DLoc::kBalloonForeground, TFT_BLACK},
