@@ -20,7 +20,7 @@ namespace stackchan::avatar
     Eye(m5::Vector2i &position, uint16_t r, bool isLeft);
     Eye(int x, int y, uint16_t r, bool isLeft);
 
-    virtual void draw(ExpressionWeight &expression_weight, ColorPalette &palette) override;
+    virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
   };
 
 } // namespace stackchan::avatar

@@ -14,7 +14,7 @@ namespace stackchan::avatar
         Eye left_eye;
         Eye right_eye;
 
-        virtual void draw(ExpressionWeight &expression_weight, ColorPalette &palette) override;
+        virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
     };
 } // namespace stackchan::avatar

@@ -26,7 +26,6 @@ namespace stackchan::avatar
     class Drawable
     {
     protected:
-        M5Canvas canvas_ = M5Canvas(&M5.Lcd);
         m5::Vector2i position_{0, 0}; // in pixels, relative to the center of the face, with positive x to the right and positive y downwards
         int rotation_ = 0;            // in degrees, counter-clockwise
         m5::Size2i size_{100, 100};   // width and height, in pixels
@@ -35,14 +34,8 @@ namespace stackchan::avatar
 
     public:
         Drawable() = default;
-        Drawable(M5Canvas &canvas) : canvas_(canvas) {}
 
         virtual ~Drawable() = default;
-
-        void setCanvas(M5Canvas &canvas)
-        {
-            canvas_ = canvas;
-        }
 
         /**
          * @brief set primary position
@@ -116,7 +109,7 @@ namespace stackchan::avatar
             return ignore_expression_;
         }
 
-        virtual void draw() {}
+        virtual void draw(M5Canvas &canvas) {}
 
         virtual void update() {}
     };

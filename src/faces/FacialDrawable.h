@@ -10,6 +10,6 @@ namespace stackchan::avatar
     class FacialDrawable : public Drawable
     {
     public:
-        virtual void draw(ExpressionWeight &expression_weight, ColorPalette &palette) {};
+        virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) {};
     };
 }

@@ -6,7 +6,7 @@ namespace stackchan::avatar
     Eye::Eye(uint16_t r, bool is_left) : is_left_(is_left)
     {
         radius_ = r;
-        size_ = m5::Size2i(r * 2, r * 2);
+        size_ = m5::Size2i(r * 4, r * 4);
     }
 
     Eye::Eye(m5::Vector2i &position, uint16_t r, bool is_left) : Eye(r, is_left)
@@ -24,18 +24,18 @@ namespace stackchan::avatar
     //     position_ = position;
     // }
 
-    void Eye::draw(ExpressionWeight &expression_weight, ColorPalette &palette)
+    void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        canvas_.createSprite(size_.width, size_.height);
+        // canvas.createSprite(size_.width, size_.height);
+        // canvas.fillSprite(TFT_TRANSPARENT);
 
+        gaze_ = m5::Vector2i(0, 0); // tmp
         unsigned int iris_color = palette.get(DrawingLocation::kIris1);
         unsigned int eyelid_color = palette.get(DrawingLocation::kSkin);
-        iris_position_ = this->position_ + gaze_;
-
-        radius_ = this->size_.min() / 2;
+        iris_position_ = position_ + gaze_;
 
         // draw iris
-        canvas_.fillCircle(iris_position_.x, iris_position_.y, radius_, iris_color);
+        canvas.fillCircle(iris_position_.x, iris_position_.y, radius_, iris_color);
 
         // draw eyelid (if any)
 
@@ -49,11 +49,8 @@ namespace stackchan::avatar
             y1 = y0;
             x2 = is_left_ ? x0 : x1;
             y2 = y0 + (w / 255.0f) * radius_;
-            canvas_.fillTriangle(x0, y0, x1, y1, x2, y2, eyelid_color);
+            canvas.fillTriangle(x0, y0, x1, y1, x2, y2, eyelid_color);
         }
-
-        canvas_.pushSprite(iris_position_.x - radius_, iris_position_.y - radius_);
-        canvas_.deleteSprite();
     }
 
 } // namespace stackchan::avatar

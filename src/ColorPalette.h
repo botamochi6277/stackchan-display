@@ -64,8 +64,8 @@ namespace stackchan::avatar
 } // namespace stackchan::avatar
 
 // defines for backward compatibility
-#define COLOR_PRIMARY stackchan::avatar::DrawingLocation::kIrisBackground
-#define COLOR_SECONDARY stackchan::avatar::DrawingLocation::kIris1
+#define COLOR_PRIMARY stackchan::avatar::DrawingLocation::kIris1
+#define COLOR_SECONDARY stackchan::avatar::DrawingLocation::kIrisBackground
 #define COLOR_BACKGROUND stackchan::avatar::DrawingLocation::kSkin
 #define COLOR_BALLOON_FOREGROUND stackchan::avatar::DrawingLocation::kBalloonForeground
 #define COLOR_BALLOON_BACKGROUND stackchan::avatar::DrawingLocation::kBalloonBackground
