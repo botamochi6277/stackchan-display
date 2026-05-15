@@ -1,21 +1,17 @@
 #pragma once
 
 #include "../FacialDrawable.h"
-#include "Eye.h"
-#include "Mouth.h"
-
 namespace stackchan::avatar
 {
 
     // M5StackChan default face
-    class Face : public FacialDrawable
+    class Mouth : public FacialDrawable
     {
     protected:
     public:
-        Face();
-        Eye left_eye;
-        Eye right_eye;
-        Mouth mouth;
+        Mouth();
+        Mouth(int16_t x, int16_t y, int16_t width, int16_t height);
+
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
     };
