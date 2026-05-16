@@ -21,13 +21,14 @@ namespace stackchan::avatar
         int breath_offset = static_cast<int>(((expression_weight.get(Expression::kBreath) / 255.0f) - 0.5f) * 2.0f * breath_amplitude_);
 
         // float open_rate = expression_weight.get(Expression::kMouthOpen) / 100.0f;
-        float open_rate = 0.0f; // TODO: use actual expression weight
+        float open_rate = expression_weight.get(Expression::kAa) / 255.0f;
 
         int16_t max_width = size_.width;
         int16_t max_height = size_.height;
-        int16_t min_height = max_height / 8;
-        int16_t min_width = max_width / 4;
+        int16_t min_height = max_height / 15;
+        int16_t min_width = max_width / 2;
 
+        // Mouth(50, 90, 4, 60) , min_width = 50, max_width = 90, min_height = 4, max_height = 60
         int16_t height = min_height + (max_height - min_height) * open_rate;
         int16_t width = min_width + (max_width - min_width) * (1.0f - open_rate);
 
