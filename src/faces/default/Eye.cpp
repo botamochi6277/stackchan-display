@@ -26,13 +26,18 @@ namespace stackchan::avatar
 
     void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        // canvas.createSprite(size_.width, size_.height);
-        // canvas.fillSprite(TFT_TRANSPARENT);
+        static unsigned long milli_sec = 0;
+        static unsigned long last_saccade_millis = 0;
+        static uint32_t saccade_interval = 1000;
+        static auto saccade_noise = m5::Vector2i();
 
-        gaze_ = m5::Vector2i(0, 0); // tmp
         unsigned int iris_color = palette.get(DrawingLocation::kIris1);
         unsigned int eyelid_color = palette.get(DrawingLocation::kSkin);
-        iris_position_ = position_ + gaze_;
+
+        milli_sec = M5.millis();
+        gaze_ = m5::Vector2i(0, 0); // tmp
+
+        iris_position_ = position_ + gaze_ + saccade_noise;
 
         bool is_fully_closed = (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kBlink) > 127) ||
                                (is_left_ ? (expression_weight.contains(Expression::kLeftBlink) && expression_weight.get(Expression::kLeftBlink) > 127)
@@ -45,6 +50,14 @@ namespace stackchan::avatar
                             iris_position_.y - 2 + size_.height / 4, size_.width, 4,
                             iris_color);
             return;
+        }
+
+        // add saccade noise
+        if (milli_sec - last_saccade_millis > saccade_interval)
+        {
+            saccade_noise = m5::Vector2i(rand() % 10 - 5, rand() % 10 - 5);
+            last_saccade_millis = milli_sec;
+            saccade_interval = 1000 + rand() % 1000; // add random to avoid fixed interval
         }
 
         // draw iris
