@@ -5,13 +5,13 @@ namespace stackchan::avatar
     ExpressionWeight::ExpressionWeight()
     {
         // initialize all expression weights to 0
-        for (int i = static_cast<int>(Expression::kNeutral); i <= static_cast<int>(Expression::kRelax); ++i)
+        for (unsigned char i = static_cast<unsigned char>(Expression::kNeutral); i < static_cast<unsigned char>(Expression::kCount); ++i)
         {
             weight_[static_cast<Expression>(i)] = 0;
         }
     }
 
-    void ExpressionWeight::set(Expression expression, int weight)
+    void ExpressionWeight::set(Expression expression, unsigned char weight)
     {
         auto itr = weight_.find(expression);
         if (itr != weight_.end())
@@ -23,7 +23,7 @@ namespace stackchan::avatar
         weight_.insert(std::make_pair(expression, weight));
     }
 
-    int ExpressionWeight::get(Expression expression)
+    unsigned char ExpressionWeight::get(Expression expression)
     {
         auto itr = weight_.find(expression);
         if (itr != weight_.end())

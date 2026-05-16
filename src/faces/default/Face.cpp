@@ -1,12 +1,45 @@
 #include "Face.h"
 
-// 226,86
+#ifndef rand_r
+#define init_rand() srand(seed)
+#define _rand() rand()
+#else
+#define init_rand() ;
+#define _rand() rand_r(&seed)
+#endif
 
 namespace stackchan::avatar
 {
     Face::Face() : left_eye(160 + 70, 95, 9, true),
                    right_eye(160 - 70, 95, 9, false),
                    mouth(160, 148, 100, 100) {}
+
+    void Face::updateState(ExpressionWeight &expression_weight)
+    {
+        static unsigned long mill_sec = 0;
+        static unsigned long last_saccade_millis = 0;
+        static unsigned long last_blink_millis = 0;
+        static uint32_t saccade_interval = 1000; // [msec]
+        static uint32_t blink_interval = 1000;
+
+        mill_sec = M5.millis();
+
+        // blink
+        if (is_auto_blink_ && (mill_sec - last_blink_millis > blink_interval))
+        {
+            if (expression_weight.get(Expression::kBlink) > 127)
+            {
+                expression_weight.set(Expression::kBlink, 0);        // weight to open eye
+                blink_interval = auto_blink_interval_ + rand() % 20; // add random to avoid fixed interval
+            }
+            else
+            {
+                expression_weight.set(Expression::kBlink, 255); // weight to close eye
+                blink_interval = blink_duration_;
+            }
+            last_blink_millis = mill_sec;
+        }
+    }
 
     void Face::draw(
         M5Canvas &canvas,

@@ -6,7 +6,7 @@ namespace stackchan::avatar
     Eye::Eye(uint16_t r, bool is_left) : is_left_(is_left)
     {
         radius_ = r;
-        size_ = m5::Size2i(r * 4, r * 4);
+        size_ = m5::Size2i(r * 2, r * 2);
     }
 
     Eye::Eye(m5::Vector2i &position, uint16_t r, bool is_left) : Eye(r, is_left)
@@ -33,6 +33,19 @@ namespace stackchan::avatar
         unsigned int iris_color = palette.get(DrawingLocation::kIris1);
         unsigned int eyelid_color = palette.get(DrawingLocation::kSkin);
         iris_position_ = position_ + gaze_;
+
+        bool is_fully_closed = (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kBlink) > 127) ||
+                               (is_left_ ? (expression_weight.contains(Expression::kLeftBlink) && expression_weight.get(Expression::kLeftBlink) > 127)
+                                         : (expression_weight.contains(Expression::kRightBlink) && expression_weight.get(Expression::kRightBlink) > 127)) ||
+                               (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kSleepy) > 127);
+        if (is_fully_closed)
+        {
+
+            canvas.fillRect(iris_position_.x - (size_.width / 2),
+                            iris_position_.y - 2 + size_.height / 4, size_.width, 4,
+                            iris_color);
+            return;
+        }
 
         // draw iris
         canvas.fillCircle(iris_position_.x, iris_position_.y, radius_, iris_color);

@@ -18,17 +18,25 @@ namespace stackchan::avatar
     kLaugh,
     kSurprised,
     kRelax,
+    // eye expressions
+    kBlink,
+    kLeftBlink,
+    kRightBlink,
+    // mouth expressions
+    kAa,
+    // TODO: add more expressions
+    kCount,
   };
 
   class ExpressionWeight
   {
   private:
-    std::map<Expression, int> weight_;
+    std::map<Expression, unsigned char> weight_;
 
   public:
     ExpressionWeight();
-    void set(Expression expression, int weight);
-    int get(Expression expression);
+    void set(Expression expression, unsigned char weight);
+    unsigned char get(Expression expression);
     bool contains(Expression expression) const;
     void clear(void);
   };
