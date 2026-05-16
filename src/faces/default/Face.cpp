@@ -39,6 +39,10 @@ namespace stackchan::avatar
             }
             last_blink_millis = mill_sec;
         }
+
+        // breath
+        float breath = sinf(breath_frequency_ * 2.0f * M_PI * (mill_sec / 1000.0f));
+        expression_weight.set(Expression::kBreath, static_cast<unsigned char>((breath + 1.0f) / 2.0f * 255.0f));
     }
 
     void Face::draw(

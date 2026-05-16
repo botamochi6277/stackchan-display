@@ -17,6 +17,9 @@ namespace stackchan::avatar
     void Mouth::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
         uint16_t mouth_color = palette.get(DrawingLocation::kMouthBackground);
+
+        int breath_offset = static_cast<int>(((expression_weight.get(Expression::kBreath) / 255.0f) - 0.5f) * 2.0f * breath_amplitude_);
+
         // float open_rate = expression_weight.get(Expression::kMouthOpen) / 100.0f;
         float open_rate = 0.0f; // TODO: use actual expression weight
 
@@ -28,7 +31,7 @@ namespace stackchan::avatar
         int16_t height = min_height + (max_height - min_height) * open_rate;
         int16_t width = min_width + (max_width - min_width) * (1.0f - open_rate);
 
-        m5::Vector2i top_left = position_ - m5::Vector2i(width / 2, height / 2);
+        m5::Vector2i top_left = position_ - m5::Vector2i(width / 2, height / 2 + breath_offset);
         canvas.fillRect(top_left.x, top_left.y, width, height, mouth_color);
     }
 }

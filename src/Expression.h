@@ -24,6 +24,8 @@ namespace stackchan::avatar
     kRightBlink,
     // mouth expressions
     kAa,
+    // misc expressions
+    kBreath,
     // TODO: add more expressions
     kCount,
   };

@@ -17,6 +17,8 @@ namespace stackchan::avatar
         uint32_t last_blink_time_ = 0;
         uint32_t blink_duration_ = 200; // 0.2 seconds, which is the duration of closed eye
 
+        float breath_frequency_ = 0.25f; // in Hz,
+
     public:
         Face();
         Eye left_eye;
