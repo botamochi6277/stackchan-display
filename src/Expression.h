@@ -17,6 +17,7 @@ namespace stackchan::avatar
     kSmile,
     kLaugh,
     kSurprised,
+    kUpset,
     kRelax,
     // eye expressions
     kBlink,

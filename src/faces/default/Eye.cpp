@@ -83,6 +83,10 @@ namespace stackchan::avatar
             saccade_noise = m5::Vector2i(rand() % 10 - 5, rand() % 10 - 5);
             last_saccade_millis = milli_sec;
             saccade_interval = 1000 + rand() % 1000; // add random to avoid fixed interval
+            if (expression_weight.contains(Expression::kUpset) && expression_weight.get(Expression::kUpset) > 0)
+            {
+                saccade_interval /= 6 * (expression_weight.get(Expression::kUpset) / 255.0f) + 1; // make saccade more frequent when upset
+            }
         }
 
         // draw iris
