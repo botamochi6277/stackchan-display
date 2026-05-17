@@ -38,6 +38,7 @@ namespace stackchan::avatar
   public:
     ExpressionWeight();
     void set(Expression expression, unsigned char weight);
+    void setEmotionalExpression(Expression expression, unsigned char weight);
     unsigned char get(Expression expression);
     bool contains(Expression expression) const;
     void clear(void);

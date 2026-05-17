@@ -23,6 +23,21 @@ namespace stackchan::avatar
         weight_.insert(std::make_pair(expression, weight));
     }
 
+    void ExpressionWeight::setEmotionalExpression(Expression expression, unsigned char weight)
+    {
+        for (unsigned char i = 0; i < static_cast<unsigned char>(Expression::kRelax) + 1; i++)
+        {
+            if (static_cast<unsigned char>(expression) == i)
+            {
+                this->set(static_cast<Expression>(i), weight);
+            }
+            else
+            {
+                this->set(static_cast<Expression>(i), 0);
+            }
+        }
+    }
+
     unsigned char ExpressionWeight::get(Expression expression)
     {
         auto itr = weight_.find(expression);

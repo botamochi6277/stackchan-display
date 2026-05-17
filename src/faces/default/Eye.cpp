@@ -34,10 +34,35 @@ namespace stackchan::avatar
         unsigned int iris_color = palette.get(DrawingLocation::kIris1);
         unsigned int eyelid_color = palette.get(DrawingLocation::kSkin);
 
+        // temporary variables for eyelid drawing
+        m5::Vector2i p1, p2, p3;
+        Expression eye_expression = Expression::kNeutral;
+        unsigned char weight;
+
         milli_sec = M5.millis();
         gaze_ = m5::Vector2i(0, 0); // tmp
 
         iris_position_ = position_ + gaze_ + saccade_noise;
+
+        eye_expression = Expression::kRelax;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y - radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y - radius_;
+
+            p3.x = iris_position_.x;
+            p3.y = iris_position_.y - radius_ + (weight / 255.0f) * (radius_);
+
+            int w = 2 * radius_;
+            int h = p3.y - p1.y;
+            canvas.fillCircle(iris_position_.x, iris_position_.y, radius_, iris_color);
+            canvas.fillRect(p1.x, p1.y, w + 1, h + 1, eyelid_color);
+            canvas.fillCircle(p3.x, p3.y, radius_ - 2, eyelid_color); // draw lower eyelid for smile expression
+            return;
+        }
 
         bool is_fully_closed = (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kBlink) > 127) ||
                                (is_left_ ? (expression_weight.contains(Expression::kLeftBlink) && expression_weight.get(Expression::kLeftBlink) > 127)
@@ -65,17 +90,91 @@ namespace stackchan::avatar
 
         // draw eyelid (if any)
 
-        if (expression_weight.contains(Expression::kAngry) && expression_weight.get(Expression::kAngry) > 0)
+        // TODO: reimplement with function object
+        eye_expression = Expression::kAngry;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
         {
-            int w = expression_weight.get(Expression::kAngry);
-            int x0, y0, x1, y1, x2, y2;
-            x0 = iris_position_.x - radius_;
-            y0 = iris_position_.y - radius_;
-            x1 = x0 + radius_ * 2;
-            y1 = y0;
-            x2 = is_left_ ? x0 : x1;
-            y2 = y0 + (w / 255.0f) * radius_;
-            canvas.fillTriangle(x0, y0, x1, y1, x2, y2, eyelid_color);
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y - radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y - radius_;
+            // p3 is the position of inner corner of the eye
+            p3.x = is_left_ ? iris_position_.x - radius_ : iris_position_.x + radius_;
+            p3.y = iris_position_.y + (weight / 255.0f) * (radius_ / 2);
+            canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw angry eyelid
+        }
+
+        eye_expression = Expression::kSad;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y - radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y - radius_;
+            // p3 is the position of outer corner of the eye
+            p3.x = is_left_ ? iris_position_.x + radius_ : iris_position_.x - radius_;
+            p3.y = iris_position_.y + (weight / 255.0f) * (radius_ / 2);
+            canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color);
+        }
+
+        eye_expression = Expression::kDoubt;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y - radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y - radius_;
+            // p3 is the position of inner corner of the eye
+            p3.x = is_left_ ? iris_position_.x - radius_ : iris_position_.x + radius_;
+            p3.y = iris_position_.y - (weight / 255.0f) * (radius_ / 2);
+
+            int w = 2 * radius_;
+            int h = p3.y - p1.y;
+            canvas.fillRect(p1.x, p1.y, w, h, eyelid_color); // draw doubt eyelid
+        }
+
+        eye_expression = Expression::kLaugh;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y + radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y + radius_;
+            // p3 is the position of inner corner of the eye
+            p3.x = is_left_ ? iris_position_.x - radius_ : iris_position_.x + radius_;
+            p3.y = iris_position_.y + radius_ - (weight / 255.0f) * (radius_);
+
+            canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw lower eyelid for smile expression
+        }
+
+        eye_expression = Expression::kSmile;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            p1.x = iris_position_.x - radius_;
+            p1.y = iris_position_.y + radius_;
+            p2.x = iris_position_.x + radius_;
+            p2.y = iris_position_.y + radius_;
+
+            p3.x = iris_position_.x;
+            p3.y = iris_position_.y + radius_ - (weight / 255.0f) * (radius_);
+
+            int w = 2 * radius_;
+            int h = p3.y - p1.y;
+            canvas.fillRect(p1.x, p1.y + 1, w + 1, h + 1, eyelid_color);
+            canvas.fillCircle(p3.x, p3.y, radius_ - 2, eyelid_color); // draw lower eyelid for smile expression
+        }
+
+        eye_expression = Expression::kSurprised;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            int r = radius_ + (weight / 255.0f) * (radius_ / 2);
+            canvas.fillCircle(iris_position_.x, iris_position_.y, r, iris_color); // draw surprised eye
         }
     }
 

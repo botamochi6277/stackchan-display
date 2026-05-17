@@ -28,11 +28,10 @@ namespace stackchan::avatar
         int16_t min_height = max_height / 15;
         int16_t min_width = max_width / 2;
 
-        // Mouth(50, 90, 4, 60) , min_width = 50, max_width = 90, min_height = 4, max_height = 60
         int16_t height = min_height + (max_height - min_height) * open_rate;
         int16_t width = min_width + (max_width - min_width) * (1.0f - open_rate);
 
         m5::Vector2i top_left = position_ - m5::Vector2i(width / 2, height / 2 + breath_offset);
-        canvas.fillRect(top_left.x, top_left.y, width, height, mouth_color);
+        canvas.fillRoundRect(top_left.x, top_left.y, width, height, 2, mouth_color);
     }
 }
