@@ -61,8 +61,8 @@ namespace stackchan::display
         {
             canvas_.createSprite(320, 240); // canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`
             face_.draw(canvas_, expression_weight_, color_palette_);
-            // drawEmotionalDecorator(expression_weight_, color_palette_);
-            // speech_balloon_.draw(canvas_, color_palette_);
+            drawEmotionalDecorator(expression_weight_, color_palette_);
+            speech_balloon_.draw(canvas_, color_palette_);
         };
         /**
          * @brief Update avatar, trigger all elements, decorators and modifiers to update
@@ -79,25 +79,35 @@ namespace stackchan::display
 
     void Display::drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette)
     {
+        int x = 320 - 40;
+        int y = 40;
+        uint16_t color = canvas_.getColorDepth() == 1
+                             ? 1
+                             : color_palette_.get(DrawingLocation::kBalloonBackground);
+        uint16_t background_color = canvas_.getColorDepth() == 1
+                                        ? 0
+                                        : color_palette_.get(DrawingLocation::kBalloonForeground);
+
+        canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)
         {
-            drawBubble(canvas_, 120, 120, 20, color_palette.get(DrawingLocation::kBalloonForeground));
+            drawBubble(canvas_, x, y, 20, color);
         }
         if (expression_weight.get(Expression::kAngry) > 128)
         {
-            drawAngerMark(canvas_, 120, 120, 20, color_palette.get(DrawingLocation::kBalloonForeground), color_palette.get(DrawingLocation::kBalloonBackground));
+            drawAngerMark(canvas_, x, y, 20, color, background_color);
         }
         if (expression_weight.get(Expression::kUpset) > 128)
         {
-            drawWaterDrop(canvas_, 120, 120, 20, color_palette.get(DrawingLocation::kBalloonForeground));
+            drawWaterDrop(canvas_, x, y, 20, color);
         }
         if (expression_weight.get(Expression::kSad) > 128)
         {
-            drawPaleMark(canvas_, 120, 120, 20, color_palette.get(DrawingLocation::kBalloonForeground));
+            drawPaleMark(canvas_, x, y, 20, color);
         }
-        if (expression_weight.get(Expression::kHappy) > 128)
+        if (expression_weight.get(Expression::kSmile) > 128)
         {
-            drawHeart(canvas_, 120, 120, 20, color_palette.get(DrawingLocation::kBalloonForeground));
+            drawHeart(canvas_, x, y, 20, color);
         }
     }
 }

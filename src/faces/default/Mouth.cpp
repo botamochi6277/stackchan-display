@@ -16,7 +16,9 @@ namespace stackchan::display
 
     void Mouth::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        uint16_t mouth_color = palette.get(DrawingLocation::kMouthBackground);
+        uint16_t mouth_color = canvas.getColorDepth() == 1
+                                   ? 1
+                                   : palette.get(DrawingLocation::kMouthBackground);
 
         int breath_offset = static_cast<int>(((expression_weight.get(Expression::kBreath) / 255.0f) - 0.5f) * 2.0f * breath_amplitude_);
 

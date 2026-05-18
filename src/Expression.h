@@ -9,7 +9,7 @@ namespace stackchan::display
   enum class Expression : unsigned char
   {
     kNeutral = 0,
-    kHappy,
+    // kHappy,
     kAngry,
     kSad,
     kDoubt,

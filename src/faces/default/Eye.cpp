@@ -31,8 +31,12 @@ namespace stackchan::display
         static uint32_t saccade_interval = 1000;
         static auto saccade_noise = m5::Vector2i();
 
-        unsigned int iris_color = palette.get(DrawingLocation::kIris1);
-        unsigned int eyelid_color = palette.get(DrawingLocation::kSkin);
+        unsigned int iris_color = canvas.getColorDepth() == 1
+                                      ? 1
+                                      : palette.get(DrawingLocation::kIris1);
+        unsigned int eyelid_color = canvas.getColorDepth() == 1
+                                        ? 0
+                                        : palette.get(DrawingLocation::kSkin);
 
         // temporary variables for eyelid drawing
         m5::Vector2i p1, p2, p3;
