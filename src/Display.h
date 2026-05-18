@@ -15,8 +15,6 @@ namespace stackchan::display
     class Display
     {
     protected:
-        Display() = default;
-
         // bool _is_modify_locked = false;
 
         M5Canvas canvas_;
@@ -28,6 +26,7 @@ namespace stackchan::display
         void drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette);
 
     public:
+        Display() : canvas_(&M5.Lcd), face_(), expression_weight_(), color_palette_(), speech_balloon_() {};
         Face &getFace()
         {
             return face_;
@@ -53,17 +52,17 @@ namespace stackchan::display
             return canvas_;
         }
 
-        void setCanvas(const M5Canvas &canvas)
-        {
-            canvas_ = canvas;
-        }
+        // void setCanvas(M5Canvas &canvas)
+        // {
+        //     canvas_ = canvas;
+        // }
 
         virtual void draw(ExpressionWeight &expression_weight, ColorPalette &palette)
         {
-            canvas_.createSprite(canvas_.width(), canvas_.height());
+            canvas_.createSprite(320, 240); // canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`
             face_.draw(canvas_, expression_weight_, color_palette_);
-            drawEmotionalDecorator(expression_weight_, color_palette_);
-            speech_balloon_.draw(canvas_, color_palette_);
+            // drawEmotionalDecorator(expression_weight_, color_palette_);
+            // speech_balloon_.draw(canvas_, color_palette_);
         };
         /**
          * @brief Update avatar, trigger all elements, decorators and modifiers to update

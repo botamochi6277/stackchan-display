@@ -85,7 +85,7 @@ namespace stackchan::display
             saccade_interval = 1000 + rand() % 1000; // add random to avoid fixed interval
             if (expression_weight.contains(Expression::kUpset) && expression_weight.get(Expression::kUpset) > 0)
             {
-                saccade_interval /= 6 * (expression_weight.get(Expression::kUpset) / 255.0f) + 1; // make saccade more frequent when upset
+                saccade_interval = 800 * (1.0f - (expression_weight.get(Expression::kUpset) / 255.0f)) + 200; // make saccade more frequent when upset
             }
         }
 
