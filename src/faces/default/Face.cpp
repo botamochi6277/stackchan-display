@@ -8,7 +8,7 @@
 #define _rand() rand_r(&seed)
 #endif
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     Face::Face() : left_eye(160 + 70, 95, 9, true),
                    right_eye(160 - 70, 95, 9, false),

@@ -2,7 +2,7 @@
 
 #include "Drawable.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     void drawBubble(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
                     uint16_t color, float offset)

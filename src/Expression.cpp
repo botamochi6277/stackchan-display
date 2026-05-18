@@ -1,6 +1,6 @@
 #include "Expression.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     ExpressionWeight::ExpressionWeight()
     {

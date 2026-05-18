@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../FacialDrawable.h"
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
     // M5StackChan default face
@@ -16,4 +16,4 @@ namespace stackchan::avatar
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
     };
-} // namespace stackchan::avatar
+} // namespace stackchan::display

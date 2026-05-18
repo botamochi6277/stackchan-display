@@ -19,7 +19,7 @@ const int16_t MIN_WIDTH = 40;
 const int cx = 240;
 const int cy = 220;
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
   class SpeechBalloon final : public Drawable
   {
@@ -72,4 +72,4 @@ namespace stackchan::avatar
     }
   };
 
-} // namespace stackchan::avatar
+} // namespace stackchan::display

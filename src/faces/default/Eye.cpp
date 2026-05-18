@@ -1,6 +1,6 @@
 #include "Eye.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
     Eye::Eye(uint16_t r, bool is_left) : is_left_(is_left)
@@ -182,4 +182,4 @@ namespace stackchan::avatar
         }
     }
 
-} // namespace stackchan::avatar
+} // namespace stackchan::display

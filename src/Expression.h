@@ -1,7 +1,7 @@
 #pragma once
 
 #include <map>
-namespace stackchan::avatar
+namespace stackchan::display
 {
   // facial expression keys
   // NOTE what is difference between expression & emotion?
@@ -45,4 +45,4 @@ namespace stackchan::avatar
     void clear(void);
   };
 
-} // namespace stackchan::avatar
+} // namespace stackchan::display

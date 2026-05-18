@@ -5,7 +5,7 @@
 #include "Expression.h"
 #include "ColorPalette.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     class FacialDrawable : public Drawable
     {

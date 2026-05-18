@@ -10,7 +10,7 @@
 
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/avatar.h
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     class Display
     {

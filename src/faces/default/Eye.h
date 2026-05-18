@@ -2,7 +2,7 @@
 
 #include "../FacialDrawable.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
   class Eye : public FacialDrawable
@@ -23,4 +23,4 @@ namespace stackchan::avatar
     virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
   };
 
-} // namespace stackchan::avatar
+} // namespace stackchan::display

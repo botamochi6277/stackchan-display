@@ -7,7 +7,7 @@
 // reference:
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/elements/element.h
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     template <typename T>
     T clamp(T value, T min, T max)

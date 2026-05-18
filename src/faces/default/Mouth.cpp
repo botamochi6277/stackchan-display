@@ -1,6 +1,6 @@
 #include "Mouth.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
     Mouth::Mouth()

@@ -4,7 +4,7 @@
 
 #include "ColorPalette.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
   using DLoc = DrawingLocation;
@@ -50,4 +50,4 @@ namespace stackchan::avatar
     auto itr = palette_.find(key);
     return itr != palette_.end();
   }
-} // namespace stackchan::avatar
+} // namespace stackchan::display
