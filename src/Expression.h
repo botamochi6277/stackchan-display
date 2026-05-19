@@ -1,7 +1,7 @@
 #pragma once
 
 #include <map>
-namespace stackchan::avatar
+namespace stackchan::display
 {
   // facial expression keys
   // NOTE what is difference between expression & emotion?
@@ -9,7 +9,7 @@ namespace stackchan::avatar
   enum class Expression : unsigned char
   {
     kNeutral = 0,
-    kHappy,
+    // kHappy,
     kAngry,
     kSad,
     kDoubt,
@@ -17,20 +17,32 @@ namespace stackchan::avatar
     kSmile,
     kLaugh,
     kSurprised,
+    kUpset,
     kRelax,
+    // eye expressions
+    kBlink,
+    kLeftBlink,
+    kRightBlink,
+    // mouth expressions
+    kAa,
+    // misc expressions
+    kBreath,
+    // TODO: add more expressions
+    kCount,
   };
 
   class ExpressionWeight
   {
   private:
-    std::map<Expression, int> weight_;
+    std::map<Expression, unsigned char> weight_;
 
   public:
     ExpressionWeight();
-    void set(Expression expression, int weight);
-    int get(Expression expression);
+    void set(Expression expression, unsigned char weight);
+    void setEmotionalExpression(Expression expression, unsigned char weight);
+    unsigned char get(Expression expression);
     bool contains(Expression expression) const;
     void clear(void);
   };
 
-} // namespace stackchan::avatar
+} // namespace stackchan::display

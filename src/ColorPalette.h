@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
   /**
@@ -61,11 +61,11 @@ namespace stackchan::avatar
     bool contains(DrawingLocation key);
     void clear(void);
   };
-} // namespace stackchan::avatar
+} // namespace stackchan::display
 
 // defines for backward compatibility
-#define COLOR_PRIMARY stackchan::avatar::DrawingLocation::kIrisBackground
-#define COLOR_SECONDARY stackchan::avatar::DrawingLocation::kIris1
-#define COLOR_BACKGROUND stackchan::avatar::DrawingLocation::kSkin
-#define COLOR_BALLOON_FOREGROUND stackchan::avatar::DrawingLocation::kBalloonForeground
-#define COLOR_BALLOON_BACKGROUND stackchan::avatar::DrawingLocation::kBalloonBackground
+#define COLOR_PRIMARY stackchan::display::DrawingLocation::kIris1
+#define COLOR_SECONDARY stackchan::display::DrawingLocation::kIrisBackground
+#define COLOR_BACKGROUND stackchan::display::DrawingLocation::kSkin
+#define COLOR_BALLOON_FOREGROUND stackchan::display::DrawingLocation::kBalloonForeground
+#define COLOR_BALLOON_BACKGROUND stackchan::display::DrawingLocation::kBalloonBackground

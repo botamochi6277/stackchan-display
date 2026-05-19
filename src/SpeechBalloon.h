@@ -1,0 +1,79 @@
+// Copyright (c) Shinya Ishikawa. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full
+// license information.
+
+#pragma once
+#include <M5Unified.h>
+
+#include "Drawable.h"
+#include "ColorPalette.h"
+
+#ifndef ARDUINO
+#include <string>
+typedef std::string String;
+#endif // ARDUINO
+
+const int16_t TEXT_HEIGHT = 8;
+const int16_t TEXT_SIZE = 2;
+const int16_t MIN_WIDTH = 40;
+const int cx = 240;
+const int cy = 220;
+
+namespace stackchan::display
+{
+  class SpeechBalloon final : public Drawable
+  {
+  protected:
+    std::string text_;
+    const lgfx::IFont *font_;
+
+  public:
+    // constructor
+    SpeechBalloon() = default;
+    ~SpeechBalloon() = default;
+    SpeechBalloon(const SpeechBalloon &other) = default;
+    SpeechBalloon &operator=(const SpeechBalloon &other) = default;
+
+    void setText(const std::string &text)
+    {
+      text_ = text;
+    }
+    void draw(M5Canvas &canvas) override
+    {
+      // This method is intentionally left empty. The actual drawing logic is implemented in the overloaded draw method that takes a ColorPalette parameter.
+    }
+
+    void draw(M5Canvas &canvas, ColorPalette &cp)
+    {
+      if (text_.length() == 0)
+      {
+        return;
+      }
+
+      uint16_t primaryColor = canvas.getColorDepth() == 1
+                                  ? 1
+                                  : cp.get(DrawingLocation::kBalloonForeground);
+      uint16_t backgroundColor = canvas.getColorDepth() == 1
+                                     ? 0
+                                     : cp.get(DrawingLocation::kBalloonBackground);
+      M5.Lcd.setTextSize(TEXT_SIZE);
+      M5.Lcd.setTextDatum(MC_DATUM);
+      canvas.setTextSize(TEXT_SIZE);
+      canvas.setTextColor(primaryColor, backgroundColor);
+      canvas.setTextDatum(MC_DATUM);
+      M5.Lcd.setFont(font_);
+      int textWidth = M5.Lcd.textWidth(text_.c_str());
+      int textHeight = TEXT_HEIGHT * TEXT_SIZE;
+      canvas.fillEllipse(cx - 20, cy, textWidth + 2, textHeight * 2 + 2,
+                         primaryColor);
+      canvas.fillTriangle(cx - 62, cy - 42, cx - 8, cy - 10, cx - 41, cy - 8,
+                          primaryColor);
+      canvas.fillEllipse(cx - 20, cy, textWidth, textHeight * 2,
+                         backgroundColor);
+      canvas.fillTriangle(cx - 60, cy - 40, cx - 10, cy - 10, cx - 40, cy - 10,
+                          backgroundColor);
+      canvas.drawString(text_.c_str(), cx - textWidth / 6 - 15, cy, font_); // Continue printing from new x position
+    }
+  };
+
+} // namespace stackchan::display

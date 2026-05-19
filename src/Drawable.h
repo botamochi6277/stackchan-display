@@ -7,7 +7,7 @@
 // reference:
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/elements/element.h
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     template <typename T>
     T clamp(T value, T min, T max)
@@ -26,16 +26,19 @@ namespace stackchan::avatar
     class Drawable
     {
     protected:
-        m5::Vector2i position_{0, 0};
-        int rotation_ = 0;          // in degrees, counter-clockwise
-        m5::Size2i size_{100, 100}; // width and height, in pixels
+        m5::Vector2i position_{0, 0}; // in pixels, relative to the center of the face, with positive x to the right and positive y downwards
+        int rotation_ = 0;            // in degrees, counter-clockwise
+        m5::Size2i size_{100, 100};   // width and height, in pixels
         bool visible_ = true;
         bool ignore_expression_ = false;
 
     public:
+        Drawable() = default;
+
         virtual ~Drawable() = default;
+
         /**
-         * @brief (-100 ~ 100, -100 ~ 100)
+         * @brief set primary position
          *
          * @param position
          */
@@ -79,9 +82,6 @@ namespace stackchan::avatar
         {
             return size_;
         }
-
-        virtual void setWeight(int weight) {}
-        virtual int getWeight() { return 0; }
 
         virtual void setVisible(bool visible)
         {

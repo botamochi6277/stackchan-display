@@ -4,12 +4,12 @@
 
 #include "ColorPalette.h"
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
 
   using DLoc = DrawingLocation;
   ColorPalette::ColorPalette()
-      : palette_{{DLoc::kIrisBackground, TFT_WHITE},
+      : palette_{{DLoc::kIris1, TFT_WHITE},
                  {DLoc::kMouthBackground, TFT_WHITE},
                  {DLoc::kSkin, TFT_BLACK},
                  {DLoc::kBalloonForeground, TFT_BLACK},
@@ -50,4 +50,4 @@ namespace stackchan::avatar
     auto itr = palette_.find(key);
     return itr != palette_.end();
   }
-} // namespace stackchan::avatar
+} // namespace stackchan::display

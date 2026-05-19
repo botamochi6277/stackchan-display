@@ -4,7 +4,7 @@
 #include <functional>
 #include <memory>
 
-namespace stackchan::avatar
+namespace stackchan::display
 {
     // For shishikawa classc face, the primary facial components include left eye, right eye and mouth.
     struct PrimaryFacialDrawables_t
