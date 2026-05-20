@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../FacialDrawable.h"
+#include "FacialDrawable.h"
 
 namespace stackchan::display
 {

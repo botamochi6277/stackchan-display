@@ -6,7 +6,7 @@
 #include "ColorPalette.h"
 #include "Decorator.h"
 #include "SpeechBalloon.h"
-#include "faces/default/Face.h"
+#include "faces/Faces.h"
 
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/avatar.h
 
