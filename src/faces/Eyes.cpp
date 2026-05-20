@@ -2,34 +2,17 @@
 
 namespace stackchan::display
 {
+    BaseEye::BaseEye(bool is_left) : is_left_(is_left) {}
 
-    Eye::Eye(uint16_t r, bool is_left) : is_left_(is_left)
-    {
-        radius_ = r;
-        size_ = m5::Size2i(r * 2, r * 2);
-    }
-
-    Eye::Eye(m5::Vector2i &position, uint16_t r, bool is_left) : Eye(r, is_left)
+    BaseEye::BaseEye(m5::Vector2i position, m5::Size2i size, bool is_left) : is_left_(is_left)
     {
         position_ = position;
+        size_ = size;
     }
-
-    Eye::Eye(int x, int y, uint16_t r, bool is_left) : Eye(r, is_left)
-    {
-        position_ = m5::Vector2i(x, y);
-    }
-
-    // Eye::Eye(m5::Vector2i &position, bool is_left) : is_left_(is_left)
-    // {
-    //     position_ = position;
-    // }
 
     void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        static unsigned long milli_sec = 0;
-        static unsigned long last_saccade_millis = 0;
-        static uint32_t saccade_interval = 1000;
-        static auto saccade_noise = m5::Vector2i();
+        radius_ = size_.min();
 
         unsigned int iris_color = canvas.getColorDepth() == 1
                                       ? 1
@@ -43,10 +26,10 @@ namespace stackchan::display
         Expression eye_expression = Expression::kNeutral;
         unsigned char weight;
 
-        milli_sec = M5.millis();
+        milli_sec_ = M5.millis();
         gaze_ = m5::Vector2i(0, 0); // tmp
 
-        iris_position_ = position_ + gaze_ + saccade_noise;
+        iris_position_ = position_ + gaze_ + saccade_noise_;
 
         eye_expression = Expression::kRelax;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
@@ -82,14 +65,14 @@ namespace stackchan::display
         }
 
         // add saccade noise
-        if (milli_sec - last_saccade_millis > saccade_interval)
+        if (milli_sec_ - last_saccade_millis_ > saccade_interval_)
         {
-            saccade_noise = m5::Vector2i(rand() % 10 - 5, rand() % 10 - 5);
-            last_saccade_millis = milli_sec;
-            saccade_interval = 1000 + rand() % 1000; // add random to avoid fixed interval
+            saccade_noise_ = m5::Vector2i(rand() % 10 - 5, rand() % 10 - 5);
+            last_saccade_millis_ = milli_sec_;
+            saccade_interval_ = 1000 + rand() % 1000; // add random to avoid fixed interval
             if (expression_weight.contains(Expression::kUpset) && expression_weight.get(Expression::kUpset) > 0)
             {
-                saccade_interval = 800 * (1.0f - (expression_weight.get(Expression::kUpset) / 255.0f)) + 200; // make saccade more frequent when upset
+                saccade_interval_ = 800 * (1.0f - (expression_weight.get(Expression::kUpset) / 255.0f)) + 200; // make saccade more frequent when upset
             }
         }
 
