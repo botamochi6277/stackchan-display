@@ -10,9 +10,9 @@
 
 namespace stackchan::display
 {
-    Face::Face() : left_eye(160 + 70, 95, 9, 9, true),
-                   right_eye(160 - 70, 95, 9, 9, false),
-                   mouth(160, 148, 90, 60) {}
+    Face::Face() : left_eye_(160 + 70, 95, 9, 9, true),
+                   right_eye_(160 - 70, 95, 9, 9, false),
+                   mouth_(160, 148, 90, 60) {}
 
     void Face::updateState(ExpressionWeight &expression_weight)
     {
@@ -52,8 +52,8 @@ namespace stackchan::display
     {
         unsigned int skin_color = palette.get(DrawingLocation::kSkin);
         canvas.fillSprite(skin_color);
-        this->left_eye.draw(canvas, expression_weight, palette);
-        this->right_eye.draw(canvas, expression_weight, palette);
-        this->mouth.draw(canvas, expression_weight, palette);
+        this->left_eye_.draw(canvas, expression_weight, palette);
+        this->right_eye_.draw(canvas, expression_weight, palette);
+        this->mouth_.draw(canvas, expression_weight, palette);
     }
 }

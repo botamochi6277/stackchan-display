@@ -4,7 +4,6 @@ namespace stackchan::display
 {
 
     BaseEye::BaseEye(int16_t x, int16_t y, int16_t width, int16_t height, bool is_left) : BaseEye::BaseEye(x, y, width, height)
-
     {
         is_left_ = is_left;
     }

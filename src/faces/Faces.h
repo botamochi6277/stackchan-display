@@ -19,11 +19,28 @@ namespace stackchan::display
 
         float breath_frequency_ = 0.25f; // in Hz,
 
+        // child facial components
+        Eye left_eye_;
+        Eye right_eye_;
+        Mouth mouth_;
+
     public:
         Face();
-        Eye left_eye;
-        Eye right_eye;
-        Mouth mouth;
+
+        Eye &getLeftEye()
+        {
+            return left_eye_;
+        }
+
+        Eye &getRightEye()
+        {
+            return right_eye_;
+        }
+
+        Mouth &getMouth()
+        {
+            return mouth_;
+        }
 
         void activateAutoBlink()
         {
