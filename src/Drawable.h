@@ -26,7 +26,7 @@ namespace stackchan::display
     class Drawable
     {
     protected:
-        m5::Vector2i position_{0, 0}; // in pixels, relative to the center of the face, with positive x to the right and positive y downwards
+        m5::Vector2i position_{0, 0}; // in pixels, with positive x to the right and positive y downwards
         int rotation_ = 0;            // in degrees, counter-clockwise
         m5::Size2i size_{100, 100};   // width and height, in pixels
         bool visible_ = true;
@@ -34,6 +34,7 @@ namespace stackchan::display
 
     public:
         Drawable() = default;
+        Drawable(int16_t x, int16_t y, int16_t width, int16_t height) : position_(x, y), size_(width, height) {};
 
         virtual ~Drawable() = default;
 
@@ -47,19 +48,19 @@ namespace stackchan::display
             position_ = position;
             position_.clamp({-100, -100}, {100, 100});
         }
-        virtual m5::Vector2i getPosition()
+        virtual m5::Vector2i &getPosition()
         {
             return position_;
         }
 
         /**
-         * @brief 0~3600
+         * @brief
          *
          * @param rotation
          */
         virtual void setRotation(int rotation)
         {
-            rotation_ = clamp(rotation, 0, 3600);
+            rotation_ = rotation;
         }
         /**
          * @brief Get the Rotation in degrees, counter-clockwise
@@ -78,7 +79,7 @@ namespace stackchan::display
             size_.height = clamp(size_.height, 1, 200);
         }
 
-        virtual m5::Size2i getSize()
+        virtual m5::Size2i &getSize()
         {
             return size_;
         }

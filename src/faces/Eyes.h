@@ -10,11 +10,15 @@ namespace stackchan::display
   void drawStraightEyelid(M5Canvas &canvas, int16_t x, int16_t y, int16_t width,
                           int16_t height, uint16_t color);
 
+  /**
+   * @brief Base class for Eye, draw nothing
+   *
+   */
   class BaseEye : public FacialDrawable
   {
   protected:
     // common state values for eyes
-    bool is_left_ = true;
+    bool is_left_;
     m5::Vector2i gaze_{0, 0};
     m5::Vector2i iris_position_{0, 0};
 
@@ -24,8 +28,8 @@ namespace stackchan::display
     m5::Vector2i saccade_noise_ = m5::Vector2i();
 
   public:
-    BaseEye(bool is_left);
-    BaseEye(m5::Vector2i position, m5::Size2i size, bool is_left);
+    using FacialDrawable::FacialDrawable;
+    BaseEye(int16_t x, int16_t y, int16_t width, int16_t height, bool is_left);
   };
 
   class Eye : public BaseEye

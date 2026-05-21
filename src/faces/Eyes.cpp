@@ -2,12 +2,11 @@
 
 namespace stackchan::display
 {
-    BaseEye::BaseEye(bool is_left) : is_left_(is_left) {}
 
-    BaseEye::BaseEye(m5::Vector2i position, m5::Size2i size, bool is_left) : is_left_(is_left)
+    BaseEye::BaseEye(int16_t x, int16_t y, int16_t width, int16_t height, bool is_left) : BaseEye::BaseEye(x, y, width, height)
+
     {
-        position_ = position;
-        size_ = size;
+        is_left_ = is_left;
     }
 
     void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)

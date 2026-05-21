@@ -3,15 +3,21 @@
 #include "FacialDrawable.h"
 namespace stackchan::display
 {
-
-    // M5StackChan default face
-    class Mouth : public FacialDrawable
+    class BaseMouth : public FacialDrawable
     {
     protected:
         uint8_t breath_amplitude_ = 5; // in pixels
+
     public:
-        Mouth();
-        Mouth(int16_t x, int16_t y, int16_t width, int16_t height);
+        using FacialDrawable::FacialDrawable;
+    };
+
+    // M5StackChan default face
+    class Mouth : public BaseMouth
+    {
+    protected:
+    public:
+        using BaseMouth::BaseMouth;
 
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;

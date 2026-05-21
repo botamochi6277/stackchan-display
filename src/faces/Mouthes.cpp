@@ -3,17 +3,6 @@
 namespace stackchan::display
 {
 
-    Mouth::Mouth()
-    {
-        position_ = {160, 148};
-        size_ = {100, 100};
-    }
-    Mouth::Mouth(int16_t x, int16_t y, int16_t width, int16_t height)
-    {
-        position_ = {x, y};
-        size_ = {width, height};
-    }
-
     void Mouth::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
         uint16_t mouth_color = canvas.getColorDepth() == 1
