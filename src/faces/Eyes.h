@@ -10,8 +10,8 @@ namespace stackchan::display
   void drawStraightEyelid(M5Canvas &canvas, int16_t x, int16_t y, int16_t width,
                           int16_t height, uint16_t color);
 
-  void updateTriangleEyelidPoints(m5::Vector2i &center, m5::Size2i &size,
-                                  ExpressionWeight &weight,
+  void updateTriangleEyelidPoints(m5::Vector2i &center, m5::Size2i &size, bool is_left,
+                                  ExpressionWeight &expression_weight,
                                   m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3);
 
   /**

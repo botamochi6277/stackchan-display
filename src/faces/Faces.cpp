@@ -10,8 +10,8 @@
 
 namespace stackchan::display
 {
-    Face::Face() : left_eye_(160 + 70, 95, 9, 9, true),
-                   right_eye_(160 - 70, 95, 9, 9, false),
+    Face::Face() : left_eye_(160 + 70, 95, 18, 18, true),
+                   right_eye_(160 - 70, 95, 18, 18, false),
                    mouth_(160, 148, 90, 60) {}
 
     void Face::updateState(ExpressionWeight &expression_weight)
