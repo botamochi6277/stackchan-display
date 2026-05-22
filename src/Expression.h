@@ -23,6 +23,10 @@ namespace stackchan::display
     kBlink,
     kLeftBlink,
     kRightBlink,
+    kLookUp,
+    kLookDown,
+    kLookLeft,
+    kLookRight,
     // mouth expressions
     kAa,
     // misc expressions
