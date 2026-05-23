@@ -18,18 +18,26 @@ namespace stackchan::display
         // bool _is_modify_locked = false;
 
         M5Canvas canvas_;
-        Face face_;
+        Face *face_;
         ExpressionWeight expression_weight_;
-        ColorPalette color_palette_;
+        ColorPalette *color_palette_;
         SpeechBalloon speech_balloon_;
 
         void drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette);
 
     public:
-        Display() : canvas_(&M5.Lcd), face_(), expression_weight_(), color_palette_(), speech_balloon_() {};
-        Face &getFace()
+        Display() : canvas_(&M5.Lcd), expression_weight_(), speech_balloon_()
+        {
+            face_ = new Face();
+            color_palette_ = new ColorPalette();
+        };
+        Face *getFace()
         {
             return face_;
+        }
+        void setFace(Face *face)
+        {
+            face_ = face;
         }
 
         ExpressionWeight &getExpressionWeight()
@@ -42,7 +50,7 @@ namespace stackchan::display
             return speech_balloon_;
         }
 
-        ColorPalette &getColorPalette()
+        ColorPalette *getColorPalette()
         {
             return color_palette_;
         }
@@ -60,9 +68,9 @@ namespace stackchan::display
         virtual void draw(ExpressionWeight &expression_weight, ColorPalette &palette)
         {
             canvas_.createSprite(320, 240); // canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`
-            face_.draw(canvas_, expression_weight_, color_palette_);
-            drawEmotionalDecorator(expression_weight_, color_palette_);
-            speech_balloon_.draw(canvas_, color_palette_);
+            face_->draw(canvas_, expression_weight_, *color_palette_);
+            drawEmotionalDecorator(expression_weight_, *color_palette_);
+            speech_balloon_.draw(canvas_, *color_palette_);
         };
         /**
          * @brief Update avatar, trigger all elements, decorators and modifiers to update
@@ -70,8 +78,8 @@ namespace stackchan::display
          */
         virtual void update()
         {
-            face_.updateState(expression_weight_);
-            this->draw(expression_weight_, color_palette_);
+            face_->updateState(expression_weight_);
+            this->draw(expression_weight_, *color_palette_);
             canvas_.pushSprite(0, 0);
             canvas_.deleteSprite();
         };
@@ -83,10 +91,10 @@ namespace stackchan::display
         int y = 40;
         uint16_t color = canvas_.getColorDepth() == 1
                              ? 1
-                             : color_palette_.get(DrawingLocation::kBalloonBackground);
+                             : color_palette_->get(DrawingLocation::kBalloonBackground);
         uint16_t background_color = canvas_.getColorDepth() == 1
                                         ? 0
-                                        : color_palette_.get(DrawingLocation::kBalloonForeground);
+                                        : color_palette_->get(DrawingLocation::kBalloonForeground);
 
         canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)

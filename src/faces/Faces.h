@@ -20,24 +20,28 @@ namespace stackchan::display
         float breath_frequency_ = 0.25f; // in Hz,
 
         // child facial components
-        Eye left_eye_;
-        Eye right_eye_;
-        Mouth mouth_;
+        // NOTE: use object pointers for exchanging components
+        BaseEye *left_eye_;
+        BaseEye *right_eye_;
+        BaseMouth *mouth_;
 
     public:
         Face();
+        Face(BaseEye *left_eye,
+             BaseEye *right_eye,
+             BaseMouth *mouth);
 
-        Eye &getLeftEye()
+        BaseEye *getLeftEye()
         {
             return left_eye_;
         }
 
-        Eye &getRightEye()
+        BaseEye *getRightEye()
         {
             return right_eye_;
         }
 
-        Mouth &getMouth()
+        BaseMouth *getMouth()
         {
             return mouth_;
         }
@@ -59,4 +63,14 @@ namespace stackchan::display
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
     };
+
+    // class EllFace : public Face
+    // {
+    // protected:
+    //     EllipseEye left_eye_;
+    //     EllipseEye right_eye_;
+
+    // public:
+    //     using Face::Face;
+    // };
 } // namespace stackchan::display

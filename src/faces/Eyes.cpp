@@ -260,6 +260,10 @@ namespace stackchan::display
 
         // draw iris
         canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, size_.height / 2);
+
+        updateTriangleEyelidPoints(
+            iris_position_, size_, is_left_, expression_weight, p1, p2, p3);
+        canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
     }
 
 } // namespace stackchan::display
