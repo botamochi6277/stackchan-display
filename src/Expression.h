@@ -15,7 +15,7 @@ namespace stackchan::display
     kDoubt,
     kSleepy,
     kSmile,
-    kLaugh,
+    kGrin,
     kSurprised,
     kUpset,
     kRelax,

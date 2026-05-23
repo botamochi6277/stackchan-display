@@ -71,7 +71,7 @@ void setSpeechText(stackchan::display::Display &display)
     display.getSpeechBalloon().setText("~~~");
   }
 
-  if (weight.get(Expression::kLaugh) > 127)
+  if (weight.get(Expression::kGrin) > 127)
   {
     display.getSpeechBalloon().setText("");
   }

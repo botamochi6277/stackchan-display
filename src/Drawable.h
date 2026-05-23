@@ -23,6 +23,24 @@ namespace stackchan::display
         return value;
     }
 
+    template <typename T>
+    T remap(T x, T in_min, T in_max, T out_min, T out_max, bool clamp = false)
+    {
+        if (clamp)
+        {
+            if (x < in_min)
+            {
+                return out_min;
+            }
+            if (in_max < x)
+            {
+                return out_max;
+            }
+        }
+
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+
     class Drawable
     {
     protected:

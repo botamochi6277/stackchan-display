@@ -96,7 +96,7 @@ namespace stackchan::display
                                         ? 0
                                         : color_palette_->get(DrawingLocation::kBalloonForeground);
 
-        canvas_.fillCircle(x, y, 40, TFT_GREEN);
+        // canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)
         {
             drawBubble(canvas_, x, y, 20, color);

@@ -64,13 +64,13 @@ namespace stackchan::display
         // virtual void update() override;
     };
 
-    // class EllFace : public Face
-    // {
-    // protected:
-    //     EllipseEye left_eye_;
-    //     EllipseEye right_eye_;
-
-    // public:
-    //     using Face::Face;
-    // };
+    class EllFace : public Face
+    {
+        // 110/390
+    public:
+        EllFace() : Face(
+                        new EllipseEye(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, true),
+                        new EllipseEye(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, false),
+                        new BaseMouth(0, 0, 0, 0)) {};
+    };
 } // namespace stackchan::display
