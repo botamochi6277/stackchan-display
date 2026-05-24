@@ -104,14 +104,14 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <p><a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg" alt="PlatformIO CI" style="pointer-events: none;" class="inline"/></a></p>
 <dl class="section warning"><dt>Warning</dt><dd>This library is WIP (<em>work in progress</em>) and unstable. Breaking changes can be installed easily!</dd></dl>
 <p><em>StackChan display</em> is an Arduino library to display stackchan faces. <em>StackChan display</em> depends on only <a href="https://github.com/m5stack/M5Unified">U5Unified</a> and drawing with it.</p>
-<p>This library is based on <a href="https://github.com/m5stack/StackChan">m5stack/StackChan</a>, <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a>, and <a href="https://github.com/stack-chan/m5stack-avatar">stack-chan/m5stack-avatar</a>.</p>
+<p>This library is based on <a href="https://github.com/stack-chan/m5stack-avatar">stack-chan/m5stack-avatar</a>, <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a>, and <a href="https://github.com/m5stack/StackChan">m5stack/StackChan</a>.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 This Library Role for StackChan assembly</h1>
 <p><em>StackChan display</em> is one of StackChan components to control a display. Even if you use this library alone, “StackChan” will not be complete.</p>
 <div class="fragment"><div class="line">---</div>
 <div class="line">config:</div>
 <div class="line">  theme: &#39;redux-dark&#39;</div>
-<div class="line">  title: &#39;M5StackChan architecture&#39;</div>
+<div class="line">title: &#39;M5StackChan architecture&#39;</div>
 <div class="line">---</div>
 <div class="line">graph LR</div>
 <div class="line"> </div>
@@ -161,17 +161,22 @@ This Library Role for StackChan assembly</h1>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 How to use</h1>
 <p>Install this repository as an Arduino library.</p>
-<blockquote class="doxtable">
-<p>&zwj;[!NOTE] TODO: write install command here </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md3"></a>
-</h1>
+<dl class="section note"><dt>Note</dt><dd>TODO: write install command here</dd></dl>
+<p><a href="./examples/Demo/Demo.ino">Demo.ino</a> is a demo arduino file to draw stackchan faces, please build this.</p>
 <hr  />
+ <hr  />
 <h1><a class="anchor" id="autotoc_md4"></a>
 Developers Note</h1>
-<p>M5StackChan Face is <a href="https://github.com/m5stack/StackChan/tree/main/firmware/main/stackchan/avatar">m5stack/StackChan</a> in default.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-TODO for Developers</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Differences from m5stack-avatar</h2>
+<p>These changes are to improve functionality while keeping the code concise.</p>
+<ul>
+<li>No <a href="https://docs.espressif.com/projects/esp-idf/en/v4.3/esp32/api-reference/system/freertos.html#task-api">xTask</a>: If you want to draw face in xtask, please register yourself.</li>
+<li>No <code>DrawingContext</code>: It is too complex. <a href="./src/faces/FacialDrawable.h"><code>FacialDrawable.draw()</code></a> in this library uses <a href="./src/Expression.h"><code>ExpressionWeight</code></a>, <a href="./src/ColorPalette.h"><code>ColorPalette</code></a>, and a few internal parameters. <code>ExpressionWeight</code> concept is based on <a href="https://docs.blender.org/manual/en/dev/animation/shape_keys/index.html">ShapeKey</a>.</li>
+<li>No <code>Avatar</code>: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. <code>Display</code> class in this library only controls display behaviors.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+TODO for Developers</h2>
 <ul class="check">
 <li class="checked">Add ellipse eyes</li>
 </ul>
@@ -186,11 +191,14 @@ TODO for Developers</h1>
 <li class="unchecked">Increase #decorators</li>
 </ul>
 <ul class="check">
-<li class="unchecked">Add documents with doxygen</li>
+<li class="checked">Add documents with doxygen</li>
 </ul>
 <ul class="check">
 <li class="checked">Add the diagram of system architecture</li>
-<li class="unchecked">Add pictures of StackChans in the real world </li>
+<li class="unchecked">Add pictures of StackChans in the real world</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Migrate more faces from <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a> </li>
 </ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
