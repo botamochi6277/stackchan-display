@@ -5,6 +5,7 @@ on:
       - main
       - master
       - 'doxygen*'
+      - 'feature/doxygen*'
   workflow_dispatch:
 
 jobs:
