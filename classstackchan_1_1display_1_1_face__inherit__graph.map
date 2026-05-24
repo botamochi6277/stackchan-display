@@ -1,0 +1,11 @@
+<map id="stackchan::display::Face" name="stackchan::display::Face">
+<area shape="rect" id="Node000001" title=" " alt="" coords="60,589,208,996"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_ell_face.html" title=" " alt="" coords="5,1044,122,1125"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="84,1011,76,1045,71,1043,79,1010"/>
+<area shape="rect" id="Node000005" href="$classstackchan_1_1display_1_1_omega_face.html" title=" " alt="" coords="147,1044,263,1125"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="190,1010,198,1043,193,1045,185,1011"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="76,419,193,541"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,556,137,590,132,590,132,556"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="67,5,202,371"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,386,137,420,132,420,132,386"/>
+</map>

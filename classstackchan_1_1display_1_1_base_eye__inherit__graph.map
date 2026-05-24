@@ -1,0 +1,11 @@
+<map id="stackchan::display::BaseEye" name="stackchan::display::BaseEye">
+<area shape="rect" id="Node000001" title="Base class for Eye, draw nothing." alt="" coords="68,589,214,833"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_ellipse_eye.html" title=" " alt="" coords="5,881,122,983"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,848,84,883,79,881,91,847"/>
+<area shape="rect" id="Node000005" href="$classstackchan_1_1display_1_1_eye.html" title=" " alt="" coords="146,889,290,976"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="191,846,206,888,201,890,186,848"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="83,419,199,541"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,556,144,590,138,590,138,556"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="74,5,208,371"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="144,386,144,420,138,420,138,386"/>
+</map>

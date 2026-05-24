@@ -1,0 +1,13 @@
+<map id="stackchan::display::Mouth" name="stackchan::display::Mouth">
+<area shape="rect" id="Node000001" title=" " alt="" coords="53,1096,170,1177"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_base_mouth.html" title=" " alt="" coords="47,965,176,1047"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,1062,114,1096,109,1096,109,1062"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="53,794,170,916"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,931,114,966,109,966,109,931"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="44,419,179,745"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="114,760,114,794,109,794,109,760"/>
+<area shape="rect" id="Node000005" href="$classm5_1_1_vector2i.html" title=" " alt="" coords="5,5,100,356"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="76,356,81,395,83,402,77,403,76,396,71,357"/>
+<area shape="rect" id="Node000006" href="$classm5_1_1_size2i.html" title=" " alt="" coords="124,87,216,275"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="161,275,143,396,142,403,137,402,138,395,155,274"/>
+</map>
