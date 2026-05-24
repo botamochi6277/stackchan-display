@@ -1,5 +1,7 @@
 # StackChan Display
 
+[![PlatformIO CI](https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg)](https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml)
+
 > [!WARNING]
 > This library is WIP (*work in progress*) and unstable. Breaking changes can be installed easily!
 
@@ -8,9 +10,9 @@
 
 This library is based on [m5stack/StackChan](https://github.com/m5stack/StackChan), [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar), and  [stack-chan/m5stack-avatar](https://github.com/stack-chan/m5stack-avatar).
 
-## This Library Role for Stack-chan assembly
+## This Library Role for StackChan assembly
 
-*StackChan display* is one of stack-chan components to control a display. Even if you use this library alone, “stack-chan” will not be complete.
+*StackChan display* is one of StackChan components to control a display. Even if you use this library alone, “StackChan” will not be complete.
 
 ```mermaid
 ---
@@ -20,11 +22,15 @@ config:
 ---
 graph LR
 
+
+planning((planning))
+
 %% sensor inputs
 
-camera[fas:fa-camera camera]-->planning
+camera[fas:fa-camera camera]-->|cam image|planning
 touch[head touch sensor]-->planning
-head_rot[head rotation sensor]-->planning
+head_rot[head rotation sensor]-->|pan tilt angles|planning
+mic[microphone]-->planning
 bat[battery sensor]-->planning
 
 %% comm inputs
@@ -54,24 +60,33 @@ planning-->mot[motion control]
 mot-->servo_lib[servo lib]
 
 %% head neopixels on M5StackChan Head
-head_led[head led control]
-planning-->head_led[head led control]
-head_led-->led_lib[led lib]
+head_led[head LED control]
+planning-->head_led[head LED control]
+head_led-->led_lib[LED lib]
 
 planning-->speaker
 ```
 
-## Note
+## How to use
 
-M5StackChan Face is [m5stack/StackChan](https://github.com/m5stack/StackChan/tree/main/firmware/main/stackchan/avatar)
+Install this repository as an Arduino library.
+
+> [!NOTE] TODO: write install command here
+
+---
+---
+
+## Developers Note
+
+M5StackChan Face is [m5stack/StackChan](https://github.com/m5stack/StackChan/tree/main/firmware/main/stackchan/avatar) in default.
 
 ## TODO for Developers
 
 - [x] Add ellipse eyes
 - [x] Add cluster face
 - [x] Add Base classes for facial components
-- [ ] Add build CI tests
+- [x] Add build CI tests
 - [ ] Increase #decorators
 - [ ] Add documents with doxygen
 - [x] Add the diagram of system architecture
-- [ ] Add pictures of stackchans in the real world
+- [ ] Add pictures of StackChans in the real world
