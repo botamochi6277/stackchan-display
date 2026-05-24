@@ -8,7 +8,7 @@
 *StackChan display* is an Arduino library to display stackchan faces.
 *StackChan display* depends on only [U5Unified](https://github.com/m5stack/M5Unified) and drawing with it.
 
-This library is based on [m5stack/StackChan](https://github.com/m5stack/StackChan), [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar), and  [stack-chan/m5stack-avatar](https://github.com/stack-chan/m5stack-avatar).
+This library is based on [stack-chan/m5stack-avatar](https://github.com/stack-chan/m5stack-avatar), [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar), and [m5stack/StackChan](https://github.com/m5stack/StackChan).
 
 ## This Library Role for StackChan assembly
 
@@ -18,7 +18,7 @@ This library is based on [m5stack/StackChan](https://github.com/m5stack/StackCha
 ---
 config:
   theme: 'redux-dark'
-  title: 'M5StackChan architecture'
+title: 'M5StackChan architecture'
 ---
 graph LR
 
@@ -71,22 +71,32 @@ planning-->speaker
 
 Install this repository as an Arduino library.
 
-> [!NOTE] TODO: write install command here
+> [!NOTE]
+> TODO: write install command here
+
+[Demo.ino](./examples/Demo/Demo.ino) is a demo arduino file to draw stackchan faces, please build this.
 
 ---
 ---
 
 ## Developers Note
 
-M5StackChan Face is [m5stack/StackChan](https://github.com/m5stack/StackChan/tree/main/firmware/main/stackchan/avatar) in default.
+### Differences from m5stack-avatar
 
-## TODO for Developers
+These changes are to improve functionality while keeping the code concise.
+
+- No [xTask](https://docs.espressif.com/projects/esp-idf/en/v4.3/esp32/api-reference/system/freertos.html#task-api): If you want to draw face in xtask, please register yourself.
+- No `DrawingContext`: It is too complex. [`FacialDrawable.draw()`](./src/faces/FacialDrawable.h) in this library uses [`ExpressionWeight`](./src/Expression.h), [`ColorPalette`](./src/ColorPalette.h), and a few internal parameters. `ExpressionWeight` concept is based on [ShapeKey](https://docs.blender.org/manual/en/dev/animation/shape_keys/index.html).
+- No `Avatar`: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. `Display` class in this library only controls display behaviors.
+
+### TODO for Developers
 
 - [x] Add ellipse eyes
 - [x] Add cluster face
 - [x] Add Base classes for facial components
 - [x] Add build CI tests
 - [ ] Increase #decorators
-- [ ] Add documents with doxygen
+- [x] Add documents with doxygen
 - [x] Add the diagram of system architecture
 - [ ] Add pictures of StackChans in the real world
+- [ ] Migrate more faces from [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar)
