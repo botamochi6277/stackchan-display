@@ -7,7 +7,8 @@
 namespace stackchan::display
 {
 
-    // M5StackChan default face
+    // Stack-chan default face
+    // [・_・]
     class Face : public FacialDrawable
     {
     protected:
@@ -64,13 +65,26 @@ namespace stackchan::display
         // virtual void update() override;
     };
 
+    // custom faces
+
+    // [O O]
     class EllFace : public Face
     {
-        // 110/390
     public:
         EllFace() : Face(
                         new EllipseEye(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, true),
                         new EllipseEye(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, false),
                         new BaseMouth(0, 0, 0, 0)) {};
     };
+
+    // [OωO]
+    class OmegaFace : public Face
+    {
+    public:
+        OmegaFace() : Face(
+                          new EllipseEye(84 + 154, 165, 36, 70, true),
+                          new EllipseEye(84, 165, 36, 70, false),
+                          new OmegaMouth(160, 225, 72, 30)) {};
+    };
+
 } // namespace stackchan::display

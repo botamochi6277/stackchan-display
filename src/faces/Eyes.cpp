@@ -205,8 +205,6 @@ namespace stackchan::display
 
         // draw eyelid (if any)
 
-        // TODO: reimplement with function object
-
         updateQuadrilateralEyelidPoints(
             iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
