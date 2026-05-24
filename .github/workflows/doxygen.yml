@@ -1,0 +1,24 @@
+name: A job to build doxgen document and deploy it on github-pages
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'doxygen*'
+      - 'feature/doxygen*'
+  workflow_dispatch:
+
+jobs:
+  doxygen-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: download modern theme
+        run: |
+          curl -OL https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+      - uses: mattnotmitt/doxygen-action@v1.12.0
+      - name: Deploy pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "html"
