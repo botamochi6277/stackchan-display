@@ -1,0 +1,31 @@
+# CI documents: https://docs.platformio.org/en/latest/integration/ci/github-actions.html#integration
+name: PlatformIO CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example: [ ./examples/Demo/Demo.ino]
+        pio_board: ["m5stack-core-esp32", "m5stack-core2", "m5stack-cores3"]
+
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/cache@v5
+      with:
+        path: |
+                ~/.cache/pip
+                ~/.platformio/.cache
+        key: ${{ runner.os }}-pio
+    - uses: actions/setup-python@v6
+      with:
+          python-version: '3.11'
+    - name: Install PlatformIO Core
+      run: pip install --upgrade platformio
+    - name: Build PlatformIO examples
+      run: pio ci --project-option="lib_deps=M5Unified"  -l ./src --board=$PIO_BOARD
+      env:
+        PLATFORMIO_CI_SRC: ${{ matrix.example }}
+        PIO_BOARD: ${{ matrix.pio_board }}
