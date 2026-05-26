@@ -26,6 +26,8 @@ void setup()
   faces[1] = new stackchan::display::EllFace();
   faces[2] = new stackchan::display::OmegaFace();
 
+  stackchan_display.getFace()->autoScale();
+
   stackchan_display.getCanvas().setColorDepth(1);
   stackchan_display.getSpeechBalloon().setText("Hello, StackChan!");
 }
