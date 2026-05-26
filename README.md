@@ -20,7 +20,7 @@ This library is based on [stack-chan/m5stack-avatar](https://github.com/stack-ch
 ---
 config:
   theme: 'redux-dark'
-title: 'M5StackChan architecture'
+title: 'StackChan Architecture'
 ---
 graph LR
 
