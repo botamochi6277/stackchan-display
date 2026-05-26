@@ -108,28 +108,30 @@
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="classm5_1_1_size2i.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="none" points="158.12,-493.5 89.12,-493.5 89.12,-352.25 158.12,-352.25 158.12,-493.5"/>
-<text text-anchor="start" x="101.5" y="-480" font-family="Helvetica,sans-Serif" font-size="10.00">m5::Size2i</text>
-<text text-anchor="start" x="93.12" y="-464.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-464.75" font-family="Helvetica,sans-Serif" font-size="10.00">width</text>
-<text text-anchor="start" x="93.12" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00">height</text>
-<text text-anchor="start" x="93.12" y="-434.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-434.25" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
-<text text-anchor="start" x="93.12" y="-419" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-419" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
-<text text-anchor="start" x="93.12" y="-403.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-403.75" font-family="Helvetica,sans-Serif" font-size="10.00">operator*=()</text>
-<text text-anchor="start" x="93.12" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-388.5" font-family="Helvetica,sans-Serif" font-size="10.00">area()</text>
-<text text-anchor="start" x="93.12" y="-373.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-373.25" font-family="Helvetica,sans-Serif" font-size="10.00">max()</text>
-<text text-anchor="start" x="93.12" y="-358" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-358" font-family="Helvetica,sans-Serif" font-size="10.00">min()</text>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-476.25 89.12,-476.25 158.12,-476.25 158.12,-476.25 89.12,-476.25"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-445.75 89.12,-445.75 101.12,-445.75 101.12,-445.75 89.12,-445.75"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="101.12,-445.75 101.12,-445.75 158.12,-445.75 158.12,-445.75 101.12,-445.75"/>
-<polygon fill="none" stroke="#bfbfbf" points="89.12,-352.25 89.12,-493.5 158.12,-493.5 158.12,-352.25 89.12,-352.25"/>
+<polygon fill="white" stroke="none" points="158.12,-501.12 89.12,-501.12 89.12,-344.62 158.12,-344.62 158.12,-501.12"/>
+<text text-anchor="start" x="101.5" y="-487.62" font-family="Helvetica,sans-Serif" font-size="10.00">m5::Size2i</text>
+<text text-anchor="start" x="93.12" y="-472.38" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-472.38" font-family="Helvetica,sans-Serif" font-size="10.00">width</text>
+<text text-anchor="start" x="93.12" y="-457.12" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-457.12" font-family="Helvetica,sans-Serif" font-size="10.00">height</text>
+<text text-anchor="start" x="93.12" y="-441.88" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-441.88" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
+<text text-anchor="start" x="93.12" y="-426.62" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-426.62" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
+<text text-anchor="start" x="93.12" y="-411.38" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-411.38" font-family="Helvetica,sans-Serif" font-size="10.00">operator*=()</text>
+<text text-anchor="start" x="93.12" y="-396.12" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-396.12" font-family="Helvetica,sans-Serif" font-size="10.00">operator*()</text>
+<text text-anchor="start" x="93.12" y="-380.88" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-380.88" font-family="Helvetica,sans-Serif" font-size="10.00">area()</text>
+<text text-anchor="start" x="93.12" y="-365.62" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-365.62" font-family="Helvetica,sans-Serif" font-size="10.00">max()</text>
+<text text-anchor="start" x="93.12" y="-350.38" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-350.38" font-family="Helvetica,sans-Serif" font-size="10.00">min()</text>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-483.88 89.12,-483.88 158.12,-483.88 158.12,-483.88 89.12,-483.88"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-453.38 89.12,-453.38 101.12,-453.38 101.12,-453.38 89.12,-453.38"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="101.12,-453.38 101.12,-453.38 158.12,-453.38 158.12,-453.38 101.12,-453.38"/>
+<polygon fill="none" stroke="#bfbfbf" points="89.12,-344.62 89.12,-501.12 158.12,-501.12 158.12,-344.62 89.12,-344.62"/>
 </a>
 </g>
 </g>
@@ -137,7 +139,7 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node3&#45;&gt;Node1</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M114.4,-352.58C110.57,-324.45 106.01,-291.66 101.62,-262 101.36,-260.24 101.1,-258.47 100.84,-256.69"/>
+<path fill="none" stroke="#63b8ff" d="M113.36,-344.98C109.77,-318.65 105.62,-289.02 101.62,-262 101.36,-260.24 101.1,-258.47 100.84,-256.69"/>
 <polygon fill="none" stroke="#63b8ff" points="100.83,-256.66 95.98,-251.32 99.04,-244.79 103.89,-250.13 100.83,-256.66"/>
 </a>
 </g>

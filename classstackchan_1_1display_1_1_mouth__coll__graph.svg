@@ -235,28 +235,30 @@ var sectionId = 'dynsection-1';
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="classm5_1_1_size2i.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="none" points="158.12,-818 89.12,-818 89.12,-676.75 158.12,-676.75 158.12,-818"/>
-<text text-anchor="start" x="101.5" y="-804.5" font-family="Helvetica,sans-Serif" font-size="10.00">m5::Size2i</text>
-<text text-anchor="start" x="93.12" y="-789.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-789.25" font-family="Helvetica,sans-Serif" font-size="10.00">width</text>
-<text text-anchor="start" x="93.12" y="-774" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-774" font-family="Helvetica,sans-Serif" font-size="10.00">height</text>
-<text text-anchor="start" x="93.12" y="-758.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-758.75" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
-<text text-anchor="start" x="93.12" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-743.5" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
-<text text-anchor="start" x="93.12" y="-728.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-728.25" font-family="Helvetica,sans-Serif" font-size="10.00">operator*=()</text>
-<text text-anchor="start" x="93.12" y="-713" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-713" font-family="Helvetica,sans-Serif" font-size="10.00">area()</text>
-<text text-anchor="start" x="93.12" y="-697.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-697.75" font-family="Helvetica,sans-Serif" font-size="10.00">max()</text>
-<text text-anchor="start" x="93.12" y="-682.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="103.12" y="-682.5" font-family="Helvetica,sans-Serif" font-size="10.00">min()</text>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-800.75 89.12,-800.75 158.12,-800.75 158.12,-800.75 89.12,-800.75"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-770.25 89.12,-770.25 101.12,-770.25 101.12,-770.25 89.12,-770.25"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="101.12,-770.25 101.12,-770.25 158.12,-770.25 158.12,-770.25 101.12,-770.25"/>
-<polygon fill="none" stroke="#bfbfbf" points="89.12,-676.75 89.12,-818 158.12,-818 158.12,-676.75 89.12,-676.75"/>
+<polygon fill="white" stroke="none" points="158.12,-825.62 89.12,-825.62 89.12,-669.12 158.12,-669.12 158.12,-825.62"/>
+<text text-anchor="start" x="101.5" y="-812.12" font-family="Helvetica,sans-Serif" font-size="10.00">m5::Size2i</text>
+<text text-anchor="start" x="93.12" y="-796.88" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-796.88" font-family="Helvetica,sans-Serif" font-size="10.00">width</text>
+<text text-anchor="start" x="93.12" y="-781.62" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-781.62" font-family="Helvetica,sans-Serif" font-size="10.00">height</text>
+<text text-anchor="start" x="93.12" y="-766.38" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-766.38" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
+<text text-anchor="start" x="93.12" y="-751.12" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-751.12" font-family="Helvetica,sans-Serif" font-size="10.00">Size2i()</text>
+<text text-anchor="start" x="93.12" y="-735.88" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-735.88" font-family="Helvetica,sans-Serif" font-size="10.00">operator*=()</text>
+<text text-anchor="start" x="93.12" y="-720.62" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-720.62" font-family="Helvetica,sans-Serif" font-size="10.00">operator*()</text>
+<text text-anchor="start" x="93.12" y="-705.38" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-705.38" font-family="Helvetica,sans-Serif" font-size="10.00">area()</text>
+<text text-anchor="start" x="93.12" y="-690.12" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-690.12" font-family="Helvetica,sans-Serif" font-size="10.00">max()</text>
+<text text-anchor="start" x="93.12" y="-674.88" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="103.12" y="-674.88" font-family="Helvetica,sans-Serif" font-size="10.00">min()</text>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-808.38 89.12,-808.38 158.12,-808.38 158.12,-808.38 89.12,-808.38"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="89.12,-777.88 89.12,-777.88 101.12,-777.88 101.12,-777.88 89.12,-777.88"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="101.12,-777.88 101.12,-777.88 158.12,-777.88 158.12,-777.88 101.12,-777.88"/>
+<polygon fill="none" stroke="#bfbfbf" points="89.12,-669.12 89.12,-825.62 158.12,-825.62 158.12,-669.12 89.12,-669.12"/>
 </a>
 </g>
 </g>
@@ -264,7 +266,7 @@ var sectionId = 'dynsection-1';
 <g id="edge5_Node000004_Node000006" class="edge">
 <title>Node6&#45;&gt;Node4</title>
 <g id="a_edge5_Node000004_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M114.4,-677.08C110.57,-648.95 106.01,-616.16 101.62,-586.5 101.36,-584.74 101.1,-582.97 100.84,-581.19"/>
+<path fill="none" stroke="#63b8ff" d="M113.36,-669.48C109.77,-643.15 105.62,-613.52 101.62,-586.5 101.36,-584.74 101.1,-582.97 100.84,-581.19"/>
 <polygon fill="none" stroke="#63b8ff" points="100.83,-581.16 95.98,-575.82 99.04,-569.29 103.89,-574.63 100.83,-581.16"/>
 </a>
 </g>

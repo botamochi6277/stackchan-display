@@ -1,7 +1,7 @@
 <map id="stackchan::display::Face" name="stackchan::display::Face">
-<area shape="rect" id="Node000001" title=" " alt="" coords="165,1285,313,1631"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,1285,313,1651"/>
 <area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="168,853,284,975"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,981,318,1023,333,1088,335,1156,327,1222,312,1286,306,1285,321,1222,329,1155,327,1089,313,1025,290,984"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,981,318,1023,333,1088,335,1155,328,1222,314,1286,309,1285,323,1221,330,1155,328,1089,313,1025,290,984"/>
 <area shape="rect" id="Node000006" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="5,1024,150,1207"/>
 <area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="175,988,147,1026,143,1023,171,985"/>
 <area shape="rect" id="Node000007" href="$classstackchan_1_1display_1_1_base_mouth.html" title=" " alt="" coords="175,1075,304,1156"/>
@@ -11,8 +11,8 @@
 <area shape="rect" id="Node000004" href="$classm5_1_1_vector2i.html" title=" " alt="" coords="50,5,145,356"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="148,355,160,395,162,402,157,404,155,396,142,357"/>
 <area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="97,356,83,1007,77,1007,91,356"/>
-<area shape="rect" id="Node000005" href="$classm5_1_1_size2i.html" title=" " alt="" coords="178,87,270,275"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="227,275,227,403,222,403,222,275"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="123,1206,160,1284,155,1287,118,1208"/>
+<area shape="rect" id="Node000005" href="$classm5_1_1_size2i.html" title=" " alt="" coords="178,76,270,285"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="227,285,227,402,222,402,222,285"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="122,1206,160,1290,156,1292,117,1208"/>
 <area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="242,1156,242,1268,236,1268,236,1156"/>
 </map>
