@@ -60,4 +60,32 @@ namespace stackchan::display
         right_eye_->draw(canvas, expression_weight, palette);
         mouth_->draw(canvas, expression_weight, palette);
     }
+
+    void Face::autoScale()
+    {
+        position_ = {M5.Lcd.width() / 2, M5.Lcd.height() / 2};
+        size_ = {M5.Lcd.width(), M5.Lcd.height()};
+
+        m5::Vector2i original_center = {160, 120}; // center position of M5 Core Controllers
+
+        int16_t base_length = size_.min();
+        float scale = base_length / 240.0f;
+        m5::Vector2i offset = {0, 0};
+
+        // left eye
+        offset = left_eye_->getPosition() - original_center;
+        left_eye_->setPosition(
+            position_ + offset * scale);
+        left_eye_->setSize(left_eye_->getSize() * scale);
+        // right eye
+        offset = right_eye_->getPosition() - original_center;
+        right_eye_->setPosition(
+            position_ + offset * scale);
+        right_eye_->setSize(right_eye_->getSize() * scale);
+        // mouth
+        offset = mouth_->getPosition() - original_center;
+        mouth_->setPosition(
+            position_ + offset * scale);
+        mouth_->setSize(mouth_->getSize() * scale);
+    }
 }

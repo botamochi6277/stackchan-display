@@ -5,6 +5,8 @@
 > [!WARNING]
 > This library is WIP (*work in progress*) and unstable. Breaking changes can be installed easily!
 
+<video src="https://github-production-user-asset-6210df.s3.amazonaws.com/14128408/598185770-549d8f23-19b5-4a1a-aad7-f31dbd15b2f8.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260526T125213Z&X-Amz-Expires=300&X-Amz-Signature=0ec3d94f839498ef60fea996151d3d9024a500fd0045fb1a1e28f94d940dfc4b&X-Amz-SignedHeaders=host&response-content-type=video%2Fmp4" controls loop></video>
+
 *StackChan display* is an Arduino library to display stackchan faces.
 *StackChan display* depends on only [U5Unified](https://github.com/m5stack/M5Unified) and drawing with it.
 
@@ -18,7 +20,7 @@ This library is based on [stack-chan/m5stack-avatar](https://github.com/stack-ch
 ---
 config:
   theme: 'redux-dark'
-title: 'M5StackChan architecture'
+title: 'StackChan Architecture'
 ---
 graph LR
 

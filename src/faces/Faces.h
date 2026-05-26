@@ -60,6 +60,8 @@ namespace stackchan::display
             return is_auto_blink_;
         }
 
+        void autoScale();
+
         virtual void updateState(ExpressionWeight &expression_weight);
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
