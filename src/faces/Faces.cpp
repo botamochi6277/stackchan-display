@@ -65,13 +65,13 @@ namespace stackchan::display
     {
         position_ = {M5.Lcd.width() / 2, M5.Lcd.height() / 2};
         size_ = {M5.Lcd.width(), M5.Lcd.height()};
-        // size_.width = M5.Lcd.width();
 
         m5::Vector2i original_center = {160, 120}; // center position of M5 Core Controllers
 
         int16_t base_length = size_.min();
         float scale = base_length / 240.0f;
         m5::Vector2i offset = {0, 0};
+
         // left eye
         offset = left_eye_->getPosition() - original_center;
         left_eye_->setPosition(
