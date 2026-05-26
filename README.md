@@ -93,12 +93,13 @@ These changes are to improve functionality while keeping the code concise.
 
 ### TODO for Developers
 
+- [ ] Increase #decorators
+- [ ] Migrate more faces from [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar)
+- [x] Add pictures of StackChans in the real world
+- [x] Add `autoScale()` to support various M5Stack Boards
+- [x] Add documents with doxygen
+- [x] Add the diagram of system architecture
 - [x] Add ellipse eyes
 - [x] Add cluster face
 - [x] Add Base classes for facial components
 - [x] Add build CI tests
-- [ ] Increase #decorators
-- [x] Add documents with doxygen
-- [x] Add the diagram of system architecture
-- [ ] Add pictures of StackChans in the real world
-- [ ] Migrate more faces from [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar)
