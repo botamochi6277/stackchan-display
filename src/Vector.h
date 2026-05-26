@@ -24,12 +24,14 @@ namespace m5
             return Vector2i(x - other.x, y - other.y);
         }
 
-        Vector2i operator*(int scalar) const
+        template <typename T>
+        Vector2i operator*(T scalar) const
         {
             return Vector2i(x * scalar, y * scalar);
         }
 
-        Vector2i operator/(int scalar) const
+        template <typename T>
+        Vector2i operator/(T scalar) const
         {
             return Vector2i(x / scalar, y / scalar);
         }
@@ -112,6 +114,12 @@ namespace m5
         {
             width *= scalar;
             height *= scalar;
+        }
+
+        template <typename T>
+        Size2i operator*(T scalar) const
+        {
+            return Size2i(width * scalar, height * scalar);
         }
 
         int area() const

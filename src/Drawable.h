@@ -64,7 +64,6 @@ namespace stackchan::display
         virtual void setPosition(const m5::Vector2i &position)
         {
             position_ = position;
-            position_.clamp({-100, -100}, {100, 100});
         }
         virtual m5::Vector2i &getPosition()
         {
