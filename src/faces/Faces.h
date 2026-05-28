@@ -89,4 +89,14 @@ namespace stackchan::display
                           new OmegaMouth(160, 225, 72, 30)) {};
     };
 
+    // [▯ ▯]
+    class RectFace : public Face
+    {
+    public:
+        RectFace() : Face(
+                         new RoundRectEye(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, true),
+                         new RoundRectEye(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, false),
+                         new BaseMouth(0, 0, 0, 0)) {};
+    };
+
 } // namespace stackchan::display

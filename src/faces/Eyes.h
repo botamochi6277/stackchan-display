@@ -57,4 +57,18 @@ namespace stackchan::display
     virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
   };
 
+  class RoundRectEye : public BaseEye
+  {
+  public:
+    using BaseEye::BaseEye;
+    virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
+  };
+
+  class ToonEye : public BaseEye
+  {
+  public:
+    using BaseEye::BaseEye;
+    virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
+  };
+
 } // namespace stackchan::display
