@@ -54,6 +54,10 @@ namespace stackchan::display
         {
             return color_palette_;
         }
+        void setColorPalette(ColorPalette *color_palette)
+        {
+            color_palette_ = color_palette;
+        }
 
         M5Canvas &getCanvas()
         {

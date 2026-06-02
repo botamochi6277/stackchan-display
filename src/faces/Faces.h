@@ -99,4 +99,13 @@ namespace stackchan::display
                          new BaseMouth(0, 0, 0, 0)) {};
     };
 
+    class ToonFace1 : public Face
+    {
+    public:
+        ToonFace1() : Face(
+                          new ToonEye1(256, 163, 60, 60, true),
+                          new ToonEye1(64, 163, 60, 60, false),
+                          new OmegaMouth(160, 225, 72, 30)) {};
+    };
+
 } // namespace stackchan::display

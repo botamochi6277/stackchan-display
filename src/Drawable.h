@@ -3,7 +3,6 @@
 #include <M5Unified.h>
 
 #include "Vector.h"
-
 // reference:
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/elements/element.h
 
