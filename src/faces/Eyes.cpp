@@ -507,7 +507,39 @@ namespace stackchan::display
         //     canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
         // }
 
+        // ** rotate waypoints
         float open_ratio = calculateOpenRatio(expression_weight);
+        float tilt = 0.0f;
+        float ref_tilt = open_ratio * M_PI / 12.0f;
+        uint8_t weight;
+        weight = expression_weight.get(Expression::kAngry);
+        if (weight > 12)
+        {
+            tilt = (this->is_left_ ? -ref_tilt : ref_tilt) * (weight / 255.0f);
+        }
+
+        weight = expression_weight.get(Expression::kSad);
+        if (weight > 12)
+        {
+            tilt = (this->is_left_ ? ref_tilt : -ref_tilt) * (weight / 255.0f);
+        }
+
+        weight = expression_weight.get(Expression::kDoubt);
+        if (weight > 12)
+        {
+            open_ratio *= 0.6 * (weight / 255.0f);
+            // eyelid_bottom_y = iris_position_.y - 0.65f * size_.height / 2 +
+            //                   (1.0f - open_ratio) * size_.height * 0.6;
+        }
+        weight = expression_weight.get(Expression::kGrin);
+        // TODO:
+
+        weight = expression_weight.get(Expression::kSurprised);
+        if (weight > 12)
+        {
+            open_ratio = 1.0f + (weight / 255.0f) * 0.2f;
+        }
+
         uint8_t thickness = 4;
         // eyelid
         uint16_t eyelid_bottom_y = iris_position_.y - 0.65f * size_.height / 2 +
@@ -536,22 +568,6 @@ namespace stackchan::display
             eyelash_tip, eyelash_btm, eyelash_med, eye_lash_width, eye_lash_height, eyelid_lat.x,
             eyelid_bottom_y, eyelid_width, eyelid_height);
 
-        // ** rotate waypoints
-
-        float tilt = 0.0f;
-        float ref_tilt = open_ratio * M_PI / 12.0f;
-        uint8_t weight;
-        weight = expression_weight.get(Expression::kAngry);
-        if (weight > 12)
-        {
-            tilt = (this->is_left_ ? -ref_tilt : ref_tilt) * (weight / 255.0f);
-        }
-
-        weight = expression_weight.get(Expression::kSad);
-        if (weight > 12)
-        {
-            tilt = (this->is_left_ ? ref_tilt : -ref_tilt) * (weight / 255.0f);
-        }
         auto rot_x = eyelid_c.x;
         auto rot_y = eyelid_bottom_y;
         m5::Vector2i rot_center = {rot_x, rot_y};
@@ -601,12 +617,12 @@ namespace stackchan::display
         // NOTE https://comic.smiles55.jp/guide/9879/
 
         // 0.2f is offset for natural eye opening. Usually, eyebrow overlap iris
-        // approx 20 %
-        float open_ratio = calculateOpenRatio(expression_weight); // 0.8f is the maximum closing ratio
+        float open_ratio = calculateOpenRatio(expression_weight);
         auto wink_base_y = position_.y + (1.0f - open_ratio + 0.2f) * this->size_.height / 4;
         uint16_t thickness = 4;
 
-        gaze_ = m5::Vector2i(0, 0); // tmp
+        gaze_ = m5::Vector2i(0, 0);
+        this->updateSaccade(expression_weight);
         iris_position_ = position_ + gaze_ + saccade_noise_;
 
         uint16_t iris_color = canvas.getColorDepth() == 1
