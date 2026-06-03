@@ -1,7 +1,8 @@
 #pragma once
 
 #include "FacialDrawable.h"
-#include "Eyes.h"
+#include "../eyes/Eyes.h"
+#include "../eyes/ToonEye1.h"
 #include "Mouthes.h"
 
 namespace stackchan::display
