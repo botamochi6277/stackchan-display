@@ -3,6 +3,7 @@
 #include "FacialDrawable.h"
 #include "../eyes/Eyes.h"
 #include "../eyes/ToonEye1.h"
+#include "../eyes/ToonEye2.h"
 #include "Mouthes.h"
 
 namespace stackchan::display
@@ -106,6 +107,15 @@ namespace stackchan::display
         ToonFace1() : Face(
                           new ToonEye1(256, 163, 60, 60, true),
                           new ToonEye1(64, 163, 60, 60, false),
+                          new OmegaMouth(160, 225, 72, 30)) {};
+    };
+
+    class ToonFace2 : public Face
+    {
+    public:
+        ToonFace2() : Face(
+                          new ToonEye2(256, 163, 60, 84, true),
+                          new ToonEye2(64, 163, 60, 84, false),
                           new OmegaMouth(160, 225, 72, 30)) {};
     };
 

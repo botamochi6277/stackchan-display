@@ -232,6 +232,7 @@ namespace stackchan::display
         // https://github.com/botamochi6277/m5stack-avatar/blob/b2c368c92a05d5a6b405e554c7450dba6db3247d/src/Eyes.cpp#L112
         // NOTE https://comic.smiles55.jp/guide/9879/
 
+        milli_sec_ = M5.millis();
         // 0.2f is offset for natural eye opening. Usually, eyebrow overlap iris
         float open_ratio = calculateOpenRatio(expression_weight);
         auto wink_base_y = position_.y + (1.0f - open_ratio + 0.2f) * this->size_.height / 4;

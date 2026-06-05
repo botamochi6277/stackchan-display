@@ -56,7 +56,7 @@ namespace stackchan::display
             {
                 // i.e. (h-outline_thickness > 0)
                 canvas.fillEllipse(position_.x, position_.y - size_.width / 12 + breath_offset,
-                                   size_.width / 4 - 4, h - outline_thickness * 2,
+                                   size_.width / 4 - 4, h - outline_thickness,
                                    inner_color);
             }
         }

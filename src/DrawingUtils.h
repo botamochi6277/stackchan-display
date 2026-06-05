@@ -15,6 +15,9 @@
 
 namespace m5
 {
+
+    float max(float a, float b);
+
     template <typename T>
     void rotatePoint(T &x, T &y, T angle);
     void rotatePoint(Vector2i &p, float angle);

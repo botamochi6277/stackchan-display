@@ -90,11 +90,12 @@ These changes are to improve functionality while keeping the code concise.
 - No [xTask](https://docs.espressif.com/projects/esp-idf/en/v4.3/esp32/api-reference/system/freertos.html#task-api): If you want to draw face in xtask, please register yourself.
 - No `DrawingContext`: It is too complex. [`FacialDrawable.draw()`](./src/faces/FacialDrawable.h) in this library uses [`ExpressionWeight`](./src/Expression.h), [`ColorPalette`](./src/ColorPalette.h), and a few internal parameters. `ExpressionWeight` concept is based on [ShapeKey](https://docs.blender.org/manual/en/dev/animation/shape_keys/index.html).
 - No `Avatar`: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. `Display` class in this library only controls display behaviors.
+- No lip-sync
 
 ### TODO for Developers
 
 - [ ] Increase #decorators
-- [ ] Migrate more faces from [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar)
+- [x] Migrate more faces from [botamochi6277/m5stack-avatar](https://github.com/botamochi6277/m5stack-avatar)
 - [x] Add pictures of StackChans in the real world
 - [x] Add `autoScale()` to support various M5Stack Boards
 - [x] Add documents with doxygen

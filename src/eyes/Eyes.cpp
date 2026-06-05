@@ -145,27 +145,49 @@ namespace stackchan::display
 
     float BaseEye::calculateOpenRatio(ExpressionWeight &expression_weight)
     {
+        if (expression_weight.get(Expression::kSmile) > 127)
+        {
+            return 0.0f;
+        }
+
         float open_ratio = 1.0f;
+        float blink_weight = 0.0f;
+        float sleepy_weight = 0.0f;
+        float doubt_weight = 0.0f;
 
         if (expression_weight.contains(Expression::kBlink))
         {
-            open_ratio = 1.0f - (expression_weight.get(Expression::kBlink) / 255.0f);
+            blink_weight = (expression_weight.get(Expression::kBlink) / 255.0f);
         }
 
         if (is_left_)
         {
             if (expression_weight.contains(Expression::kLeftBlink))
             {
-                open_ratio = 1.0f - (expression_weight.get(Expression::kLeftBlink) / 255.0f); // left blink expression fully closes the left eye
+                blink_weight = (expression_weight.get(Expression::kLeftBlink) / 255.0f); // left blink expression fully closes the left eye
             }
         }
         else
         {
             if (expression_weight.contains(Expression::kRightBlink))
             {
-                open_ratio = 1.0f - (expression_weight.get(Expression::kRightBlink) / 255.0f); // right blink expression fully closes the right eye
+                blink_weight = (expression_weight.get(Expression::kRightBlink) / 255.0f); // right blink expression fully closes the right eye
             }
         }
+
+        // extra
+
+        if (expression_weight.contains(Expression::kSleepy))
+        {
+            sleepy_weight = (expression_weight.get(Expression::kSleepy) / 255.0f); // sleepy expression makes eye closed proportionally to its weight
+        }
+
+        if (expression_weight.contains(Expression::kDoubt))
+        {
+            doubt_weight = 0.6f * (expression_weight.get(Expression::kDoubt) / 255.0f); // doubt expression makes eye closed proportionally to its weight
+        }
+
+        open_ratio = 1.0f - m5::max(blink_weight, m5::max(sleepy_weight, doubt_weight));
 
         return clamp(open_ratio, 0.0f, 1.0f);
     }
