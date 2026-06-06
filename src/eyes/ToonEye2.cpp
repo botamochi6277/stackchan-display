@@ -4,7 +4,12 @@ namespace stackchan::display
 {
     void ToonEye2::drawEyelid(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
+        // required color paring
+        uint16_t eyelid_color = palette.contains(DrawingLocation::kEyelid) ? palette.get(DrawingLocation::kEyelid) : TFT_MAGENTA;
+        uint16_t eyelash_color = palette.contains(DrawingLocation::kEyelash) ? palette.get(DrawingLocation::kEyelash) : TFT_MAGENTA;
+        uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_GREEN;
 
+        // update state
         auto open_ratio = this->calculateOpenRatio(expression_weight);
 
         // rect eyelid
@@ -33,8 +38,6 @@ namespace stackchan::display
 
         bias = 0.1f * size_.width * tilt / (M_PI / 6.0f);
 
-        auto skin_color = palette.get(DrawingLocation::kSkin);
-
         if ((open_ratio < 0.99f) || (abs(tilt) > 0.1f))
         {
             float mask_top_left_x = this->iris_position_.x - (this->size_.width / 2);
@@ -52,13 +55,14 @@ namespace stackchan::display
             float eyelid_bottom_right_x = iris_position_.x + (this->size_.width / 2) + bias;
             float eyelid_bottom_right_y = upper_eyelid_y;
 
-            if (palette.contains(DrawingLocation::kEyelid))
-            {
-                auto eyelid_color = palette.get(DrawingLocation::kEyelid);
-                m5::fillRectRotatedAround(canvas, eyelid_top_left_x, eyelid_top_left_y,
-                                          eyelid_bottom_right_x, eyelid_bottom_right_y, tilt,
-                                          iris_position_.x, upper_eyelid_y, eyelid_color);
-            }
+            // debug
+            canvas.fillCircle(eyelid_top_left_x, eyelid_top_left_y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(eyelid_bottom_right_x, eyelid_bottom_right_y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(iris_position_.x, upper_eyelid_y, 2, M5.Lcd.color565(255, 0, 0));
+
+            m5::fillRectRotatedAround(canvas, eyelid_top_left_x, eyelid_top_left_y,
+                                      eyelid_bottom_right_x, eyelid_bottom_right_y, tilt,
+                                      iris_position_.x, upper_eyelid_y, eyelid_color);
 
             eyelash_x0 += bias;
             eyelash_x1 += bias;
@@ -66,15 +70,12 @@ namespace stackchan::display
         }
 
         // eyelash
-        if (palette.contains(DrawingLocation::kEyelash))
-        {
-            auto eyelash_color = palette.get(DrawingLocation::kEyelash);
-            m5::rotatePointAround(eyelash_x0, eyelash_y0, tilt, iris_position_.x, upper_eyelid_y);
-            m5::rotatePointAround(eyelash_x1, eyelash_y1, tilt, iris_position_.x, upper_eyelid_y);
-            m5::rotatePointAround(eyelash_x2, eyelash_y2, tilt, iris_position_.x, upper_eyelid_y);
-            canvas.fillTriangle(eyelash_x0, eyelash_y0, eyelash_x1, eyelash_y1,
-                                eyelash_x2, eyelash_y2, eyelash_color);
-        }
+
+        m5::rotatePointAround(eyelash_x0, eyelash_y0, tilt, iris_position_.x, upper_eyelid_y);
+        m5::rotatePointAround(eyelash_x1, eyelash_y1, tilt, iris_position_.x, upper_eyelid_y);
+        m5::rotatePointAround(eyelash_x2, eyelash_y2, tilt, iris_position_.x, upper_eyelid_y);
+        canvas.fillTriangle(eyelash_x0, eyelash_y0, eyelash_x1, eyelash_y1,
+                            eyelash_x2, eyelash_y2, eyelash_color);
     }
 
     void ToonEye2::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
@@ -90,6 +91,7 @@ namespace stackchan::display
         uint16_t iris_h = size_.height;
         uint32_t thickness = 2;
 
+        // FIXME: move this logic to drawEyelid and drawEyelash
         if ((open_ratio > 0.9f))
         {
             // draw only eyelash
@@ -138,10 +140,7 @@ namespace stackchan::display
             }
         }
 
-        if ((open_ratio <= 0.9f))
-        {
-            this->drawEyelid(canvas, expression_weight, palette);
-        }
+        this->drawEyelid(canvas, expression_weight, palette);
     }
 
 }
