@@ -43,6 +43,41 @@ namespace m5
     p.y = tmp_y + center.y;
   }
 
+  void shearPoint(float &x, float &y, float shear_x, float shear_y)
+  {
+    // shear mapping: https://en.wikipedia.org/wiki/Shear_mapping
+    float tmp_x = (1.0f + shear_x * shear_y) * x + shear_x * y;
+    float tmp_y = shear_y * x + y;
+    x = tmp_x;
+    y = tmp_y;
+  }
+
+  void shearPoint(Vector2i &p, float shear_x, float shear_y)
+  {
+    float tmp_x = (1.0f + shear_x * shear_y) * p.x + shear_x * p.y;
+    float tmp_y = shear_y * p.x + p.y;
+    p.x = static_cast<int>(tmp_x);
+    p.y = static_cast<int>(tmp_y);
+  }
+
+  void shearPointAround(float &x, float &y, float shear_x, float shear_y, float ref_x, float ref_y)
+  {
+    float tmp_x = x - ref_x;
+    float tmp_y = y - ref_y;
+    shearPoint(tmp_x, tmp_y, shear_x, shear_y); // shear around origin
+    x = tmp_x + ref_x;
+    y = tmp_y + ref_y;
+  }
+
+  void shearPointAround(Vector2i &p, float shear_x, float shear_y, Vector2i &ref_point)
+  {
+    float tmp_x = p.x - ref_point.x;
+    float tmp_y = p.y - ref_point.y;
+    shearPoint(tmp_x, tmp_y, shear_x, shear_y); // shear around origin
+    p.x = static_cast<int>(tmp_x + ref_point.x);
+    p.y = static_cast<int>(tmp_y + ref_point.y);
+  }
+
   void fillRotatedRect(M5Canvas &canvas, uint16_t cx, uint16_t cy, uint16_t w,
                        uint16_t h, float angle, uint16_t color)
   {

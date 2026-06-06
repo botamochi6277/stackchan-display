@@ -25,6 +25,11 @@ namespace m5
     void rotatePointAround(float &x, float &y, float angle, float cx, float cy);
     void rotatePointAround(Vector2i &p, float angle, Vector2i &center);
 
+    void shearPoint(float &x, float &y, float shear_x, float shear_y);
+    void shearPoint(Vector2i &p, float shear_x, float shear_y);
+    void shearPointAround(float &x, float &y, float shear_x, float shear_y, float ref_x, float ref_y);
+    void shearPointAround(Vector2i &p, float shear_x, float shear_y, Vector2i &ref_point);
+
     void fillRotatedRect(M5Canvas &canvas, uint16_t cx, uint16_t cy, uint16_t w,
                          uint16_t h, float angle, uint16_t color);
 
