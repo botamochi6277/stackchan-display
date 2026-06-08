@@ -5,14 +5,16 @@ namespace stackchan::display
 
     void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, bool is_left,
                                          ExpressionWeight &expression_weight,
-                                         m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4)
+                                         m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4, float y_ratio)
     {
+        // NOTE: [Shear mapping](https://en.wikipedia.org/wiki/Shear_mapping)
 
         // right    left
-        // p1--p2   p2--p1
+        // p1--p4   p4--p1
         // |   |    |   |
-        // p4--p3   p3--p4
+        // p2--p3   p3--p2
 
+        // https://www.sitepoint.com/understanding-svg-fill-rule-property/
         Expression eye_expression;
         unsigned char weight;
 
@@ -30,15 +32,13 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y - size.height / 2 - 2;
-
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p4.x = medial_x;
+            p4.y = p1.y;
 
             p3.x = medial_x;
-            p3.y = center.y + (weight / 255.0f) * (size.height / 4);
-
-            p4.x = lateral_x;
-            p4.y = p1.y + 1;
+            p3.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
+            p2.x = lateral_x;
+            p2.y = p1.y + 2;
         }
 
         eye_expression = Expression::kSad;
@@ -47,12 +47,12 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y - size.height / 2 - 2;
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p4.x = medial_x;
+            p4.y = p1.y;
             p3.x = medial_x;
-            p3.y = p2.y + 1;
-            p4.x = lateral_x;
-            p4.y = center.y + (weight / 255.0f) * (size.height / 4);
+            p3.y = p4.y + 2;
+            p2.x = lateral_x;
+            p2.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
             // canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color);
         }
 
@@ -62,12 +62,12 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y - size.height / 2;
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p4.x = medial_x;
+            p4.y = p1.y;
             p3.x = medial_x;
-            p3.y = center.y - (weight / 255.0f) * (size.height / 4);
-            p4.x = lateral_x;
-            p4.y = p3.y;
+            p3.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
+            p2.x = lateral_x;
+            p2.y = p3.y;
         }
 
         eye_expression = Expression::kGrin;
@@ -76,12 +76,12 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y + size.height / 2;
-            p2.x = medial_x;
-            p2.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height / 2);
+            p4.x = medial_x;
+            p4.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height) * y_ratio;
             p3.x = medial_x;
             p3.y = p1.y + 4;
-            p4.x = lateral_x;
-            p4.y = p3.y;
+            p2.x = lateral_x;
+            p2.y = p3.y;
         }
 
         eye_expression = Expression::kSmile;
@@ -89,14 +89,14 @@ namespace stackchan::display
         {
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
-            p1.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height / 2);
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p1.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height) * y_ratio;
+            p4.x = medial_x;
+            p4.y = p1.y;
 
-            p3.x = p2.x;
+            p3.x = p4.x;
             p3.y = center.y + size.height / 2 + 2;
-            p4.x = p1.x;
-            p4.y = p3.y;
+            p2.x = p1.x;
+            p2.y = p3.y;
 
             // int w = size.width;
             // int h = p3.y - p1.y;

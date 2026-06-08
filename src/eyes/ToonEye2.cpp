@@ -5,9 +5,16 @@ namespace stackchan::display
     void ToonEye2::drawEyelid(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
         // required color paring
-        uint16_t eyelid_color = palette.contains(DrawingLocation::kEyelid) ? palette.get(DrawingLocation::kEyelid) : TFT_MAGENTA;
         uint16_t eyelash_color = palette.contains(DrawingLocation::kEyelash) ? palette.get(DrawingLocation::kEyelash) : TFT_MAGENTA;
-        uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_GREEN;
+        uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA;
+        // TODO: draw eyeshadow using eyelash color if eyelid color is not set
+        // eyelid color is skin color by default, but can be overridden by eyelash color in palette, i.e eyeshadow color
+        uint16_t eyelid_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA;
+        if (palette.contains(DrawingLocation::kEyelid))
+        {
+            eyelash_color = palette.get(DrawingLocation::kEyelid);
+        }
+        // uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_GREEN;
 
         // update state
         auto open_ratio = this->calculateOpenRatio(expression_weight);
@@ -15,6 +22,15 @@ namespace stackchan::display
         // rect eyelid
         auto upper_eyelid_y =
             this->iris_position_.y - 0.8f * size_.height / 2 + (1.0f - open_ratio) * size_.height * 0.6;
+
+        uint16_t eyelash_base_thickness = 4;
+        // eyelid mask convexes
+        // right    left
+        // p1--p4   p4--p1
+        // |   |    |   |
+        // p2--p3   p3--p2
+        m5::Vector2i p1, p2, p3, p4;
+        updateQuadrilateralEyelidPoints(this->iris_position_, this->size_, this->is_left_, expression_weight, p1, p2, p3, p4, 0.25f);
 
         float eyelash_x0, eyelash_y0, eyelash_x1, eyelash_y1, eyelash_x2, eyelash_y2;
         eyelash_x0 = this->is_left_ ? this->iris_position_.x + 22 : this->iris_position_.x - 22;
@@ -45,9 +61,9 @@ namespace stackchan::display
             float mask_bottom_right_x = this->iris_position_.x + (this->size_.width / 2);
             float mask_bottom_right_y = upper_eyelid_y - 1;
 
-            m5::fillRectRotatedAround(canvas, mask_top_left_x, mask_top_left_y,
-                                      mask_bottom_right_x, mask_bottom_right_y, tilt,
-                                      iris_position_.x, upper_eyelid_y, skin_color);
+            // m5::fillRectRotatedAround(canvas, mask_top_left_x, mask_top_left_y,
+            //                           mask_bottom_right_x, mask_bottom_right_y, tilt,
+            //                           iris_position_.x, upper_eyelid_y, skin_color);
 
             // eyelid
             float eyelid_top_left_x = iris_position_.x - (this->size_.width / 2) + bias;
@@ -56,14 +72,23 @@ namespace stackchan::display
             float eyelid_bottom_right_y = upper_eyelid_y;
 
             // debug
-            canvas.fillCircle(eyelid_top_left_x, eyelid_top_left_y, 2, M5.Lcd.color565(255, 0, 0));
-            canvas.fillCircle(eyelid_bottom_right_x, eyelid_bottom_right_y, 2, M5.Lcd.color565(255, 0, 0));
-            canvas.fillCircle(iris_position_.x, upper_eyelid_y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(255, 0, 0));
+            canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(255, 0, 0));
 
-            m5::fillRectRotatedAround(canvas, eyelid_top_left_x, eyelid_top_left_y,
-                                      eyelid_bottom_right_x, eyelid_bottom_right_y, tilt,
-                                      iris_position_.x, upper_eyelid_y, eyelid_color);
+            // m5::fillRectRotatedAround(canvas, eyelid_top_left_x, eyelid_top_left_y,
+            //                           eyelid_bottom_right_x, eyelid_bottom_right_y, tilt,
+            //                           iris_position_.x, upper_eyelid_y, eyelid_color);
 
+            canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, skin_color); // draw eyelid
+            canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, skin_color);
+
+            // eyelash base
+            canvas.fillTriangle(p2.x, p2.y - eyelash_base_thickness, p2.x, p2.y, p3.x, p3.y, eyelash_color);
+            canvas.fillTriangle(p3.x, p3.y, p3.x, p3.y - eyelash_base_thickness, p2.x, p2.y, eyelash_color);
+
+            // eyelash
             eyelash_x0 += bias;
             eyelash_x1 += bias;
             eyelash_x2 += bias;
