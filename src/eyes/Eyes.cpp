@@ -3,7 +3,7 @@
 namespace stackchan::display
 {
 
-    void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, bool is_left,
+    void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, float open_ratio, bool is_left,
                                          ExpressionWeight &expression_weight,
                                          m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4, float y_ratio)
     {
@@ -20,11 +20,12 @@ namespace stackchan::display
 
         int lateral_x = is_left ? center.x + size.width / 2 + 1 : center.x - size.width / 2 - 1;
         int medial_x = is_left ? center.x - size.width / 2 - 1 : center.x + size.width / 2 + 1;
+        int lower_y = center.y - size.height / 2 + (1.0f - open_ratio) * size.height;
 
-        p1 = {0, 0};
-        p2 = {0, 0};
-        p3 = {0, 0};
-        p4 = {0, 0};
+        p1 = {lateral_x, center.y - size.height / 2 - 2};
+        p2 = {lateral_x, lower_y};
+        p3 = {medial_x, lower_y};
+        p4 = {medial_x, center.y - size.height / 2 - 2};
 
         eye_expression = Expression::kAngry;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
@@ -36,9 +37,9 @@ namespace stackchan::display
             p4.y = p1.y;
 
             p3.x = medial_x;
-            p3.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
+            p3.y = lower_y + 2 + (weight / 255.0f) * (size.height) * (y_ratio * open_ratio); // make angry expression more intense when eye is more open
             p2.x = lateral_x;
-            p2.y = p1.y + 2;
+            p2.y = lower_y + 2;
         }
 
         eye_expression = Expression::kSad;
@@ -50,25 +51,24 @@ namespace stackchan::display
             p4.x = medial_x;
             p4.y = p1.y;
             p3.x = medial_x;
-            p3.y = p4.y + 2;
+            p3.y = lower_y + 2;
             p2.x = lateral_x;
-            p2.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
-            // canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color);
+            p2.y = lower_y + 2 + (weight / 255.0f) * (size.height) * (y_ratio * open_ratio);
         }
 
-        eye_expression = Expression::kDoubt;
-        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
-        {
-            weight = expression_weight.get(eye_expression);
-            p1.x = lateral_x;
-            p1.y = center.y - size.height / 2;
-            p4.x = medial_x;
-            p4.y = p1.y;
-            p3.x = medial_x;
-            p3.y = p1.y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
-            p2.x = lateral_x;
-            p2.y = p3.y;
-        }
+        // eye_expression = Expression::kDoubt;
+        // if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        // {
+        //     weight = expression_weight.get(eye_expression);
+        //     p1.x = lateral_x;
+        //     p1.y = center.y - size.height / 2;
+        //     p4.x = medial_x;
+        //     p4.y = p1.y;
+        //     p3.x = medial_x;
+        //     p3.y = lower_y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
+        //     p2.x = lateral_x;
+        //     p2.y = p3.y;
+        // }
 
         eye_expression = Expression::kGrin;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
@@ -184,7 +184,7 @@ namespace stackchan::display
 
         if (expression_weight.contains(Expression::kDoubt))
         {
-            doubt_weight = 0.6f * (expression_weight.get(Expression::kDoubt) / 255.0f); // doubt expression makes eye closed proportionally to its weight
+            doubt_weight = 0.4f * (expression_weight.get(Expression::kDoubt) / 255.0f); // doubt expression makes eye closed proportionally to its weight
         }
 
         open_ratio = 1.0f - m5::max(blink_weight, m5::max(sleepy_weight, doubt_weight));
@@ -254,7 +254,7 @@ namespace stackchan::display
         // draw eyelid (if any)
 
         updateQuadrilateralEyelidPoints(
-            iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
         canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
 
@@ -319,7 +319,7 @@ namespace stackchan::display
         }
 
         updateQuadrilateralEyelidPoints(
-            iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
         canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
 
@@ -386,7 +386,7 @@ namespace stackchan::display
         }
 
         updateQuadrilateralEyelidPoints(
-            iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
         canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
 

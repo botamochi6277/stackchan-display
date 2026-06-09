@@ -10,11 +10,6 @@ namespace stackchan::display
         // TODO: draw eyeshadow using eyelash color if eyelid color is not set
         // eyelid color is skin color by default, but can be overridden by eyelash color in palette, i.e eyeshadow color
         uint16_t eyelid_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA;
-        if (palette.contains(DrawingLocation::kEyelid))
-        {
-            eyelash_color = palette.get(DrawingLocation::kEyelid);
-        }
-        // uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_GREEN;
 
         // update state
         auto open_ratio = this->calculateOpenRatio(expression_weight);
@@ -30,46 +25,54 @@ namespace stackchan::display
         // |   |    |   |
         // p2--p3   p3--p2
         m5::Vector2i p1, p2, p3, p4;
-        updateQuadrilateralEyelidPoints(this->iris_position_, this->size_, this->is_left_, expression_weight, p1, p2, p3, p4, 0.25f);
+        updateQuadrilateralEyelidPoints(this->iris_position_, this->size_, open_ratio, this->is_left_, expression_weight, p1, p2, p3, p4, 0.25f);
 
-        float eyelash_x0, eyelash_y0, eyelash_x1, eyelash_y1, eyelash_x2, eyelash_y2;
-        eyelash_x0 = this->is_left_ ? this->iris_position_.x + 22 : this->iris_position_.x - 22;
-        eyelash_y0 = upper_eyelid_y - 27;
-        eyelash_x1 = this->is_left_ ? this->iris_position_.x + 26 : this->iris_position_.x - 26;
-        eyelash_y1 = upper_eyelid_y;
-        eyelash_x2 = this->is_left_ ? this->iris_position_.x - 10 : this->iris_position_.x + 10;
-        eyelash_y2 = upper_eyelid_y;
+        // right    left
+        // p1--p4       tip
+        // | \ |      / |
+        // p2--p3   med--lat
+        m5::Vector2i eyelash_tip, eyelash_lat, eyelash_med; // tip, lateral, medial points for eyelash
+        eyelash_tip.x = this->is_left_ ? this->iris_position_.x + (22 / 60.0f) * size_.width : this->iris_position_.x - (22 / 60.0f) * size_.width;
+        eyelash_tip.y = p3.y - (27 / 84.0f) * size_.height;
 
-        float tilt = 0.0f;
-        float ref_tilt = open_ratio * M_PI / 12.0f;
-        float bias;
-        if (expression_weight.get(Expression::kAngry) > 12)
+        eyelash_lat.x = this->is_left_ ? this->iris_position_.x + (26 / 60.0f) * size_.width : this->iris_position_.x - (26 / 60.0f) * size_.width;
+        eyelash_lat.y = p3.y;
+
+        eyelash_med.x = this->is_left_ ? this->iris_position_.x - (10 / 60.0f) * size_.width : this->iris_position_.x + (10 / 60.0f) * size_.width;
+        eyelash_med.y = p3.y;
+
+        float grad = p2.x - p3.x != 0 ? (float)(p2.y - p3.y) / (p2.x - p3.x) : 0;
+
+        m5::Vector2i ref_p = {p3.x, p2.y < p3.y ? p2.y : p3.y};
+        m5::shearPointAround(eyelash_tip, 0.0f, grad, p3);
+        m5::shearPointAround(eyelash_lat, 0.0f, grad, p3);
+        m5::shearPointAround(eyelash_med, 0.0f, grad, p3);
+
+        if ((open_ratio >= 0.9f) && (abs(grad) < 0.1f))
         {
-            tilt = this->is_left_ ? -ref_tilt : ref_tilt;
-        }
-        else if (expression_weight.get(Expression::kSad) > 12)
-        {
-            tilt = this->is_left_ ? ref_tilt : -ref_tilt;
-        }
+            uint16_t iris_w = size_.width;
+            uint16_t iris_h = size_.height;
+            m5::Size2i iris_r = {iris_w / 2, iris_h / 2};
 
-        bias = 0.1f * size_.width * tilt / (M_PI / 6.0f);
+            float pi = M_PI;
+            // m5::computePointOnEllipse(eyelash_tip, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f : pi - pi / 4.0f);
+            m5::computePointOnEllipse(eyelash_med, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f : -pi + pi / 4.0f);
+            m5::computePointOnEllipse(eyelash_lat, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f - 0.2f : -pi + pi / 4.0f + 0.2f);
 
-        if ((open_ratio < 0.99f) || (abs(tilt) > 0.1f))
+            eyelash_tip.x = is_left_ ? iris_position_.x + iris_w / 2 : iris_position_.x - iris_w / 2;
+            eyelash_tip.y = iris_position_.y - iris_h / 2;
+
+            canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(0, 255, 0));
+            canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(0, 255, 0));
+            canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(0, 255, 0));
+            canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(0, 255, 0));
+        }
+        else
         {
             float mask_top_left_x = this->iris_position_.x - (this->size_.width / 2);
             float mask_top_left_y = this->iris_position_.y - 0.75f * this->size_.height;
             float mask_bottom_right_x = this->iris_position_.x + (this->size_.width / 2);
             float mask_bottom_right_y = upper_eyelid_y - 1;
-
-            // m5::fillRectRotatedAround(canvas, mask_top_left_x, mask_top_left_y,
-            //                           mask_bottom_right_x, mask_bottom_right_y, tilt,
-            //                           iris_position_.x, upper_eyelid_y, skin_color);
-
-            // eyelid
-            float eyelid_top_left_x = iris_position_.x - (this->size_.width / 2) + bias;
-            float eyelid_top_left_y = upper_eyelid_y - 4;
-            float eyelid_bottom_right_x = iris_position_.x + (this->size_.width / 2) + bias;
-            float eyelid_bottom_right_y = upper_eyelid_y;
 
             // debug
             canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(255, 0, 0));
@@ -87,20 +90,11 @@ namespace stackchan::display
             // eyelash base
             canvas.fillTriangle(p2.x, p2.y - eyelash_base_thickness, p2.x, p2.y, p3.x, p3.y, eyelash_color);
             canvas.fillTriangle(p3.x, p3.y, p3.x, p3.y - eyelash_base_thickness, p2.x, p2.y, eyelash_color);
-
-            // eyelash
-            eyelash_x0 += bias;
-            eyelash_x1 += bias;
-            eyelash_x2 += bias;
         }
 
         // eyelash
-
-        m5::rotatePointAround(eyelash_x0, eyelash_y0, tilt, iris_position_.x, upper_eyelid_y);
-        m5::rotatePointAround(eyelash_x1, eyelash_y1, tilt, iris_position_.x, upper_eyelid_y);
-        m5::rotatePointAround(eyelash_x2, eyelash_y2, tilt, iris_position_.x, upper_eyelid_y);
-        canvas.fillTriangle(eyelash_x0, eyelash_y0, eyelash_x1, eyelash_y1,
-                            eyelash_x2, eyelash_y2, eyelash_color);
+        canvas.fillTriangle(eyelash_tip.x, eyelash_tip.y, eyelash_lat.x, eyelash_lat.y,
+                            eyelash_med.x, eyelash_med.y, eyelash_color);
     }
 
     void ToonEye2::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
@@ -115,24 +109,6 @@ namespace stackchan::display
         uint16_t iris_w = size_.width;
         uint16_t iris_h = size_.height;
         uint32_t thickness = 2;
-
-        // FIXME: move this logic to drawEyelid and drawEyelash
-        if ((open_ratio > 0.9f))
-        {
-            // draw only eyelash
-
-            auto eyelash_color = palette.get(DrawingLocation::kEyelash);
-            auto eyelash_tip_x = is_left_ ? iris_position_.x + iris_w / 2 : iris_position_.x - iris_w / 2;
-            auto eyelash_tip_y = iris_position_.y - iris_h / 2;
-            auto eyelash_med_x = is_left_ ? iris_position_.x : iris_position_.x;
-            auto eyelash_med_y = iris_position_.y - iris_h / 4;
-            auto eyelash_btm_x = is_left_ ? iris_position_.x + iris_w / 3 : iris_position_.x - iris_w / 3;
-            auto eyelash_btm_y = iris_position_.y - iris_h / 4;
-
-            canvas.fillTriangle(eyelash_tip_x, eyelash_tip_y, eyelash_med_x,
-                                eyelash_med_y, eyelash_btm_x, eyelash_btm_y,
-                                eyelash_color);
-        }
 
         // main eye
         if (open_ratio > 0.1f)

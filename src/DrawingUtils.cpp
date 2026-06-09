@@ -78,6 +78,19 @@ namespace m5
     p.y = static_cast<int>(tmp_y + ref_point.y);
   }
 
+  void computePointOnEllipse(float &x, float &y, float center_x, float center_y, float radius_x, float radius_y, float angle_in_radians)
+  {
+    x = center_x + radius_x * cosf(angle_in_radians);
+    y = center_y + radius_y * sinf(angle_in_radians);
+  }
+  void computePointOnEllipse(Vector2i &p, Vector2i &center, Size2i &radius, float angle_in_radians)
+  {
+    float x = center.x + radius.width * cosf(angle_in_radians);
+    float y = center.y + radius.height * sinf(angle_in_radians);
+    p.x = static_cast<int>(x);
+    p.y = static_cast<int>(y);
+  }
+
   void fillRotatedRect(M5Canvas &canvas, uint16_t cx, uint16_t cy, uint16_t w,
                        uint16_t h, float angle, uint16_t color)
   {
