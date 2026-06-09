@@ -91,6 +91,13 @@ namespace stackchan::display
         // eyelash
         canvas.fillTriangle(eyelash_tip.x, eyelash_tip.y, eyelash_lat.x, eyelash_lat.y,
                             eyelash_med.x, eyelash_med.y, eyelash_color);
+
+        // lower eyelid
+        if (expression_weight.get(Expression::kGrin) > 12 && open_ratio > 0.25f)
+        {
+            canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, skin_color); // draw eyelid
+            canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, skin_color);
+        }
     }
 
     void ToonEye2::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)

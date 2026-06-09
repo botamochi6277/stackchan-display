@@ -152,6 +152,7 @@ namespace stackchan::display
 
         float open_ratio = 1.0f;
         float blink_weight = 0.0f;
+        float wink_weight = 0.0f;
         float sleepy_weight = 0.0f;
         float doubt_weight = 0.0f;
 
@@ -164,16 +165,17 @@ namespace stackchan::display
         {
             if (expression_weight.contains(Expression::kLeftBlink))
             {
-                blink_weight = (expression_weight.get(Expression::kLeftBlink) / 255.0f); // left blink expression fully closes the left eye
+                wink_weight = (expression_weight.get(Expression::kLeftBlink) / 255.0f); // left blink expression fully closes the left eye
             }
         }
         else
         {
             if (expression_weight.contains(Expression::kRightBlink))
             {
-                blink_weight = (expression_weight.get(Expression::kRightBlink) / 255.0f); // right blink expression fully closes the right eye
+                wink_weight = (expression_weight.get(Expression::kRightBlink) / 255.0f); // right blink expression fully closes the right eye
             }
         }
+        blink_weight = m5::max(blink_weight, wink_weight); // combine blink and wink weights, taking the maximum to ensure that wink can fully close the eye
 
         // extra
 
