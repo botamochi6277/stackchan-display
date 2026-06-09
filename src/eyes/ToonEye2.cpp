@@ -55,17 +55,17 @@ namespace stackchan::display
             m5::Size2i iris_r = {iris_w / 2, iris_h / 2};
 
             float pi = M_PI;
-            // m5::computePointOnEllipse(eyelash_tip, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f : pi - pi / 4.0f);
             m5::computePointOnEllipse(eyelash_med, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f : -pi + pi / 4.0f);
             m5::computePointOnEllipse(eyelash_lat, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f - 0.2f : -pi + pi / 4.0f + 0.2f);
 
             eyelash_tip.x = is_left_ ? iris_position_.x + iris_w / 2 : iris_position_.x - iris_w / 2;
             eyelash_tip.y = iris_position_.y - iris_h / 2;
 
-            canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(0, 255, 0));
-            canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(0, 255, 0));
-            canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(0, 255, 0));
-            canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(0, 255, 0));
+            // debug
+            // canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(0, 255, 0));
+            // canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(0, 255, 0));
+            // canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(0, 255, 0));
+            // canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(0, 255, 0));
         }
         else
         {
@@ -75,14 +75,10 @@ namespace stackchan::display
             float mask_bottom_right_y = upper_eyelid_y - 1;
 
             // debug
-            canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(255, 0, 0));
-            canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(255, 0, 0));
-            canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(255, 0, 0));
-            canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(255, 0, 0));
-
-            // m5::fillRectRotatedAround(canvas, eyelid_top_left_x, eyelid_top_left_y,
-            //                           eyelid_bottom_right_x, eyelid_bottom_right_y, tilt,
-            //                           iris_position_.x, upper_eyelid_y, eyelid_color);
+            // canvas.fillCircle(p1.x, p1.y, 2, M5.Lcd.color565(255, 0, 0));
+            // canvas.fillCircle(p2.x, p2.y, 2, M5.Lcd.color565(255, 0, 0));
+            // canvas.fillCircle(p3.x, p3.y, 2, M5.Lcd.color565(255, 0, 0));
+            // canvas.fillCircle(p4.x, p4.y, 2, M5.Lcd.color565(255, 0, 0));
 
             canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, skin_color); // draw eyelid
             canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, skin_color);
