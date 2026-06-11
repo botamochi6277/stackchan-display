@@ -109,19 +109,6 @@ namespace stackchan::display
         uint16_t skin_color = canvas.getColorDepth() == 1
                                   ? 0
                                   : palette.get(DrawingLocation::kSkin);
-        // if (palette.contains(DrawingLocation::kEyelid))
-        // {
-        //     {
-        //         eyelid_color = palette.get(DrawingLocation::kEyelid);
-        //     }
-        //     // temporary variables for eyelid drawing
-        //     m5::Vector2i p1, p2, p3, p4;
-
-        //     updateQuadrilateralEyelidPoints(
-        //         iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
-        //     canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
-        //     canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
-        // }
 
         // ** rotate waypoints
         float open_ratio = calculateOpenRatio(expression_weight);

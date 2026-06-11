@@ -16,8 +16,6 @@
 namespace m5
 {
 
-    float max(float a, float b);
-
     // drawing helpers
 
     template <typename T>

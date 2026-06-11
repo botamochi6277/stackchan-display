@@ -2,10 +2,6 @@
 
 namespace m5
 {
-  float max(float a, float b)
-  {
-    return a > b ? a : b;
-  };
 
   template <typename T>
   void rotatePoint(T &x, T &y, T angle)

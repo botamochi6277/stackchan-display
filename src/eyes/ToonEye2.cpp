@@ -48,11 +48,27 @@ namespace stackchan::display
         m5::shearPointAround(eyelash_lat, 0.0f, grad, p3);
         m5::shearPointAround(eyelash_med, 0.0f, grad, p3);
 
+        if (expression_weight.get(Expression::kSmile) > 127)
+        {
+            // smile eyelash
+            m5::fillArc(canvas, p2.x, p2.y, p3.x, p3.y, (p2.x + p3.x) / 2, p2.y - abs(p3.x - p2.x) / 4, eyelash_base_thickness, eyelash_color);
+            // TODO: draw triangle eyelash
+
+            return; // do not draw eyelid when smiling
+        }
+
         if ((open_ratio >= 0.9f) && (abs(grad) < 0.1f))
         {
             uint16_t iris_w = size_.width;
             uint16_t iris_h = size_.height;
             m5::Size2i iris_r = {iris_w / 2, iris_h / 2};
+
+            if (expression_weight.get(Expression::kSurprised) > 127)
+            {
+                // adjust eyelash position for surprised expression
+                iris_r.height = iris_r.width;
+                iris_h = iris_w;
+            }
 
             float pi = M_PI;
             m5::computePointOnEllipse(eyelash_med, iris_position_, iris_r, this->is_left_ ? -pi / 4.0f : -pi + pi / 4.0f);
@@ -114,7 +130,18 @@ namespace stackchan::display
         uint32_t thickness = 2;
 
         // main eye
-        if (open_ratio > 0.1f)
+
+        if (expression_weight.get(Expression::kSurprised) > 127)
+        {
+            uint16_t iris_bg_color = palette.get(DrawingLocation::kIrisBackground);
+            canvas.fillCircle(iris_position_.x, iris_position_.y, iris_w / 2, iris_bg_color);
+            canvas.fillCircle(iris_position_.x, iris_position_.y, iris_w / 2 - thickness, TFT_WHITE);
+        }
+        else if (expression_weight.get(Expression::kSmile) > 127)
+        {
+            // draw nothing
+        }
+        else if (open_ratio > 0.1f)
         {
             // iris bg
             uint16_t iris_bg_color = palette.get(DrawingLocation::kIrisBackground);

@@ -5,6 +5,57 @@
 
 namespace m5
 {
+
+    template <typename T>
+    T clamp(T value, T min, T max)
+    {
+        if (value < min)
+        {
+            return min;
+        }
+        if (value > max)
+        {
+            return max;
+        }
+        return value;
+    }
+
+    template <typename T>
+    T remap(T x, T in_min, T in_max, T out_min, T out_max, bool clamp = false)
+    {
+        if (clamp)
+        {
+            if (x < in_min)
+            {
+                return out_min;
+            }
+            if (in_max < x)
+            {
+                return out_max;
+            }
+        }
+
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+
+    template <typename T>
+    T max(T a, T b)
+    {
+        return a > b ? a : b;
+    };
+
+    template <typename T>
+    T max(T a, T b, T c)
+    {
+        return max(max(a, b), c);
+    };
+
+    template <typename T>
+    T max(T a, T b, T c, T d)
+    {
+        return max(max(a, b), max(c, d));
+    };
+
     class Vector2i
     {
     public:

@@ -154,6 +154,7 @@ namespace stackchan::display
         float blink_weight = 0.0f;
         float wink_weight = 0.0f;
         float sleepy_weight = 0.0f;
+        float relax_weight = 0.0f;
         float doubt_weight = 0.0f;
 
         if (expression_weight.contains(Expression::kBlink))
@@ -184,14 +185,19 @@ namespace stackchan::display
             sleepy_weight = (expression_weight.get(Expression::kSleepy) / 255.0f); // sleepy expression makes eye closed proportionally to its weight
         }
 
+        if (expression_weight.contains(Expression::kRelax))
+        {
+            relax_weight = (expression_weight.get(Expression::kRelax) / 255.0f);
+        }
+
         if (expression_weight.contains(Expression::kDoubt))
         {
             doubt_weight = 0.4f * (expression_weight.get(Expression::kDoubt) / 255.0f); // doubt expression makes eye closed proportionally to its weight
         }
 
-        open_ratio = 1.0f - m5::max(blink_weight, m5::max(sleepy_weight, doubt_weight));
+        open_ratio = 1.0f - m5::max(blink_weight, sleepy_weight, relax_weight, doubt_weight);
 
-        return clamp(open_ratio, 0.0f, 1.0f);
+        return m5::clamp(open_ratio, 0.0f, 1.0f);
     }
 
     void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
@@ -339,7 +345,7 @@ namespace stackchan::display
         {
             weight = expression_weight.get(eye_expression);
             // int ry = size_.width / 2 + (weight / 255.0f) * (size_.width / 4);
-            int ry = remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
+            int ry = m5::remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
             canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, ry, iris_color); // draw surprised eye
         }
     }
@@ -406,7 +412,7 @@ namespace stackchan::display
         {
             weight = expression_weight.get(eye_expression);
             // int ry = size_.width / 2 + (weight / 255.0f) * (size_.width / 4);
-            int ry = remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
+            int ry = m5::remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
             canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, ry, iris_color); // draw surprised eye
         }
     }
