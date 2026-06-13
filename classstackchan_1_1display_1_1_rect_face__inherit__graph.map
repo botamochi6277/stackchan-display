@@ -1,0 +1,9 @@
+<map id="stackchan::display::RectFace" name="stackchan::display::RectFace">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,1064,138,1146"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title=" " alt="" coords="5,589,153,1016"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,1031,82,1065,77,1065,77,1031"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="21,419,138,541"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,556,82,590,77,590,77,556"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="12,5,147,371"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="82,386,82,420,77,420,77,386"/>
+</map>

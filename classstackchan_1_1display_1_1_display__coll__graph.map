@@ -1,27 +1,27 @@
 <map id="stackchan::display::Display" name="stackchan::display::Display">
-<area shape="rect" id="Node000001" title=" " alt="" coords="317,1936,490,2201"/>
-<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title=" " alt="" coords="69,1507,217,1873"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,1853,231,1872,267,1921,307,1968,303,1972,263,1925,226,1875,215,1856"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="317,1957,490,2241"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title=" " alt="" coords="69,1528,217,1894"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,1874,231,1892,267,1944,307,1993,303,1996,263,1947,226,1895,215,1877"/>
 <area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="138,853,255,975"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,990,189,1211,171,1484,169,1508,164,1507,166,1483,183,1211,192,990"/>
-<area shape="rect" id="Node000007" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="5,1246,150,1429"/>
-<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="174,990,171,999,103,1247,98,1246,166,998,169,988"/>
-<area shape="rect" id="Node000008" href="$classstackchan_1_1display_1_1_base_mouth.html" title=" " alt="" coords="224,1297,353,1378"/>
-<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="215,988,283,1297,277,1298,210,990"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,990,189,1219,171,1504,169,1528,164,1527,166,1503,184,1219,192,989"/>
+<area shape="rect" id="Node000007" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="5,1246,150,1450"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="174,990,171,999,105,1247,99,1246,166,998,169,988"/>
+<area shape="rect" id="Node000008" href="$classstackchan_1_1display_1_1_base_mouth.html" title=" " alt="" coords="224,1307,353,1389"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="215,989,283,1307,278,1308,210,990"/>
 <area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="144,419,279,745"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="206,760,202,853,196,853,201,759"/>
 <area shape="rect" id="Node000011" href="$classstackchan_1_1display_1_1_speech_balloon.html" title=" " alt="" coords="400,999,526,1222"/>
 <area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="288,737,413,998,408,1000,283,739"/>
 <area shape="rect" id="Node000005" href="$classm5_1_1_vector2i.html" title=" " alt="" coords="41,5,136,356"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="136,355,148,395,150,402,145,404,143,396,131,357"/>
-<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="90,356,81,1230,76,1230,84,356"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="90,356,82,1230,76,1230,84,356"/>
 <area shape="rect" id="Node000006" href="$classm5_1_1_size2i.html" title=" " alt="" coords="169,76,261,285"/>
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="217,285,216,402,210,402,211,285"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="95,1429,105,1483,106,1490,101,1491,100,1484,90,1430"/>
-<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="275,1379,226,1496,221,1494,270,1377"/>
-<area shape="rect" id="Node000009" href="$classstackchan_1_1display_1_1_expression_weight.html" title=" " alt="" coords="241,1599,411,1782"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="320,1781,321,1846,330,1912,332,1919,326,1921,325,1913,315,1846,315,1781"/>
-<area shape="rect" id="Node000010" href="$classstackchan_1_1display_1_1_color_palette.html" title=" " alt="" coords="436,1578,552,1802"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="478,1802,454,1913,452,1920,447,1919,449,1912,472,1801"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="502,1221,539,1357,555,1432,567,1507,580,1610,586,1691,582,1772,567,1874,558,1906,543,1936,503,1988,499,1985,539,1933,553,1904,562,1873,577,1771,580,1691,575,1610,562,1508,550,1433,534,1358,497,1223"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="96,1449,105,1503,106,1510,101,1511,100,1504,91,1450"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="275,1390,225,1513,220,1511,270,1388"/>
+<area shape="rect" id="Node000009" href="$classstackchan_1_1display_1_1_expression_weight.html" title=" " alt="" coords="241,1619,411,1802"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="320,1802,321,1866,330,1932,332,1940,326,1941,325,1933,316,1867,315,1802"/>
+<area shape="rect" id="Node000010" href="$classstackchan_1_1display_1_1_color_palette.html" title=" " alt="" coords="436,1599,552,1822"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="477,1823,454,1933,452,1941,447,1940,449,1932,472,1822"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="501,1221,536,1357,553,1438,567,1525,577,1616,581,1710,579,1803,567,1894,558,1927,543,1958,503,2014,499,2010,538,1956,553,1925,562,1893,573,1802,576,1710,572,1617,562,1526,548,1439,531,1358,496,1222"/>
 </map>

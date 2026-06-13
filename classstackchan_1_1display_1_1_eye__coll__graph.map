@@ -1,13 +1,13 @@
 <map id="stackchan::display::Eye" name="stackchan::display::Eye">
-<area shape="rect" id="Node000001" title=" " alt="" coords="6,1256,150,1343"/>
-<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="5,1024,150,1207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,1222,80,1257,75,1257,75,1222"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="6,1277,150,1363"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="5,1024,150,1227"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,1242,80,1277,75,1277,75,1242"/>
 <area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="93,853,210,975"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="127,990,113,1025,108,1023,122,988"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="128,990,115,1025,110,1023,123,988"/>
 <area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="97,419,232,745"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="160,760,156,853,151,853,155,759"/>
 <area shape="rect" id="Node000005" href="$classm5_1_1_vector2i.html" title=" " alt="" coords="6,5,101,356"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="50,356,46,581,51,829,67,1007,62,1007,46,829,41,581,44,356"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="50,356,46,581,51,829,66,1007,61,1007,46,829,41,581,44,356"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,355,108,395,110,403,105,404,103,396,92,356"/>
 <area shape="rect" id="Node000006" href="$classm5_1_1_size2i.html" title=" " alt="" coords="134,76,226,285"/>
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="179,285,174,403,169,402,174,285"/>

@@ -175,6 +175,7 @@ Differences from m5stack-avatar</h2>
 <li>No <a href="https://docs.espressif.com/projects/esp-idf/en/v4.3/esp32/api-reference/system/freertos.html#task-api">xTask</a>: If you want to draw face in xtask, please register yourself.</li>
 <li>No <code>DrawingContext</code>: It is too complex. <a href="./src/faces/FacialDrawable.h"><code>FacialDrawable.draw()</code></a> in this library uses <a href="./src/Expression.h"><code>ExpressionWeight</code></a>, <a href="./src/ColorPalette.h"><code>ColorPalette</code></a>, and a few internal parameters. <code>ExpressionWeight</code> concept is based on <a href="https://docs.blender.org/manual/en/dev/animation/shape_keys/index.html">ShapeKey</a>.</li>
 <li>No <code>Avatar</code>: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. <code>Display</code> class in this library only controls display behaviors.</li>
+<li>No lip-sync</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md6"></a>
 TODO for Developers</h2>
@@ -182,7 +183,7 @@ TODO for Developers</h2>
 <li class="unchecked">Increase #decorators</li>
 </ul>
 <ul class="check">
-<li class="unchecked">Migrate more faces from <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a></li>
+<li class="checked">Migrate more faces from <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a></li>
 </ul>
 <ul class="check">
 <li class="checked">Add pictures of StackChans in the real world</li>

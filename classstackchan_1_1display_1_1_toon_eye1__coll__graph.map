@@ -1,0 +1,14 @@
+<map id="stackchan::display::ToonEye1" name="stackchan::display::ToonEye1">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,1277,222,1480"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_base_eye.html" title="Base class for Eye, draw nothing." alt="" coords="41,1024,186,1227"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,1242,116,1277,111,1277,111,1242"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="129,853,246,975"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="164,990,151,1025,146,1023,159,988"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="133,419,268,745"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,760,192,853,187,853,191,759"/>
+<area shape="rect" id="Node000005" href="$classm5_1_1_vector2i.html" title=" " alt="" coords="42,5,137,356"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="86,356,82,581,87,829,102,1007,97,1007,82,829,77,581,80,356"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="133,355,144,395,146,403,141,404,139,396,128,356"/>
+<area shape="rect" id="Node000006" href="$classm5_1_1_size2i.html" title=" " alt="" coords="170,76,262,285"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="215,285,210,403,205,402,210,285"/>
+</map>

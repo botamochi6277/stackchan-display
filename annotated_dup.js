@@ -21,7 +21,13 @@ var annotated_dup =
         [ "OmegaFace", "classstackchan_1_1display_1_1_omega_face.html", null ],
         [ "OmegaMouth", "classstackchan_1_1display_1_1_omega_mouth.html", null ],
         [ "PrimaryFacialDrawables_t", "structstackchan_1_1display_1_1_primary_facial_drawables__t.html", null ],
-        [ "SpeechBalloon", "classstackchan_1_1display_1_1_speech_balloon.html", null ]
+        [ "RectFace", "classstackchan_1_1display_1_1_rect_face.html", null ],
+        [ "RoundRectEye", "classstackchan_1_1display_1_1_round_rect_eye.html", null ],
+        [ "SpeechBalloon", "classstackchan_1_1display_1_1_speech_balloon.html", null ],
+        [ "ToonEye1", "classstackchan_1_1display_1_1_toon_eye1.html", null ],
+        [ "ToonEye2", "classstackchan_1_1display_1_1_toon_eye2.html", null ],
+        [ "ToonFace1", "classstackchan_1_1display_1_1_toon_face1.html", null ],
+        [ "ToonFace2", "classstackchan_1_1display_1_1_toon_face2.html", null ]
       ] ]
     ] ]
 ];
