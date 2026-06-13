@@ -31,7 +31,7 @@ namespace stackchan::display
     kEyeBrow,
     // Mouth
     kMouthBackground,
-    kInnerMouse,
+    kInnerMouth,
     kTongue,
     // Cheek
     kCheek1,

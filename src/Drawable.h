@@ -3,43 +3,11 @@
 #include <M5Unified.h>
 
 #include "Vector.h"
-
 // reference:
 // https://github.com/m5stack/StackChan/blob/main/firmware/main/stackchan/avatar/avatar/elements/element.h
 
 namespace stackchan::display
 {
-    template <typename T>
-    T clamp(T value, T min, T max)
-    {
-        if (value < min)
-        {
-            return min;
-        }
-        if (value > max)
-        {
-            return max;
-        }
-        return value;
-    }
-
-    template <typename T>
-    T remap(T x, T in_min, T in_max, T out_min, T out_max, bool clamp = false)
-    {
-        if (clamp)
-        {
-            if (x < in_min)
-            {
-                return out_min;
-            }
-            if (in_max < x)
-            {
-                return out_max;
-            }
-        }
-
-        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    }
 
     class Drawable
     {
@@ -92,8 +60,8 @@ namespace stackchan::display
         virtual void setSize(const m5::Size2i &size)
         {
             size_ = size;
-            size_.width = clamp(size_.width, 1, 200);
-            size_.height = clamp(size_.height, 1, 200);
+            size_.width = m5::clamp(size_.width, 1, 200);
+            size_.height = m5::clamp(size_.height, 1, 200);
         }
 
         virtual m5::Size2i &getSize()

@@ -54,6 +54,10 @@ namespace stackchan::display
         {
             return color_palette_;
         }
+        void setColorPalette(ColorPalette *color_palette)
+        {
+            color_palette_ = color_palette;
+        }
 
         M5Canvas &getCanvas()
         {
@@ -87,6 +91,7 @@ namespace stackchan::display
 
     void Display::drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette)
     {
+        // FIXME: this is a temporary implementation for testing, should be refactored to use Decorator pattern and support more decorators and emotions
         int x = 320 - 40;
         int y = 40;
         uint16_t color = canvas_.getColorDepth() == 1
@@ -94,7 +99,7 @@ namespace stackchan::display
                              : color_palette_->get(DrawingLocation::kBalloonBackground);
         uint16_t background_color = canvas_.getColorDepth() == 1
                                         ? 0
-                                        : color_palette_->get(DrawingLocation::kBalloonForeground);
+                                        : color_palette_->get(DrawingLocation::kSkin);
 
         // canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)

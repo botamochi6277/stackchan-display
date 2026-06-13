@@ -54,7 +54,9 @@ namespace stackchan::display
         ExpressionWeight &expression_weight,
         ColorPalette &palette)
     {
-        unsigned int skin_color = palette.get(DrawingLocation::kSkin);
+        uint16_t skin_color = canvas.getColorDepth() == 1
+                                  ? 0
+                                  : palette.get(DrawingLocation::kSkin);
         canvas.fillSprite(skin_color);
         left_eye_->draw(canvas, expression_weight, palette);
         right_eye_->draw(canvas, expression_weight, palette);

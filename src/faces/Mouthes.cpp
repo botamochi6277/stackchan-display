@@ -33,7 +33,7 @@ namespace stackchan::display
                                 : palette.get(DrawingLocation::kMouthBackground);
         uint16_t inner_color = canvas.getColorDepth() == 1
                                    ? 1
-                                   : palette.get(DrawingLocation::kInnerMouse);
+                                   : palette.get(DrawingLocation::kInnerMouth);
         uint16_t skin_color = canvas.getColorDepth() == 1
                                   ? 0
                                   : palette.get(DrawingLocation::kSkin);
@@ -48,15 +48,15 @@ namespace stackchan::display
         if (open_ratio > 0.01f)
         {
             // M5_LOGD("open ratio %0.2f", open_ratio);
-            // inner mouse background
+            // inner mouth background
 
             canvas.fillEllipse(position_.x, position_.y - size_.width / 12 + breath_offset, size_.width / 4,
                                h, bg_color);
-            if (palette.contains(DrawingLocation::kInnerMouse) && (h > outline_thickness * 2))
+            if (palette.contains(DrawingLocation::kInnerMouth) && (h > outline_thickness * 2))
             {
                 // i.e. (h-outline_thickness > 0)
                 canvas.fillEllipse(position_.x, position_.y - size_.width / 12 + breath_offset,
-                                   size_.width / 4 - 4, h - outline_thickness * 2,
+                                   size_.width / 4 - 4, h - outline_thickness,
                                    inner_color);
             }
         }

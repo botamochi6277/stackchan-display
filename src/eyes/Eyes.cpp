@@ -3,26 +3,29 @@
 namespace stackchan::display
 {
 
-    void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, bool is_left,
+    void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, float open_ratio, bool is_left,
                                          ExpressionWeight &expression_weight,
-                                         m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4)
+                                         m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4, float y_ratio)
     {
+        // NOTE: [Shear mapping](https://en.wikipedia.org/wiki/Shear_mapping)
 
         // right    left
-        // p1--p2   p2--p1
+        // p1--p4   p4--p1
         // |   |    |   |
-        // p4--p3   p3--p4
+        // p2--p3   p3--p2
 
+        // https://www.sitepoint.com/understanding-svg-fill-rule-property/
         Expression eye_expression;
         unsigned char weight;
 
         int lateral_x = is_left ? center.x + size.width / 2 + 1 : center.x - size.width / 2 - 1;
         int medial_x = is_left ? center.x - size.width / 2 - 1 : center.x + size.width / 2 + 1;
+        int lower_y = center.y - size.height / 2 + (1.0f - open_ratio) * size.height;
 
-        p1 = {0, 0};
-        p2 = {0, 0};
-        p3 = {0, 0};
-        p4 = {0, 0};
+        p1 = {lateral_x, center.y - size.height / 2 - 2};
+        p2 = {lateral_x, lower_y};
+        p3 = {medial_x, lower_y};
+        p4 = {medial_x, center.y - size.height / 2 - 2};
 
         eye_expression = Expression::kAngry;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
@@ -30,15 +33,13 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y - size.height / 2 - 2;
-
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p4.x = medial_x;
+            p4.y = p1.y;
 
             p3.x = medial_x;
-            p3.y = center.y + (weight / 255.0f) * (size.height / 4);
-
-            p4.x = lateral_x;
-            p4.y = p1.y + 1;
+            p3.y = lower_y + 2 + (weight / 255.0f) * (size.height) * (y_ratio * open_ratio); // make angry expression more intense when eye is more open
+            p2.x = lateral_x;
+            p2.y = lower_y + 2;
         }
 
         eye_expression = Expression::kSad;
@@ -47,28 +48,27 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y - size.height / 2 - 2;
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p4.x = medial_x;
+            p4.y = p1.y;
             p3.x = medial_x;
-            p3.y = p2.y + 1;
-            p4.x = lateral_x;
-            p4.y = center.y + (weight / 255.0f) * (size.height / 4);
-            // canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color);
+            p3.y = lower_y + 2;
+            p2.x = lateral_x;
+            p2.y = lower_y + 2 + (weight / 255.0f) * (size.height) * (y_ratio * open_ratio);
         }
 
-        eye_expression = Expression::kDoubt;
-        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
-        {
-            weight = expression_weight.get(eye_expression);
-            p1.x = lateral_x;
-            p1.y = center.y - size.height / 2;
-            p2.x = medial_x;
-            p2.y = p1.y;
-            p3.x = medial_x;
-            p3.y = center.y - (weight / 255.0f) * (size.height / 4);
-            p4.x = lateral_x;
-            p4.y = p3.y;
-        }
+        // eye_expression = Expression::kDoubt;
+        // if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        // {
+        //     weight = expression_weight.get(eye_expression);
+        //     p1.x = lateral_x;
+        //     p1.y = center.y - size.height / 2;
+        //     p4.x = medial_x;
+        //     p4.y = p1.y;
+        //     p3.x = medial_x;
+        //     p3.y = lower_y + 2 + (weight / 255.0f) * (size.height) * y_ratio;
+        //     p2.x = lateral_x;
+        //     p2.y = p3.y;
+        // }
 
         eye_expression = Expression::kGrin;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
@@ -76,12 +76,12 @@ namespace stackchan::display
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
             p1.y = center.y + size.height / 2;
-            p2.x = medial_x;
-            p2.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height / 2);
+            p4.x = medial_x;
+            p4.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height) * y_ratio;
             p3.x = medial_x;
             p3.y = p1.y + 4;
-            p4.x = lateral_x;
-            p4.y = p3.y;
+            p2.x = lateral_x;
+            p2.y = p3.y;
         }
 
         eye_expression = Expression::kSmile;
@@ -89,14 +89,14 @@ namespace stackchan::display
         {
             weight = expression_weight.get(eye_expression);
             p1.x = lateral_x;
-            p1.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height / 2);
-            p2.x = medial_x;
-            p2.y = p1.y;
+            p1.y = center.y + size.height / 2 - (weight / 255.0f) * (size.height) * y_ratio;
+            p4.x = medial_x;
+            p4.y = p1.y;
 
-            p3.x = p2.x;
+            p3.x = p4.x;
             p3.y = center.y + size.height / 2 + 2;
-            p4.x = p1.x;
-            p4.y = p3.y;
+            p2.x = p1.x;
+            p2.y = p3.y;
 
             // int w = size.width;
             // int h = p3.y - p1.y;
@@ -143,16 +143,73 @@ namespace stackchan::display
         }
     }
 
+    float BaseEye::calculateOpenRatio(ExpressionWeight &expression_weight)
+    {
+        if (expression_weight.get(Expression::kSmile) > 127)
+        {
+            return 0.0f;
+        }
+
+        float open_ratio = 1.0f;
+        float blink_weight = 0.0f;
+        float wink_weight = 0.0f;
+        float sleepy_weight = 0.0f;
+        float relax_weight = 0.0f;
+        float doubt_weight = 0.0f;
+
+        if (expression_weight.contains(Expression::kBlink))
+        {
+            blink_weight = (expression_weight.get(Expression::kBlink) / 255.0f);
+        }
+
+        if (is_left_)
+        {
+            if (expression_weight.contains(Expression::kLeftBlink))
+            {
+                wink_weight = (expression_weight.get(Expression::kLeftBlink) / 255.0f); // left blink expression fully closes the left eye
+            }
+        }
+        else
+        {
+            if (expression_weight.contains(Expression::kRightBlink))
+            {
+                wink_weight = (expression_weight.get(Expression::kRightBlink) / 255.0f); // right blink expression fully closes the right eye
+            }
+        }
+        blink_weight = m5::max(blink_weight, wink_weight); // combine blink and wink weights, taking the maximum to ensure that wink can fully close the eye
+
+        // extra
+
+        if (expression_weight.contains(Expression::kSleepy))
+        {
+            sleepy_weight = (expression_weight.get(Expression::kSleepy) / 255.0f); // sleepy expression makes eye closed proportionally to its weight
+        }
+
+        if (expression_weight.contains(Expression::kRelax))
+        {
+            relax_weight = (expression_weight.get(Expression::kRelax) / 255.0f);
+        }
+
+        if (expression_weight.contains(Expression::kDoubt))
+        {
+            doubt_weight = 0.4f * (expression_weight.get(Expression::kDoubt) / 255.0f); // doubt expression makes eye closed proportionally to its weight
+        }
+
+        open_ratio = 1.0f - m5::max(blink_weight, sleepy_weight, relax_weight, doubt_weight);
+
+        return m5::clamp(open_ratio, 0.0f, 1.0f);
+    }
+
     void Eye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
         radius_ = size_.min() / 2;
 
-        unsigned int iris_color = canvas.getColorDepth() == 1
-                                      ? 1
-                                      : palette.get(DrawingLocation::kIris1);
-        unsigned int eyelid_color = canvas.getColorDepth() == 1
-                                        ? 0
-                                        : palette.get(DrawingLocation::kSkin);
+        uint16_t iris_color = canvas.getColorDepth() == 1
+                                  ? 1
+                                  : palette.get(DrawingLocation::kIris1);
+        uint16_t eyelid_color = canvas.getColorDepth() == 1
+                                    ? 0
+                                    : palette.get(DrawingLocation::kSkin);
 
         // temporary variables for eyelid drawing
         m5::Vector2i p1, p2, p3, p4;
@@ -184,9 +241,8 @@ namespace stackchan::display
             return;
         }
 
-        bool is_fully_closed = (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kBlink) > 127) ||
-                               (is_left_ ? (expression_weight.contains(Expression::kLeftBlink) && expression_weight.get(Expression::kLeftBlink) > 127)
-                                         : (expression_weight.contains(Expression::kRightBlink) && expression_weight.get(Expression::kRightBlink) > 127)) ||
+        float open_ratio = calculateOpenRatio(expression_weight);
+        bool is_fully_closed = open_ratio <= 0.1f ||
                                (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kSleepy) > 127);
         if (is_fully_closed)
         {
@@ -206,7 +262,7 @@ namespace stackchan::display
         // draw eyelid (if any)
 
         updateQuadrilateralEyelidPoints(
-            iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
         canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
 
@@ -233,12 +289,12 @@ namespace stackchan::display
 
     void EllipseEye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        unsigned int iris_color = canvas.getColorDepth() == 1
-                                      ? 1
-                                      : palette.get(DrawingLocation::kIris1);
-        unsigned int eyelid_color = canvas.getColorDepth() == 1
-                                        ? 0
-                                        : palette.get(DrawingLocation::kSkin);
+        uint16_t iris_color = canvas.getColorDepth() == 1
+                                  ? 1
+                                  : palette.get(DrawingLocation::kIris1);
+        uint16_t eyelid_color = canvas.getColorDepth() == 1
+                                    ? 0
+                                    : palette.get(DrawingLocation::kSkin);
         // temporary variables for eyelid drawing
         m5::Vector2i p1, p2, p3, p4;
         Expression eye_expression = Expression::kNeutral;
@@ -249,9 +305,8 @@ namespace stackchan::display
 
         iris_position_ = position_ + gaze_ + saccade_noise_;
 
-        bool is_fully_closed = (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kBlink) > 127) ||
-                               (is_left_ ? (expression_weight.contains(Expression::kLeftBlink) && expression_weight.get(Expression::kLeftBlink) > 127)
-                                         : (expression_weight.contains(Expression::kRightBlink) && expression_weight.get(Expression::kRightBlink) > 127)) ||
+        float open_ratio = calculateOpenRatio(expression_weight);
+        bool is_fully_closed = open_ratio <= 0.1f ||
                                (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kSleepy) > 127);
         if (is_fully_closed)
         {
@@ -272,7 +327,7 @@ namespace stackchan::display
         }
 
         updateQuadrilateralEyelidPoints(
-            iris_position_, size_, is_left_, expression_weight, p1, p2, p3, p4);
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
         canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
         canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
 
@@ -290,7 +345,74 @@ namespace stackchan::display
         {
             weight = expression_weight.get(eye_expression);
             // int ry = size_.width / 2 + (weight / 255.0f) * (size_.width / 4);
-            int ry = remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
+            int ry = m5::remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
+            canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, ry, iris_color); // draw surprised eye
+        }
+    }
+
+    void RoundRectEye::draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
+    {
+        uint16_t iris_color = canvas.getColorDepth() == 1
+                                  ? 1
+                                  : palette.get(DrawingLocation::kIris1);
+        uint16_t eyelid_color = canvas.getColorDepth() == 1
+                                    ? 0
+                                    : palette.get(DrawingLocation::kSkin);
+        // temporary variables for eyelid drawing
+        m5::Vector2i p1, p2, p3, p4;
+        Expression eye_expression = Expression::kNeutral;
+        unsigned char weight;
+        uint16_t radius = size_.min() / 8;
+
+        milli_sec_ = M5.millis();
+        gaze_ = m5::Vector2i(0, 0); // tmp
+
+        iris_position_ = position_ + gaze_ + saccade_noise_;
+
+        float open_ratio = calculateOpenRatio(expression_weight);
+        bool is_fully_closed = open_ratio <= 0.1f ||
+                               (expression_weight.contains(Expression::kSleepy) && expression_weight.get(Expression::kSleepy) > 127);
+        if (is_fully_closed)
+        {
+
+            canvas.fillRect(iris_position_.x - (size_.width / 2),
+                            iris_position_.y - 2 + size_.height / 4, size_.width, 4,
+                            iris_color);
+            return;
+        }
+
+        // add saccade noise
+        this->updateSaccade(expression_weight);
+
+        // draw iris
+        if (expression_weight.get(Expression::kSurprised) < 127)
+        {
+            canvas.fillRoundRect(
+                iris_position_.x - (size_.width / 2),
+                iris_position_.y - (size_.height / 2),
+                size_.width, size_.height, radius, iris_color);
+        }
+
+        updateQuadrilateralEyelidPoints(
+            iris_position_, size_, open_ratio, is_left_, expression_weight, p1, p2, p3, p4);
+        canvas.fillTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, eyelid_color); // draw eyelid
+        canvas.fillTriangle(p3.x, p3.y, p4.x, p4.y, p1.x, p1.y, eyelid_color);
+
+        // draw special eyelid
+        // smile
+        // ^ ^
+        eye_expression = Expression::kSmile;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            canvas.fillEllipse(iris_position_.x, p1.y, size_.width / 2 - 2, size_.height / 2 - 2, eyelid_color); // draw lower eyelid for smile expression
+        }
+        // extra
+        eye_expression = Expression::kSurprised;
+        if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
+        {
+            weight = expression_weight.get(eye_expression);
+            // int ry = size_.width / 2 + (weight / 255.0f) * (size_.width / 4);
+            int ry = m5::remap(static_cast<int>(weight), 0, 255, size_.height / 2, size_.width / 2);
             canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, ry, iris_color); // draw surprised eye
         }
     }

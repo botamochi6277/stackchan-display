@@ -1,7 +1,9 @@
 #pragma once
 
 #include "FacialDrawable.h"
-#include "Eyes.h"
+#include "../eyes/Eyes.h"
+#include "../eyes/ToonEye1.h"
+#include "../eyes/ToonEye2.h"
 #include "Mouthes.h"
 
 namespace stackchan::display
@@ -86,6 +88,34 @@ namespace stackchan::display
         OmegaFace() : Face(
                           new EllipseEye(84 + 154, 165, 36, 70, true),
                           new EllipseEye(84, 165, 36, 70, false),
+                          new OmegaMouth(160, 225, 72, 30)) {};
+    };
+
+    // [▯ ▯]
+    class RectFace : public Face
+    {
+    public:
+        RectFace() : Face(
+                         new RoundRectEye(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, true),
+                         new RoundRectEye(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, false),
+                         new BaseMouth(0, 0, 0, 0)) {};
+    };
+
+    class ToonFace1 : public Face
+    {
+    public:
+        ToonFace1() : Face(
+                          new ToonEye1(256, 163, 68, 60, true),
+                          new ToonEye1(64, 163, 68, 60, false),
+                          new OmegaMouth(160, 225, 72, 30)) {};
+    };
+
+    class ToonFace2 : public Face
+    {
+    public:
+        ToonFace2() : Face(
+                          new ToonEye2(256, 163, 60, 84, true),
+                          new ToonEye2(64, 163, 60, 84, false),
                           new OmegaMouth(160, 225, 72, 30)) {};
     };
 

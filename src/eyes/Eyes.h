@@ -1,18 +1,19 @@
 // NOTE: migrated from https://github.com/botamochi6277/m5stack-avatar/blob/master/src/Eyes.hpp
 #pragma once
 
-#include "FacialDrawable.h"
+#include "../faces/FacialDrawable.h"
+#include "DrawingUtils.h"
 
 namespace stackchan::display
 {
 
   // pure drawing functions
-  void drawStraightEyelid(M5Canvas &canvas, int16_t x, int16_t y, int16_t width,
-                          int16_t height, uint16_t color);
+  // void drawStraightEyelid(M5Canvas &canvas, int16_t x, int16_t y, int16_t width,
+  //                         int16_t height, uint16_t color);
 
-  void updateTriangleEyelidPoints(m5::Vector2i &center, m5::Size2i &size, bool is_left,
-                                  ExpressionWeight &expression_weight,
-                                  m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3);
+  void updateQuadrilateralEyelidPoints(m5::Vector2i &center, m5::Size2i &size, float open_ratio, bool is_left,
+                                       ExpressionWeight &expression_weight,
+                                       m5::Vector2i &p1, m5::Vector2i &p2, m5::Vector2i &p3, m5::Vector2i &p4, float y_ratio = 0.5f);
 
   /**
    * @brief Base class for Eye, draw nothing
@@ -33,6 +34,7 @@ namespace stackchan::display
 
     void updateGaze(ExpressionWeight &weight, uint16_t range);
     void updateSaccade(ExpressionWeight &expression_weight);
+    float calculateOpenRatio(ExpressionWeight &expression_weight);
 
   public:
     using FacialDrawable::FacialDrawable;
@@ -51,6 +53,13 @@ namespace stackchan::display
   };
 
   class EllipseEye : public BaseEye
+  {
+  public:
+    using BaseEye::BaseEye;
+    virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
+  };
+
+  class RoundRectEye : public BaseEye
   {
   public:
     using BaseEye::BaseEye;
