@@ -242,8 +242,8 @@ namespace stackchan::display
         this->drawEyelid(canvas, expression_weight, palette);
 
         // debug, drawing gizmo
-        canvas.fillCircle(position_.x, position_.y, 2, TFT_GREEN);
-        canvas.drawRect(is_left_ ? position_.x - size_.width * 0.4f : position_.x - size_.width * 0.6f,
-                        position_.y - size_.height / 2, size_.width, size_.height, TFT_GREEN);
+        // canvas.fillCircle(position_.x, position_.y, 2, TFT_GREEN);
+        // canvas.drawRect(is_left_ ? position_.x - size_.width * 0.4f : position_.x - size_.width * 0.6f,
+        //                 position_.y - size_.height / 2, size_.width, size_.height, TFT_GREEN);
     }
 }
