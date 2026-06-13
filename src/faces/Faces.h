@@ -105,8 +105,8 @@ namespace stackchan::display
     {
     public:
         ToonFace1() : Face(
-                          new ToonEye1(256, 163, 60, 60, true),
-                          new ToonEye1(64, 163, 60, 60, false),
+                          new ToonEye1(256, 163, 68, 60, true),
+                          new ToonEye1(64, 163, 68, 60, false),
                           new OmegaMouth(160, 225, 72, 30)) {};
     };
 

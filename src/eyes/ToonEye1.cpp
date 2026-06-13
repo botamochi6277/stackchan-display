@@ -9,17 +9,19 @@ namespace stackchan::display
                                               uint16_t eyelid_width, uint16_t eyelid_height,
                                               uint16_t eyelid_bottom)
     {
-        // calculate base waypoints for eyelid drawing
+        // calculate base waypoints for eyelid and eyeliner drawing
         // the eyelid will be drawn as a arc from medial to lateral with center as the peak
+        // ----|-----
+        //     O
 
         // inner(medial)
-        medial.x = this->is_left_ ? this->position_.x - eyelid_width / 2
-                                  : this->position_.x + eyelid_width / 2;
+        medial.x = this->is_left_ ? this->position_.x - 0.4f * eyelid_width
+                                  : this->position_.x + 0.4f * eyelid_width;
         medial.y = eyelid_bottom;
 
         // outer(lateral)
-        lateral.x = this->is_left_ ? this->position_.x + eyelid_width / 2
-                                   : this->position_.x - eyelid_width / 2;
+        lateral.x = this->is_left_ ? this->position_.x + 0.6f * eyelid_width
+                                   : this->position_.x - 0.6f * eyelid_width;
         lateral.y = eyelid_bottom;
 
         // peak
@@ -64,23 +66,27 @@ namespace stackchan::display
                                      : palette.get(DrawingLocation::kIrisBackground);
 
         uint16_t thickness = 4;
+
+        m5::Size2i iris_size = {static_cast<uint16_t>(0.9f * size_.height),
+                                static_cast<uint16_t>(0.9f * size_.height)};
+
         // iris bg
-        canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2, size_.height / 2,
+        canvas.fillEllipse(iris_position_.x, iris_position_.y, iris_size.width / 2, iris_size.height / 2,
                            iris_bg_color);
         // iris1 color
         if (palette.contains(DrawingLocation::kIris1))
         {
             auto iris_color_1 = palette.get(DrawingLocation::kIris1);
-            canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 2 - thickness,
-                               size_.height / 2 - thickness, iris_color_1);
+            canvas.fillEllipse(iris_position_.x, iris_position_.y, iris_size.width / 2 - thickness,
+                               iris_size.height / 2 - thickness, iris_color_1);
         }
 
         if (palette.contains(DrawingLocation::kIris2))
         {
             auto iris_color_2 = palette.get(DrawingLocation::kIris2);
             // center horizontal line
-            canvas.fillRect(iris_position_.x - size_.width / 2 + thickness, iris_position_.y,
-                            size_.width - 2 * thickness + 1, 1, iris_color_2);
+            canvas.fillRect(iris_position_.x - iris_size.width / 2 + thickness, iris_position_.y,
+                            iris_size.width - 2 * thickness + 1, 1, iris_color_2);
             // lower half moon will be filled
             canvas.floodFill(iris_position_.x, iris_position_.y + 2, iris_color_2);
         }
@@ -88,7 +94,7 @@ namespace stackchan::display
         if (palette.contains(DrawingLocation::kPupil))
         {
             auto pupil_color = palette.get(DrawingLocation::kPupil);
-            canvas.fillEllipse(iris_position_.x, iris_position_.y, size_.width / 6 + thickness, size_.height / 6 + thickness,
+            canvas.fillEllipse(iris_position_.x, iris_position_.y, iris_size.width / 6 + thickness, iris_size.height / 6 + thickness,
                                pupil_color);
         }
 
@@ -96,24 +102,25 @@ namespace stackchan::display
         if (palette.contains(DrawingLocation::kEyeHighlight))
         {
             auto highlight_color = palette.get(DrawingLocation::kEyeHighlight);
-            canvas.fillCircle(iris_position_.x - size_.width / 4, iris_position_.y - size_.height / 4,
-                              size_.min() / 8, highlight_color);
+            canvas.fillCircle(iris_position_.x - iris_size.width / 4, iris_position_.y - iris_size.height / 4,
+                              iris_size.min() / 8, highlight_color);
         }
     }
 
     void ToonEye1::drawEyelid(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
     {
-        uint16_t eyelid_color = canvas.getColorDepth() == 1
-                                    ? 0
-                                    : palette.get(DrawingLocation::kEyelid);
-        uint16_t skin_color = canvas.getColorDepth() == 1
-                                  ? 0
-                                  : palette.get(DrawingLocation::kSkin);
+        // required color paring
+        uint16_t eyelash_color = palette.contains(DrawingLocation::kEyelash) ? palette.get(DrawingLocation::kEyelash) : TFT_MAGENTA;
+        uint16_t skin_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA;
+        // TODO: draw eyeshadow using eyelash color if eyelid color is not set
+        // eyelid color is skin color by default, but can be overridden by eyelash color in palette, i.e eyeshadow color
+        uint16_t eyelid_color = palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA;
 
         // ** rotate waypoints
         float open_ratio = calculateOpenRatio(expression_weight);
         float tilt = 0.0f;
-        float ref_tilt = open_ratio * M_PI / 12.0f;
+        float ref_tilt = open_ratio * 0.2;
+
         uint8_t weight;
         weight = expression_weight.get(Expression::kAngry);
         if (weight > 12)
@@ -127,20 +134,14 @@ namespace stackchan::display
             tilt = (this->is_left_ ? ref_tilt : -ref_tilt) * (weight / 255.0f);
         }
 
-        weight = expression_weight.get(Expression::kDoubt);
-        if (weight > 12)
-        {
-            open_ratio *= 0.6 * (weight / 255.0f);
-            // eyelid_bottom_y = iris_position_.y - 0.65f * size_.height / 2 +
-            //                   (1.0f - open_ratio) * size_.height * 0.6;
-        }
         weight = expression_weight.get(Expression::kGrin);
         // TODO:
 
         weight = expression_weight.get(Expression::kSurprised);
         if (weight > 12)
         {
-            open_ratio = 1.0f + (weight / 255.0f) * 0.2f;
+            auto tmp = 1.0f + (weight / 255.0f) * 0.2f;
+            open_ratio = open_ratio > 0.99f ? tmp : open_ratio;
         }
 
         uint8_t thickness = 4;
@@ -175,9 +176,9 @@ namespace stackchan::display
         auto rot_y = eyelid_bottom_y;
         m5::Vector2i rot_center = {rot_x, rot_y};
 
-        m5::rotatePointAround(eyelid_med, tilt, rot_center);
-        m5::rotatePointAround(eyelid_lat, tilt, rot_center);
-        m5::rotatePointAround(eyelid_c, tilt, rot_center);
+        m5::shearPointAround(eyelid_med, 0.0f, tilt, rot_center);
+        m5::shearPointAround(eyelid_lat, 0.0f, tilt, rot_center);
+        m5::shearPointAround(eyelid_c, 0.0f, tilt, rot_center);
 
         // draw eyelid
 
@@ -191,18 +192,10 @@ namespace stackchan::display
         }
 
         m5::fillArc(canvas, eyelid_med.x, eyelid_med.y, eyelid_lat.x, eyelid_lat.y,
-                    eyelid_c.x, eyelid_c.y, mask_height, skin_color, mask_offset);
+                    eyelid_c.x, eyelid_c.y, mask_height, eyelid_color, mask_offset);
         // arc curve
         m5::fillArc(canvas, eyelid_med.x, eyelid_med.y, eyelid_lat.x, eyelid_lat.y,
-                    eyelid_c.x, eyelid_c.y, thickness, eyelid_color);
-
-        // eyelash
-        if (!palette.contains(DrawingLocation::kEyelash))
-        {
-            return;
-        }
-
-        auto eyelash_color = palette.get(DrawingLocation::kEyelash);
+                    eyelid_c.x, eyelid_c.y, thickness, eyelash_color);
 
         m5::rotatePointAround(eyelash_tip, tilt, rot_center);
         m5::rotatePointAround(eyelash_med, tilt, rot_center);
@@ -247,5 +240,10 @@ namespace stackchan::display
 
         // eyelid
         this->drawEyelid(canvas, expression_weight, palette);
+
+        // debug, drawing gizmo
+        canvas.fillCircle(position_.x, position_.y, 2, TFT_GREEN);
+        canvas.drawRect(is_left_ ? position_.x - size_.width * 0.4f : position_.x - size_.width * 0.6f,
+                        position_.y - size_.height / 2, size_.width, size_.height, TFT_GREEN);
     }
 }
