@@ -4,7 +4,8 @@
 #include "../eyes/Eyes.h"
 #include "../eyes/ToonEye1.h"
 #include "../eyes/ToonEye2.h"
-#include "Mouthes.h"
+#include "../mouths/Mouth.h"
+#include "../mouths/OmegaMouth.h"
 
 namespace stackchan::display
 {
