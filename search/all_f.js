@@ -6,5 +6,6 @@ var searchData=
   ['tooneye1_3',['ToonEye1',['../classstackchan_1_1display_1_1_toon_eye1.html',1,'stackchan::display']]],
   ['tooneye2_4',['ToonEye2',['../classstackchan_1_1display_1_1_toon_eye2.html',1,'stackchan::display']]],
   ['toonface1_5',['ToonFace1',['../classstackchan_1_1display_1_1_toon_face1.html',1,'stackchan::display']]],
-  ['toonface2_6',['ToonFace2',['../classstackchan_1_1display_1_1_toon_face2.html',1,'stackchan::display']]]
+  ['toonface2_6',['ToonFace2',['../classstackchan_1_1display_1_1_toon_face2.html',1,'stackchan::display']]],
+  ['toonmouth1_7',['ToonMouth1',['../classstackchan_1_1display_1_1_toon_mouth1.html',1,'stackchan::display']]]
 ];

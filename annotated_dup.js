@@ -27,7 +27,8 @@ var annotated_dup =
         [ "ToonEye1", "classstackchan_1_1display_1_1_toon_eye1.html", null ],
         [ "ToonEye2", "classstackchan_1_1display_1_1_toon_eye2.html", null ],
         [ "ToonFace1", "classstackchan_1_1display_1_1_toon_face1.html", null ],
-        [ "ToonFace2", "classstackchan_1_1display_1_1_toon_face2.html", null ]
+        [ "ToonFace2", "classstackchan_1_1display_1_1_toon_face2.html", null ],
+        [ "ToonMouth1", "classstackchan_1_1display_1_1_toon_mouth1.html", null ]
       ] ]
     ] ]
 ];

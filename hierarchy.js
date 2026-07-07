@@ -13,7 +13,8 @@ var hierarchy =
         ] ],
         [ "stackchan::display::BaseMouth", "classstackchan_1_1display_1_1_base_mouth.html", [
           [ "stackchan::display::Mouth", "classstackchan_1_1display_1_1_mouth.html", null ],
-          [ "stackchan::display::OmegaMouth", "classstackchan_1_1display_1_1_omega_mouth.html", null ]
+          [ "stackchan::display::OmegaMouth", "classstackchan_1_1display_1_1_omega_mouth.html", null ],
+          [ "stackchan::display::ToonMouth1", "classstackchan_1_1display_1_1_toon_mouth1.html", null ]
         ] ],
         [ "stackchan::display::Face", "classstackchan_1_1display_1_1_face.html", [
           [ "stackchan::display::EllFace", "classstackchan_1_1display_1_1_ell_face.html", null ],

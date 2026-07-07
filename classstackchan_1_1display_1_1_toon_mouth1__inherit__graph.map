@@ -1,0 +1,9 @@
+<map id="stackchan::display::ToonMouth1" name="stackchan::display::ToonMouth1">
+<area shape="rect" id="Node000001" title=" " alt="" coords="14,719,131,800"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_base_mouth.html" title=" " alt="" coords="8,589,137,671"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,685,76,719,70,719,70,685"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="14,419,131,541"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,556,76,590,70,590,70,556"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="5,5,140,371"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,386,76,420,70,420,70,386"/>
+</map>
