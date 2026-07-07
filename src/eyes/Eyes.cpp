@@ -20,12 +20,12 @@ namespace stackchan::display
 
         int lateral_x = is_left ? center.x + size.width / 2 + 1 : center.x - size.width / 2 - 1;
         int medial_x = is_left ? center.x - size.width / 2 - 1 : center.x + size.width / 2 + 1;
-        int lower_y = center.y - size.height / 2 + (1.0f - open_ratio) * size.height;
+        int lower_y = center.y - size.height / 2 + (1.0f - open_ratio) * size.height - 1;
 
-        p1 = {lateral_x, center.y - size.height / 2 - 2};
+        p1 = {lateral_x, center.y - size.height / 2 - 4};
         p2 = {lateral_x, lower_y};
         p3 = {medial_x, lower_y};
-        p4 = {medial_x, center.y - size.height / 2 - 2};
+        p4 = {medial_x, center.y - size.height / 2 - 4};
 
         eye_expression = Expression::kAngry;
         if (expression_weight.contains(eye_expression) && expression_weight.get(eye_expression) > 0)
