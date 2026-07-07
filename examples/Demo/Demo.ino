@@ -23,7 +23,8 @@ void setSpeechText(stackchan::display::Display &display);
 
 void setup()
 {
-  M5.begin();
+  auto cfg = M5.config();
+  M5.begin(cfg);
   M5.Lcd.setBrightness(150);
   M5.Lcd.clear();
 
@@ -51,8 +52,9 @@ void setup()
   color_palettes[1]->set(stackchan::display::DrawingLocation::kCheek1, M5.Lcd.color565(255, 182, 193));            // light pink
   stackchan_display.getFace()->autoScale();
 
+  stackchan_display.setFace(faces[0]);
   stackchan_display.getCanvas().setColorDepth(8);
-  stackchan_display.getSpeechBalloon().setText("Hello, StackChan!");
+  // stackchan_display.getSpeechBalloon().setText("Hello, StackChan!");
 }
 
 void loop()
@@ -65,6 +67,54 @@ void loop()
   // -----------
   // [A] [B] [C]
 
+  // CoreS3 SE has no button.
+  if (M5.Touch.isEnabled())
+  {
+    auto t = M5.Touch.getDetail();
+    if (t.wasFlicked())
+    {
+      auto dx = t.distanceX();
+      auto dy = t.distanceY();
+      // Flick right/left
+      if (abs(dx) > 50 && abs(dx) > abs(dy))
+      {
+        if (dx > 0)
+        {
+          emotion++;
+        }
+        else
+        {
+          emotion--;
+        }
+        stackchan_display.getExpressionWeight().setEmotionalExpression(
+            static_cast<stackchan::display::Expression>(emotion % (static_cast<int>(stackchan::display::Expression::kRelax) + 1)), 255);
+
+        if (face_idx == 0)
+        {
+          setSpeechText(stackchan_display);
+        }
+      }
+
+      // Flick up/down
+      if (abs(dy) > 50 && abs(dy) > abs(dx))
+      {
+        if (dy > 0)
+        {
+          face_idx = (face_idx + 1) % num_faces; // loop index
+        }
+        else
+        {
+          face_idx = (face_idx - 1 + num_faces) % num_faces; // loop index
+        }
+        stackchan_display.setFace(faces[face_idx]);
+        if (face_idx != 0)
+        {
+          stackchan_display.getSpeechBalloon().setText("");
+        }
+      }
+    }
+  }
+
   if (M5.BtnA.wasPressed())
   {
     emotion++;
@@ -74,6 +124,11 @@ void loop()
     if (face_idx == 0)
     {
       setSpeechText(stackchan_display);
+      stackchan_display.getFace()->activateAutoBlink();
+      if (face_idx != 0)
+      {
+        stackchan_display.getSpeechBalloon().setText("");
+      }
     }
   }
 
@@ -81,6 +136,7 @@ void loop()
   {
     face_idx = (face_idx + 1) % num_faces; // loop index
     stackchan_display.setFace(faces[face_idx]);
+    stackchan_display.getFace()->activateAutoBlink();
     if (face_idx != 0)
     {
       stackchan_display.getSpeechBalloon().setText("");

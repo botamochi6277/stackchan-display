@@ -4,7 +4,9 @@
 #include "../eyes/Eyes.h"
 #include "../eyes/ToonEye1.h"
 #include "../eyes/ToonEye2.h"
-#include "Mouthes.h"
+#include "../mouths/Mouth.h"
+#include "../mouths/OmegaMouth.h"
+#include "../mouths/ToonMouth1.h"
 
 namespace stackchan::display
 {
@@ -107,7 +109,7 @@ namespace stackchan::display
         ToonFace1() : Face(
                           new ToonEye1(256, 163, 68, 60, true),
                           new ToonEye1(64, 163, 68, 60, false),
-                          new OmegaMouth(160, 225, 72, 30)) {};
+                          new ToonMouth1(160, 222, 48, 24)) {};
     };
 
     class ToonFace2 : public Face
