@@ -1,4 +1,5 @@
 #include "Faces.h"
+#include "Waveform.h"
 
 #ifndef rand_r
 #define init_rand() srand(seed)
@@ -10,6 +11,7 @@
 
 namespace stackchan::display
 {
+
     Face::Face() : Face(new Eye(160 + 70, 95, 18, 18, true),
                         new Eye(160 - 70, 95, 18, 18, false),
                         new Mouth(160, 148, 90, 60)) {}
@@ -23,25 +25,39 @@ namespace stackchan::display
         static unsigned long mill_sec = 0;
         static unsigned long last_saccade_millis = 0;
         static unsigned long last_blink_millis = 0;
+
         static uint32_t saccade_interval = 1000; // [msec]
         static uint32_t blink_interval = 1000;
+        static uint32_t blink_close_duration = 200; // [msec]
+        static unsigned int next_blink_millis = blink_interval;
+        static float blink_signal;
 
         mill_sec = M5.millis();
 
+        blink_signal = waveform::trianglePulse((next_blink_millis / 1000.0f) - (mill_sec / 1000.0f),
+                                               blink_close_duration / 1000.0f);
+
         // blink
-        if (is_auto_blink_ && (mill_sec - last_blink_millis > blink_interval))
+        if (is_auto_blink_)
         {
-            if (expression_weight.get(Expression::kBlink) > 127)
-            {
-                expression_weight.set(Expression::kBlink, 0);        // weight to open eye
-                blink_interval = auto_blink_interval_ + rand() % 20; // add random to avoid fixed interval
-            }
-            else
-            {
-                expression_weight.set(Expression::kBlink, 255); // weight to close eye
-                blink_interval = blink_duration_;
-            }
+            // if (expression_weight.get(Expression::kBlink) > 127)
+            // {
+            //     expression_weight.set(Expression::kBlink, 0);        // weight to open eye
+            //     blink_interval = auto_blink_interval_ + rand() % 20; // add random to avoid fixed interval
+            // }
+            // else
+            // {
+            //     expression_weight.set(Expression::kBlink, 255); // weight to close eye
+            //     blink_interval = blink_duration_;
+            // }
+            expression_weight.set(Expression::kBlink, static_cast<unsigned char>(blink_signal * 255.0f));
+        }
+
+        if (mill_sec > next_blink_millis + blink_interval)
+        {
+            blink_interval = auto_blink_interval_ + _rand() % 200; // add random to avoid fixed interval
             last_blink_millis = mill_sec;
+            next_blink_millis = mill_sec + blink_interval;
         }
 
         // breath
@@ -61,6 +77,9 @@ namespace stackchan::display
         left_eye_->draw(canvas, expression_weight, palette);
         right_eye_->draw(canvas, expression_weight, palette);
         mouth_->draw(canvas, expression_weight, palette);
+
+        auto weight = expression_weight.get(stackchan::display::Expression::kBlink);
+        canvas.fillRect(0, 40, weight + 8, 10, TFT_GREEN);
     }
 
     void Face::autoScale()
