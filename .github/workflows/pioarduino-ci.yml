@@ -1,0 +1,42 @@
+# Build the Demo example with pioarduino (Arduino-ESP32 3.x) instead of the stock espressif32 platform.
+# pioarduino: https://github.com/pioarduino/platform-espressif32
+name: pioarduino CI
+
+on: [push, pull_request]
+
+env:
+  PIOARDUINO_PLATFORM: https://github.com/pioarduino/platform-espressif32/releases/download/stable/platform-espressif32.zip
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [./examples/Demo/Demo.ino]
+        pio_board: ["m5stack-core-esp32", "m5stack-core2", "m5stack-cores3"]
+
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/cache@v5
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.platformio
+        key: ${{ runner.os }}-pioarduino-${{ matrix.pio_board }}
+    - uses: actions/setup-python@v6
+      with:
+        python-version: '3.11'
+    - name: Install PlatformIO Core
+      run: pip install --upgrade platformio
+    - name: Build example with pioarduino
+      run: >
+        pio ci
+        --project-option="platform=$PIOARDUINO_PLATFORM"
+        --project-option="framework=arduino"
+        --project-option="lib_deps=M5Unified"
+        -l ./src
+        --board=$PIO_BOARD
+      env:
+        PLATFORMIO_CI_SRC: ${{ matrix.example }}
+        PIO_BOARD: ${{ matrix.pio_board }}
