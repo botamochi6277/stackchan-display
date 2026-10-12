@@ -1,6 +1,8 @@
 # StackChan Display
 
 [![PlatformIO CI](https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg)](https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml)
+[![pioarduino CI](https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml/badge.svg)](https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml)
+[![Doxygen](https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml/badge.svg)](https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml)
 
 > [!WARNING]
 > This library is WIP (*work in progress*) and unstable. Breaking changes can be installed easily!

@@ -1,11 +1,11 @@
-name: A job to build doxgen document and deploy it on github-pages
+name: doxygen CI
 on:
   push:
     branches:
       - main
       - master
-      - 'doxygen*'
-      - 'feature/doxygen*'
+      - "doxygen*"
+      - "feature/doxygen*"
   workflow_dispatch:
 
 jobs:
