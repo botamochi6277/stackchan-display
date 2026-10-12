@@ -76,7 +76,34 @@ Install this repository as an Arduino library.
 > [!NOTE]
 > TODO: write install command here
 
-[Demo.ino](./examples/Demo/Demo.ino) is a demo arduino file to draw stackchan faces, please build this.
+### Development
+
+```bash
+git clone https://github.com/botamochi6277/stackchan-display
+cd stackchan-display
+```
+
+[pioarduino](https://marketplace.visualstudio.com/items?itemName=pioarduino.pioarduino-ide) is required to build and upload. Please install it from VSCode extension marketplace.
+
+#### cores3
+
+[Demo.ino](./examples/Demo/Demo.ino) is a demo arduino sketch to draw stackchan faces, please copy and build this.
+
+```bash
+cp ./examples/Demo/Demo.ino ./src/main.cpp
+pio run -e cores3
+```
+
+#### native
+
+You can validate faces in PC.
+Download [sdl_main.cpp](https://github.com/m5stack/M5GFX/blob/master/examples/PlatformIO_SDL/src/sdl_main.cpp) and place it on `src/sdl_main.cpp`
+
+```bash
+pio run -e native -t upload
+```
+
+If you fail to upload, please retry by pioarduino VSCode extension.
 
 ---
 ---
