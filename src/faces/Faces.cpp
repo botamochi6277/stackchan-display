@@ -78,8 +78,9 @@ namespace stackchan::display
         right_eye_->draw(canvas, expression_weight, palette);
         mouth_->draw(canvas, expression_weight, palette);
 
-        auto weight = expression_weight.get(stackchan::display::Expression::kBlink);
-        canvas.fillRect(0, 40, weight + 8, 10, TFT_GREEN);
+        // bar plot for debugging the blink weight
+        // auto weight = expression_weight.get(stackchan::display::Expression::kBlink);
+        // canvas.fillRect(0, 40, weight + 8, 10, TFT_GREEN);
     }
 
     void Face::autoScale()
