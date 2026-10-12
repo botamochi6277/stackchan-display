@@ -10,5 +10,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "DrawingUtils.h", "_drawing_utils_8h_source.html", null ],
     [ "Expression.h", "_expression_8h_source.html", null ],
     [ "SpeechBalloon.h", "_speech_balloon_8h_source.html", null ],
-    [ "Vector.h", "_vector_8h_source.html", null ]
+    [ "Vector.h", "_vector_8h_source.html", null ],
+    [ "Waveform.h", "_waveform_8h_source.html", null ]
 ];

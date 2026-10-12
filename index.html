@@ -101,7 +101,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
-<p><a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg" alt="PlatformIO CI" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg" alt="PlatformIO CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml/badge.svg" alt="pioarduino CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a></p>
 <dl class="section warning"><dt>Warning</dt><dd>This library is WIP (<em>work in progress</em>) and unstable. Breaking changes can be installed easily!</dd></dl>
 <p>&lt;video src="https://github-production-user-asset-6210df.s3.amazonaws.com/14128408/598185770-549d8f23-19b5-4a1a-aad7-f31dbd15b2f8.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260526%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260526T125213Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=0ec3d94f839498ef60fea996151d3d9024a500fd0045fb1a1e28f94d940dfc4b&amp;X-Amz-SignedHeaders=host&amp;response-content-type=video%2Fmp4" controls loop&gt;&lt;/video&gt;</p>
 <p><em>StackChan display</em> is an Arduino library to display stackchan faces. <em>StackChan display</em> depends on only <a href="https://github.com/m5stack/M5Unified">U5Unified</a> and drawing with it.</p>
@@ -163,12 +163,26 @@ This Library Role for StackChan assembly</h1>
 How to use</h1>
 <p>Install this repository as an Arduino library.</p>
 <dl class="section note"><dt>Note</dt><dd>TODO: write install command here</dd></dl>
-<p><a href="./examples/Demo/Demo.ino">Demo.ino</a> is a demo arduino file to draw stackchan faces, please build this.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Development</h2>
+<div class="fragment"><div class="line">git clone https://github.com/botamochi6277/stackchan-display</div>
+<div class="line">cd stackchan-display</div>
+</div><!-- fragment --><p><a href="https://marketplace.visualstudio.com/items?itemName=pioarduino.pioarduino-ide">pioarduino</a> is required to build and upload. Please install it from VSCode extension marketplace.</p>
+<h3><a class="anchor" id="autotoc_md4"></a>
+cores3</h3>
+<p><a href="./examples/Demo/Demo.ino">Demo.ino</a> is a demo arduino sketch to draw stackchan faces, please copy and build this.</p>
+<div class="fragment"><div class="line">cp ./examples/Demo/Demo.ino ./src/main.cpp</div>
+<div class="line">pio run -e cores3</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+native</h3>
+<p>You can validate faces in PC. Download <a href="https://github.com/m5stack/M5GFX/blob/master/examples/PlatformIO_SDL/src/sdl_main.cpp">sdl_main.cpp</a> and place it on <code>src/sdl_main.cpp</code></p>
+<div class="fragment"><div class="line">pio run -e native -t upload</div>
+</div><!-- fragment --><p>If you fail to upload, please retry by pioarduino VSCode extension.</p>
 <hr  />
  <hr  />
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Developers Note</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Differences from m5stack-avatar</h2>
 <p>These changes are to improve functionality while keeping the code concise.</p>
 <ul>
@@ -177,7 +191,7 @@ Differences from m5stack-avatar</h2>
 <li>No <code>Avatar</code>: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. <code>Display</code> class in this library only controls display behaviors.</li>
 <li>No lip-sync</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 TODO for Developers</h2>
 <ul class="check">
 <li class="unchecked">Increase #decorators</li>
