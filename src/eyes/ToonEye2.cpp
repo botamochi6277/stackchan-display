@@ -51,8 +51,26 @@ namespace stackchan::display
         if (expression_weight.get(Expression::kSmile) > 127)
         {
             // smile eyelash
-            m5::fillArc(canvas, p2.x, p2.y, p3.x, p3.y, (p2.x + p3.x) / 2, p2.y - abs(p3.x - p2.x) / 4, eyelash_base_thickness, eyelash_color);
-            // TODO: draw triangle eyelash
+            m5::Vector2i apex = {(p2.x + p3.x) / 2, p2.y - abs(p3.x - p2.x) / 4};
+            m5::fillArc(canvas, p2.x, p2.y, p3.x, p3.y, apex.x, apex.y, eyelash_base_thickness, eyelash_color);
+
+            // triangle eyelash flicking out from the lateral end of the arc.
+            // It grows as the smile weight goes from the threshold (127) to full (255).
+            float grow = (expression_weight.get(Expression::kSmile) - 127) / 128.0f;
+            float dir = p2.x > p3.x ? 1.0f : -1.0f; // lateral direction
+            float arc_w = abs(p3.x - p2.x);
+
+            // the arc is approximated by a quadratic bezier whose midpoint is the apex
+            float cx = 2.0f * apex.x - (p2.x + p3.x) / 2.0f;
+            float cy = 2.0f * apex.y - (p2.y + p3.y) / 2.0f;
+            float t = 0.3f; // eyelash base spans the lateral 30% of the arc
+            float u = 1.0f - t;
+            m5::Vector2i base_in = {static_cast<int>(u * u * p2.x + 2 * u * t * cx + t * t * p3.x),
+                                    static_cast<int>(u * u * p2.y + 2 * u * t * cy + t * t * p3.y)};
+            m5::Vector2i lash_tip = {static_cast<int>(p2.x + dir * 0.12f * arc_w * grow),
+                                     static_cast<int>(p2.y - 0.3f * arc_w * grow)};
+            canvas.fillTriangle(lash_tip.x, lash_tip.y, p2.x, p2.y + eyelash_base_thickness / 2,
+                                base_in.x, base_in.y - eyelash_base_thickness / 2, eyelash_color);
 
             return; // do not draw eyelid when smiling
         }
