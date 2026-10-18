@@ -105,7 +105,38 @@ namespace stackchan::display
         }
     }
 
-    // TODO: implement function for lower eyelid
+    void BaseEye::drawLowerEyelid(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
+    {
+        uint8_t weight = expression_weight.get(Expression::kGrin);
+        if (weight <= 12)
+        {
+            return;
+        }
+
+        uint16_t skin_color = canvas.getColorDepth() == 1
+                                  ? 0
+                                  : (palette.contains(DrawingLocation::kSkin) ? palette.get(DrawingLocation::kSkin) : TFT_MAGENTA);
+
+        // the lid is a quadrilateral made of two triangles. Its top edge is slanted:
+        // the medial end rises the most, the lateral end only half as much.
+        //  right     left
+        //  q1--q4    q4--q1      q1,q4: top edge (lateral, medial)
+        //  |  /|     |\  |      q2,q3: bottom edge (lateral, medial)
+        //  q2--q3    q3--q2
+        int16_t eye_bottom = iris_position_.y + size_.height / 2 + 1; // ToonEye2 iris spans the full height
+        int16_t rise = (weight / 255.0f) * 0.45f * size_.height;
+        int16_t half_w = size_.width / 2 + 2;
+        int16_t lateral_x = is_left_ ? iris_position_.x + half_w : iris_position_.x - half_w;
+        int16_t medial_x = is_left_ ? iris_position_.x - half_w : iris_position_.x + half_w;
+
+        m5::Vector2i q1 = {lateral_x, eye_bottom - rise / 2};
+        m5::Vector2i q2 = {lateral_x, eye_bottom + 2};
+        m5::Vector2i q3 = {medial_x, eye_bottom + 2};
+        m5::Vector2i q4 = {medial_x, eye_bottom - rise};
+
+        canvas.fillTriangle(q1.x, q1.y, q2.x, q2.y, q3.x, q3.y, skin_color);
+        canvas.fillTriangle(q3.x, q3.y, q4.x, q4.y, q1.x, q1.y, skin_color);
+    }
 
     BaseEye::BaseEye(int16_t x, int16_t y, int16_t width, int16_t height, bool is_left) : BaseEye::BaseEye(x, y, width, height)
     {

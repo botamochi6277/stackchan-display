@@ -134,9 +134,6 @@ namespace stackchan::display
             tilt = (this->is_left_ ? ref_tilt : -ref_tilt) * (weight / 255.0f);
         }
 
-        weight = expression_weight.get(Expression::kGrin);
-        // TODO:
-
         weight = expression_weight.get(Expression::kSurprised);
         if (weight > 12)
         {
@@ -236,6 +233,7 @@ namespace stackchan::display
         {
             // iris
             this->drawIris(canvas, expression_weight, palette);
+            this->drawLowerEyelid(canvas, expression_weight, palette);
         }
 
         // eyelid

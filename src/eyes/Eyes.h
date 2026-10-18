@@ -36,6 +36,14 @@ namespace stackchan::display
     void updateSaccade(ExpressionWeight &expression_weight);
     float calculateOpenRatio(ExpressionWeight &expression_weight);
 
+    /**
+     * @brief Draw the lower eyelid pushed up by the cheek for the grin expression.
+     *
+     * The lid rises from the bottom of the eye in proportion to the kGrin weight.
+     * Call it after the iris is drawn and `iris_position_` is updated.
+     */
+    void drawLowerEyelid(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette);
+
   public:
     using FacialDrawable::FacialDrawable;
     BaseEye(int16_t x, int16_t y, int16_t width, int16_t height, bool is_left);
