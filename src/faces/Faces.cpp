@@ -40,16 +40,6 @@ namespace stackchan::display
         // blink
         if (is_auto_blink_)
         {
-            // if (expression_weight.get(Expression::kBlink) > 127)
-            // {
-            //     expression_weight.set(Expression::kBlink, 0);        // weight to open eye
-            //     blink_interval = auto_blink_interval_ + rand() % 20; // add random to avoid fixed interval
-            // }
-            // else
-            // {
-            //     expression_weight.set(Expression::kBlink, 255); // weight to close eye
-            //     blink_interval = blink_duration_;
-            // }
             expression_weight.set(Expression::kBlink, static_cast<unsigned char>(blink_signal * 255.0f));
         }
 

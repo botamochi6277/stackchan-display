@@ -11,14 +11,20 @@
 namespace stackchan::display
 {
 
-    // Stack-chan default face
-    // [・_・]
+    /**
+     * @brief Base face composed of two eyes and a mouth. Also the Stack-chan default face `[・_・]`.
+     *
+     * The face owns its parts through raw pointers so that they can be exchanged.
+     * Subclasses only pass differently shaped parts and coordinates (laid out for a 320x240 canvas)
+     * to the constructor. `updateState()` handles auto blink and breathing,
+     * and `draw()` fills the canvas with the skin color then draws the eyes and the mouth.
+     */
     class Face : public FacialDrawable
     {
     protected:
         // auto blink parameters
         bool is_auto_blink_ = true;
-        uint32_t auto_blink_interval_ = 3000; // 3 second
+        uint32_t auto_blink_interval_ = 3000; // [msec] base interval between blinks (a random offset is added)
         uint32_t last_blink_time_ = 0;
         uint32_t blink_duration_ = 200; // 0.2 seconds, which is the duration of closed eye
 
@@ -31,7 +37,16 @@ namespace stackchan::display
         BaseMouth *mouth_;
 
     public:
+        /// @brief Construct the default face
         Face();
+
+        /**
+         * @brief Construct a face from parts
+         *
+         * @param left_eye left eye (on the right side of the screen)
+         * @param right_eye right eye (on the left side of the screen)
+         * @param mouth mouth
+         */
         Face(BaseEye *left_eye,
              BaseEye *right_eye,
              BaseMouth *mouth);
@@ -51,29 +66,55 @@ namespace stackchan::display
             return mouth_;
         }
 
+        /// @brief Enable automatic blinking (enabled by default)
         void activateAutoBlink()
         {
             is_auto_blink_ = true;
         }
+        /// @brief Disable automatic blinking
         void deactivateAutoBlink()
         {
             is_auto_blink_ = false;
         }
+        /// @return true if automatic blinking is enabled
         bool getIsAutoBlink()
         {
             return is_auto_blink_;
         }
 
+        /**
+         * @brief Scale and move the parts to fit the screen size of `M5.Lcd`
+         *
+         * Parts are laid out for a 320x240 screen. Call this once after `M5.begin()`.
+         */
         void autoScale();
 
+        /**
+         * @brief Update time-dependent state: smooth auto blink and breathing
+         *
+         * The blink is a triangle pulse written to `Expression::kBlink`,
+         * and the breath is a sine wave written to `Expression::kBreath`.
+         *
+         * @param expression_weight weights to be updated
+         */
         virtual void updateState(ExpressionWeight &expression_weight);
+
+        /**
+         * @brief Fill the canvas with the skin color and draw the eyes and the mouth
+         *
+         * @param canvas off-screen canvas to draw on
+         * @param expression_weight expression weights used to blend the shapes
+         * @param palette colors of each facial location
+         */
         virtual void draw(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette) override;
         // virtual void update() override;
     };
 
     // custom faces
 
-    // [O O]
+    /**
+     * @brief `[O O]` face with tall ellipse eyes and no mouth
+     */
     class EllFace : public Face
     {
     public:
@@ -83,7 +124,9 @@ namespace stackchan::display
                         new BaseMouth(0, 0, 0, 0)) {};
     };
 
-    // [OωO]
+    /**
+     * @brief `[OωO]` face with ellipse eyes and an omega-shaped mouth
+     */
     class OmegaFace : public Face
     {
     public:
@@ -93,7 +136,9 @@ namespace stackchan::display
                           new OmegaMouth(160, 225, 72, 30)) {};
     };
 
-    // [▯ ▯]
+    /**
+     * @brief `[▯ ▯]` face with round-rectangle eyes and no mouth
+     */
     class RectFace : public Face
     {
     public:
@@ -103,6 +148,9 @@ namespace stackchan::display
                          new BaseMouth(0, 0, 0, 0)) {};
     };
 
+    /**
+     * @brief Toon face with eyelid-and-eyelash eyes (ToonEye1) and ToonMouth1
+     */
     class ToonFace1 : public Face
     {
     public:
@@ -112,6 +160,9 @@ namespace stackchan::display
                           new ToonMouth1(160, 222, 48, 24)) {};
     };
 
+    /**
+     * @brief Toon face with quadrilateral-eyelid eyes (ToonEye2) and an omega mouth
+     */
     class ToonFace2 : public Face
     {
     public:
