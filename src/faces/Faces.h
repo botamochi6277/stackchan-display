@@ -36,6 +36,15 @@ namespace stackchan::display
         BaseEye *right_eye_;
         BaseMouth *mouth_;
 
+        uint16_t hair_shadow_height_ = 0; // [px] on a 320x240 screen, 0 disables the shadow
+
+        /**
+         * @brief Draw things behind the facial components. Called right after the skin is filled.
+         *
+         * Draws the hair shadow by default.
+         */
+        virtual void drawBackground(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette);
+
     public:
         /// @brief Construct the default face
         Face();
@@ -80,6 +89,26 @@ namespace stackchan::display
         bool getIsAutoBlink()
         {
             return is_auto_blink_;
+        }
+
+        /**
+         * @brief Set the height of the hair shadow on the top of the face
+         *
+         * The shadow is darkest at the top edge and fades into the skin color.
+         * The color can be set with `DrawingLocation::kHairShadow` of the palette,
+         * otherwise a darkened skin color is used. The height is scaled by `autoScale()`.
+         *
+         * @param height height in pixels on a 320x240 screen. 0 disables the shadow.
+         */
+        void setHairShadowHeight(uint16_t height)
+        {
+            hair_shadow_height_ = height;
+        }
+
+        /// @return height of the hair shadow in pixels. 0 means no shadow.
+        uint16_t getHairShadowHeight() const
+        {
+            return hair_shadow_height_;
         }
 
         /**
@@ -157,7 +186,10 @@ namespace stackchan::display
         ToonFace1() : Face(
                           new ToonEye1(256, 163, 68, 60, true),
                           new ToonEye1(64, 163, 68, 60, false),
-                          new ToonMouth1(160, 222, 48, 24)) {};
+                          new ToonMouth1(160, 222, 48, 24))
+        {
+            hair_shadow_height_ = 48;
+        };
     };
 
     /**
@@ -169,7 +201,10 @@ namespace stackchan::display
         ToonFace2() : Face(
                           new ToonEye2(256, 163, 60, 84, true),
                           new ToonEye2(64, 163, 60, 84, false),
-                          new OmegaMouth(160, 225, 72, 30)) {};
+                          new OmegaMouth(160, 225, 72, 30))
+        {
+            hair_shadow_height_ = 48;
+        };
     };
 
 } // namespace stackchan::display

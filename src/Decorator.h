@@ -4,23 +4,25 @@
 
 namespace stackchan::display
 {
-    void drawBubble(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawBubble(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                     uint16_t color, float offset)
     {
+        uint32_t r = d / 2; // radius
         r = r + floor(r * 0.2 * offset);
         canvas.drawCircle(x, y, r, color);                         // outer circle
         canvas.drawCircle(x - (r / 4), y - (r / 4), r / 4, color); // inner circle
     }
 
-    void drawBubble(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawBubble(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                     uint16_t color)
     {
-        drawBubble(canvas, x, y, r, color, 0);
+        drawBubble(canvas, x, y, d, color, 0);
     }
 
-    void drawWaterDrop(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawWaterDrop(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                        uint16_t color, float offset)
     {
+        uint32_t r = d / 2; // radius
         y = y + floor(5 * offset);
         r = r + floor(r * 0.2 * offset);
         canvas.fillCircle(x, y, r, color);
@@ -29,30 +31,32 @@ namespace stackchan::display
                             color);
     }
 
-    void drawWaterDrop(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawWaterDrop(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                        uint16_t color)
     {
-        drawWaterDrop(canvas, x, y, r, color, 0);
+        drawWaterDrop(canvas, x, y, d, color, 0);
     }
 
-    void drawPaleMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawPaleMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                       uint16_t color, float offset)
     {
+        uint32_t r = d / 2; // radius
         uint32_t h = r + abs(r * 0.2 * offset);
         canvas.fillRect(x - (r / 2), y, 3, h / 2, color);
         canvas.fillRect(x, y, 3, h * 3 / 4, color);
         canvas.fillRect(x + (r / 2), y, 3, h, color);
     }
 
-    void drawPaleMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawPaleMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                       uint16_t color)
     {
-        drawPaleMark(canvas, x, y, r, color, 0);
+        drawPaleMark(canvas, x, y, d, color, 0);
     }
 
-    void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                        uint16_t color, uint16_t background_color, float offset)
     {
+        uint32_t r = d / 2; // radius
         r = r + abs(r * 0.4 * offset);
         canvas.fillRect(x - (r / 3), y - r, (r * 2) / 3, r * 2, color);
         canvas.fillRect(x - r, y - (r / 3), r * 2, (r * 2) / 3, color);
@@ -60,15 +64,16 @@ namespace stackchan::display
         canvas.fillRect(x - r, y - (r / 3) + 2, r * 2, ((r * 2) / 3) - 4, background_color);
     }
 
-    void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                        uint16_t color, uint16_t background_color)
     {
-        drawAngerMark(canvas, x, y, r, color, background_color, 0);
+        drawAngerMark(canvas, x, y, d, color, background_color, 0);
     }
 
-    void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                    uint16_t color, float offset)
     {
+        uint32_t r = d / 2; // radius
         r = r + floor(r * 0.4 * offset);
         canvas.fillCircle(x - r / 2, y, r / 2, color);
         canvas.fillCircle(x + r / 2, y, r / 2, color);
@@ -78,10 +83,10 @@ namespace stackchan::display
                             x + r / 2 + a, y + a, color);
     }
 
-    void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t r,
+    void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                    uint16_t color)
     {
-        drawHeart(canvas, x, y, r, color, 0);
+        drawHeart(canvas, x, y, d, color, 0);
     }
 
 }

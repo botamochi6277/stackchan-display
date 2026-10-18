@@ -23,7 +23,16 @@ namespace stackchan::display
         ColorPalette *color_palette_;
         SpeechBalloon speech_balloon_;
 
-        void drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette);
+        /**
+         * @brief Draw the mark of the current emotion (bubble, anger mark, water drop, pale mark, heart)
+         *
+         * @param expression_weight weights to choose the marks
+         * @param color_palette colors of the marks
+         * @param x center x of the mark in the canvas [px]
+         * @param y center y of the mark in the canvas [px]
+         */
+        void drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette,
+                                    int x = 320 - 40, int y = 40);
 
     public:
         Display() : canvas_(&M5.Lcd), expression_weight_(), speech_balloon_()
@@ -73,7 +82,8 @@ namespace stackchan::display
         {
             canvas_.createSprite(320, 240); // canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`
             face_->draw(canvas_, expression_weight_, *color_palette_);
-            drawEmotionalDecorator(expression_weight_, *color_palette_);
+            drawEmotionalDecorator(expression_weight_, *color_palette_,
+                                   canvas_.width() - 40, 40 + face_->getHairShadowHeight()); // draw the mark of the current emotion at the top-right corner
             speech_balloon_.draw(canvas_, *color_palette_);
         };
         /**
@@ -89,11 +99,9 @@ namespace stackchan::display
         };
     };
 
-    void Display::drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette)
+    void Display::drawEmotionalDecorator(ExpressionWeight &expression_weight, ColorPalette &color_palette, int x, int y)
     {
         // FIXME: this is a temporary implementation for testing, should be refactored to use Decorator pattern and support more decorators and emotions
-        int x = 320 - 40;
-        int y = 40;
         uint16_t color = canvas_.getColorDepth() == 1
                              ? 1
                              : color_palette_->get(DrawingLocation::kBalloonBackground);
@@ -104,11 +112,11 @@ namespace stackchan::display
         // canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)
         {
-            drawBubble(canvas_, x, y, 20, color);
+            drawBubble(canvas_, x, y, 40, color);
         }
         if (expression_weight.get(Expression::kAngry) > 128)
         {
-            drawAngerMark(canvas_, x, y, 20, color, background_color);
+            drawAngerMark(canvas_, x, y, 40, color, background_color);
         }
         if (expression_weight.get(Expression::kUpset) > 128)
         {
@@ -116,11 +124,11 @@ namespace stackchan::display
         }
         if (expression_weight.get(Expression::kSad) > 128)
         {
-            drawPaleMark(canvas_, x, y, 20, color);
+            drawPaleMark(canvas_, x, y, 40, color);
         }
         if (expression_weight.get(Expression::kSmile) > 128)
         {
-            drawHeart(canvas_, x, y, 20, color);
+            drawHeart(canvas_, x, y, 40, color);
         }
     }
 }
