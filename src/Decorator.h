@@ -54,20 +54,38 @@ namespace stackchan::display
     }
 
     void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
-                       uint16_t color, uint16_t background_color, float offset)
+                       uint16_t color, float offset)
     {
         uint32_t r = d / 2; // radius
         r = r + abs(r * 0.4 * offset);
-        canvas.fillRect(x - (r / 3), y - r, (r * 2) / 3, r * 2, color);
-        canvas.fillRect(x - r, y - (r / 3), r * 2, (r * 2) / 3, color);
-        canvas.fillRect(x - (r / 3) + 2, y - r, ((r * 2) / 3) - 4, r * 2, background_color);
-        canvas.fillRect(x - r, y - (r / 3) + 2, r * 2, ((r * 2) / 3) - 4, background_color);
+
+        // Four L-shaped brackets around an open cross, drawn with lines only.
+        //  | |
+        // _| |_
+        //
+        // ‾| |‾
+        //  | |
+        const int32_t g = r / 3; // half width of the open cross
+        for (int sx = -1; sx <= 1; sx += 2)
+        {
+            for (int sy = -1; sy <= 1; sy += 2)
+            {
+                int32_t corner_x = x + sx * g;
+                int32_t corner_y = y + sy * g;
+                // 2 px stroke: the second line is shifted away from the center to keep the gap width
+                for (int w = 0; w < 2; w++)
+                {
+                    canvas.drawLine(corner_x + sx * w, corner_y, corner_x + sx * w, y + sy * (int32_t)r, color); // vertical edge
+                    canvas.drawLine(corner_x, corner_y + sy * w, x + sx * (int32_t)r, corner_y + sy * w, color); // horizontal edge
+                }
+            }
+        }
     }
 
     void drawAngerMark(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
-                       uint16_t color, uint16_t background_color)
+                       uint16_t color)
     {
-        drawAngerMark(canvas, x, y, d, color, background_color, 0);
+        drawAngerMark(canvas, x, y, d, color, 0);
     }
 
     void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,

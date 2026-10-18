@@ -105,9 +105,6 @@ namespace stackchan::display
         uint16_t color = canvas_.getColorDepth() == 1
                              ? 1
                              : color_palette_->get(DrawingLocation::kBalloonBackground);
-        uint16_t background_color = canvas_.getColorDepth() == 1
-                                        ? 0
-                                        : color_palette_->get(DrawingLocation::kSkin);
 
         // canvas_.fillCircle(x, y, 40, TFT_GREEN);
         if (expression_weight.get(Expression::kSleepy) > 128)
@@ -116,7 +113,7 @@ namespace stackchan::display
         }
         if (expression_weight.get(Expression::kAngry) > 128)
         {
-            drawAngerMark(canvas_, x, y, 40, color, background_color);
+            drawAngerMark(canvas_, x, y, 40, color);
         }
         if (expression_weight.get(Expression::kUpset) > 128)
         {
