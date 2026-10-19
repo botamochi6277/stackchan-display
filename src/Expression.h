@@ -31,6 +31,8 @@ namespace stackchan::display
     kAa,
     // misc expressions
     kBreath,
+    // decoration expressions, not cleared by setEmotionalExpression()
+    kBlush, // cheek blush, drawn by Display
     // TODO: add more expressions
     kCount,
   };

@@ -88,6 +88,39 @@ namespace stackchan::display
         drawAngerMark(canvas, x, y, d, color, 0);
     }
 
+    /**
+     * @brief Draw a cheek blush as three slanted lines `///`
+     *
+     * @param canvas canvas to draw on
+     * @param x center x of the blush [px]
+     * @param y center y of the blush [px]
+     * @param d diameter of the blush [px]
+     * @param color color of the lines
+     * @param offset 0 is the normal size. Larger values make the blush bigger.
+     */
+    void drawBlush(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
+                   uint16_t color, float offset)
+    {
+        int32_t r = d / 2; // radius
+        r = r + floor(r * 0.2 * offset);
+        int32_t pitch = r / 2; // distance between the lines
+        for (int i = -1; i <= 1; i++)
+        {
+            int32_t cx = x + i * pitch;
+            // 2 px stroke, from bottom-left to top-right
+            for (int w = 0; w < 2; w++)
+            {
+                canvas.drawLine(cx - r / 4 + w, y + r / 2, cx + r / 4 + w, y - r / 2, color);
+            }
+        }
+    }
+
+    void drawBlush(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
+                   uint16_t color)
+    {
+        drawBlush(canvas, x, y, d, color, 0);
+    }
+
     void drawHeart(M5Canvas &canvas, uint32_t x, uint32_t y, uint32_t d,
                    uint16_t color, float offset)
     {
@@ -106,5 +139,11 @@ namespace stackchan::display
     {
         drawHeart(canvas, x, y, d, color, 0);
     }
+
+    // TODO: Implement simple cheek blush decorator, which can be drawn as a simple ellipse on the cheeks of the avatar. The color and size of the blush can be adjusted based on the expression weight and color palette.
+
+    // TODO: Implement cheek blush decorator with 3 lines
+
+    // TODO: Implement cheek blush decorator like m5stack/StackChan
 
 }
