@@ -144,9 +144,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a9cde0d91249829d85f258f917bab8882" id="r_a9cde0d91249829d85f258f917bab8882"><td class="memItemLeft" align="right" valign="top"><a id="a9cde0d91249829d85f258f917bab8882" name="a9cde0d91249829d85f258f917bab8882"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawEmotionalDecorator</b> (<a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette)</td></tr>
-<tr class="separator:a9cde0d91249829d85f258f917bab8882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff2b03f7ebf1ea57f311f4b7c4eff7d" id="r_a0ff2b03f7ebf1ea57f311f4b7c4eff7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">drawEmotionalDecorator</a> (<a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette, int x=320 - 40, int y=40)</td></tr>
+<tr class="memdesc:a0ff2b03f7ebf1ea57f311f4b7c4eff7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the mark of the current emotion (bubble, anger mark, water drop, pale mark, heart)  <br /></td></tr>
+<tr class="separator:a0ff2b03f7ebf1ea57f311f4b7c4eff7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609db4d40b5778e9d00631d6fefb27aa" id="r_a609db4d40b5778e9d00631d6fefb27aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a609db4d40b5778e9d00631d6fefb27aa">drawCheekDecorator</a> (<a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette)</td></tr>
+<tr class="memdesc:a609db4d40b5778e9d00631d6fefb27aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the cheek blush on both cheeks while <code>Expression::kBlush</code> or <code>Expression::kSmile</code> is strong.  <br /></td></tr>
+<tr class="separator:a609db4d40b5778e9d00631d6fefb27aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -166,6 +169,96 @@ M5Canvas&#160;</td><td class="memItemRight" valign="bottom"><b>canvas_</b></td><
 <a class="el" href="classstackchan_1_1display_1_1_speech_balloon.html">SpeechBalloon</a>&#160;</td><td class="memItemRight" valign="bottom"><b>speech_balloon_</b></td></tr>
 <tr class="separator:ae00b1ae653f562098b82644365d7bda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a609db4d40b5778e9d00631d6fefb27aa" name="a609db4d40b5778e9d00631d6fefb27aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609db4d40b5778e9d00631d6fefb27aa">&#9670;&#160;</a></span>drawCheekDecorator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Display::drawCheekDecorator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>expression_weight</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color_palette</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw the cheek blush on both cheeks while <code>Expression::kBlush</code> or <code>Expression::kSmile</code> is strong. </p>
+<p>The cheeks are placed between the eyes and the mouth of the current face, under each eye. The color is <code>DrawingLocation::kCheek1</code> of the palette (pink if not set).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expression_weight</td><td>weights to decide whether to draw </td></tr>
+    <tr><td class="paramname">color_palette</td><td>colors of the blush </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ff2b03f7ebf1ea57f311f4b7c4eff7d" name="a0ff2b03f7ebf1ea57f311f4b7c4eff7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">&#9670;&#160;</a></span>drawEmotionalDecorator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Display::drawEmotionalDecorator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>expression_weight</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>color_palette</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span><span class="paramdefsep"> = </span><span class="paramdefval">320&#160;-&#160;40</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span><span class="paramdefsep"> = </span><span class="paramdefval">40</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw the mark of the current emotion (bubble, anger mark, water drop, pale mark, heart) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expression_weight</td><td>weights to choose the marks </td></tr>
+    <tr><td class="paramname">color_palette</td><td>colors of the marks </td></tr>
+    <tr><td class="paramname">x</td><td>center x of the mark in the canvas [px] </td></tr>
+    <tr><td class="paramname">y</td><td>center y of the mark in the canvas [px] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="_display_8h_source.html">Display.h</a></li>
 </ul>

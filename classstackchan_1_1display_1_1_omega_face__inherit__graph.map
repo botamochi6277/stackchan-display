@@ -1,9 +1,9 @@
 <map id="stackchan::display::OmegaFace" name="stackchan::display::OmegaFace">
-<area shape="rect" id="Node000001" title=" " alt="" coords="21,1064,138,1146"/>
-<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title=" " alt="" coords="5,589,153,1016"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,1031,82,1065,77,1065,77,1031"/>
-<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="21,419,138,541"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,556,82,590,77,590,77,556"/>
-<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="12,5,147,371"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="82,386,82,420,77,420,77,386"/>
+<area shape="rect" id="Node000001" title="[OωO] face with ellipse eyes and an omega&#45;shaped mouth" alt="" coords="26,1146,143,1227"/>
+<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title="Base face composed of two eyes and a mouth. Also the Stack&#45;chan default face [・_・]." alt="" coords="5,589,164,1098"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,1113,88,1146,82,1146,82,1113"/>
+<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="26,419,143,541"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,556,88,590,82,590,82,556"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="17,5,152,371"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,386,88,420,82,420,82,386"/>
 </map>

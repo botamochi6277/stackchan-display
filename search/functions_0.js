@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getrotation_0',['getRotation',['../classstackchan_1_1display_1_1_drawable.html#a2003c76ed5cc4ee4df06e4a99eaac493',1,'stackchan::display::Drawable']]]
+  ['activateautoblink_0',['activateAutoBlink',['../classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b',1,'stackchan::display::Face']]],
+  ['autoscale_1',['autoScale',['../classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952',1,'stackchan::display::Face']]]
 ];

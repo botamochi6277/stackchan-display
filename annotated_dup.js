@@ -6,7 +6,7 @@ var annotated_dup =
     ] ],
     [ "stackchan", null, [
       [ "display", null, [
-        [ "BaseEye", "classstackchan_1_1display_1_1_base_eye.html", null ],
+        [ "BaseEye", "classstackchan_1_1display_1_1_base_eye.html", "classstackchan_1_1display_1_1_base_eye" ],
         [ "BaseMouth", "classstackchan_1_1display_1_1_base_mouth.html", null ],
         [ "ColorPalette", "classstackchan_1_1display_1_1_color_palette.html", null ],
         [ "Display", "classstackchan_1_1display_1_1_display.html", "classstackchan_1_1display_1_1_display" ],
@@ -15,7 +15,7 @@ var annotated_dup =
         [ "EllipseEye", "classstackchan_1_1display_1_1_ellipse_eye.html", null ],
         [ "ExpressionWeight", "classstackchan_1_1display_1_1_expression_weight.html", null ],
         [ "Eye", "classstackchan_1_1display_1_1_eye.html", null ],
-        [ "Face", "classstackchan_1_1display_1_1_face.html", null ],
+        [ "Face", "classstackchan_1_1display_1_1_face.html", "classstackchan_1_1display_1_1_face" ],
         [ "FacialDrawable", "classstackchan_1_1display_1_1_facial_drawable.html", null ],
         [ "Mouth", "classstackchan_1_1display_1_1_mouth.html", null ],
         [ "OmegaFace", "classstackchan_1_1display_1_1_omega_face.html", null ],

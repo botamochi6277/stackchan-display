@@ -1,15 +1,15 @@
 <map id="stackchan::display::Face" name="stackchan::display::Face">
-<area shape="rect" id="Node000001" title=" " alt="" coords="272,589,420,1016"/>
-<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_ell_face.html" title=" " alt="" coords="5,1064,122,1146"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="264,895,102,1067,99,1063,260,891"/>
-<area shape="rect" id="Node000005" href="$classstackchan_1_1display_1_1_omega_face.html" title=" " alt="" coords="147,1064,263,1146"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="268,976,226,1065,221,1063,264,973"/>
-<area shape="rect" id="Node000006" href="$classstackchan_1_1display_1_1_rect_face.html" title=" " alt="" coords="288,1064,405,1146"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="349,1031,349,1065,344,1065,344,1031"/>
-<area shape="rect" id="Node000007" href="$classstackchan_1_1display_1_1_toon_face1.html" title=" " alt="" coords="429,1064,546,1146"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="429,973,472,1063,467,1065,424,976"/>
-<area shape="rect" id="Node000008" href="$classstackchan_1_1display_1_1_toon_face2.html" title=" " alt="" coords="571,1064,687,1146"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="432,891,594,1063,590,1067,429,895"/>
+<area shape="rect" id="Node000001" title="Base face composed of two eyes and a mouth. Also the Stack&#45;chan default face [・_・]." alt="" coords="267,589,426,1098"/>
+<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_ell_face.html" title="[O O] face with tall ellipse eyes and no mouth" alt="" coords="5,1146,122,1227"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="259,954,98,1148,94,1144,255,951"/>
+<area shape="rect" id="Node000005" href="$classstackchan_1_1display_1_1_omega_face.html" title="[OωO] face with ellipse eyes and an omega&#45;shaped mouth" alt="" coords="147,1146,263,1227"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="264,1051,224,1147,219,1145,259,1049"/>
+<area shape="rect" id="Node000006" href="$classstackchan_1_1display_1_1_rect_face.html" title="[▯ ▯] face with round&#45;rectangle eyes and no mouth" alt="" coords="288,1146,405,1227"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="349,1113,349,1146,344,1146,344,1113"/>
+<area shape="rect" id="Node000007" href="$classstackchan_1_1display_1_1_toon_face1.html" title="Toon face with eyelid&#45;and&#45;eyelash eyes (ToonEye1) and ToonMouth1." alt="" coords="429,1146,546,1227"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="434,1049,474,1145,469,1147,429,1051"/>
+<area shape="rect" id="Node000008" href="$classstackchan_1_1display_1_1_toon_face2.html" title="Toon face with quadrilateral&#45;eyelid eyes (ToonEye2) and an omega mouth." alt="" coords="571,1146,687,1227"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="438,951,599,1144,595,1148,434,954"/>
 <area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="288,419,405,541"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="349,556,349,590,344,590,344,556"/>
 <area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="279,5,414,371"/>

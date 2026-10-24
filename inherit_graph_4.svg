@@ -97,7 +97,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="classstackchan_1_1display_1_1_face.html" target="_top" xlink:title=" ">
+<g id="a_Node000012"><a xlink:href="classstackchan_1_1display_1_1_face.html" target="_top" xlink:title="Base face composed of two eyes and a mouth. Also the Stack&#45;chan default face [・_・].">
 <polygon fill="white" stroke="#666666" points="358.5,-153.5 263,-153.5 263,-123 358.5,-123 358.5,-153.5"/>
 <text text-anchor="start" x="271" y="-140" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="310.75" y="-128.75" font-family="Helvetica,sans-Serif" font-size="10.00">::Face</text>
@@ -267,7 +267,7 @@
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="classstackchan_1_1display_1_1_ell_face.html" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="classstackchan_1_1display_1_1_ell_face.html" target="_top" xlink:title="[O O] face with tall ellipse eyes and no mouth">
 <polygon fill="white" stroke="#666666" points="500.12,-226.5 404.62,-226.5 404.62,-196 500.12,-196 500.12,-226.5"/>
 <text text-anchor="start" x="412.62" y="-213" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="452.38" y="-201.75" font-family="Helvetica,sans-Serif" font-size="10.00">::EllFace</text>
@@ -286,7 +286,7 @@
 <!-- Node14 -->
 <g id="Node000014" class="node">
 <title>Node14</title>
-<g id="a_Node000014"><a xlink:href="classstackchan_1_1display_1_1_omega_face.html" target="_top" xlink:title=" ">
+<g id="a_Node000014"><a xlink:href="classstackchan_1_1display_1_1_omega_face.html" target="_top" xlink:title="[OωO] face with ellipse eyes and an omega&#45;shaped mouth">
 <polygon fill="white" stroke="#666666" points="500.12,-177.5 404.62,-177.5 404.62,-147 500.12,-147 500.12,-177.5"/>
 <text text-anchor="start" x="412.62" y="-164" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="452.38" y="-152.75" font-family="Helvetica,sans-Serif" font-size="10.00">::OmegaFace</text>
@@ -305,7 +305,7 @@
 <!-- Node15 -->
 <g id="Node000015" class="node">
 <title>Node15</title>
-<g id="a_Node000015"><a xlink:href="classstackchan_1_1display_1_1_rect_face.html" target="_top" xlink:title=" ">
+<g id="a_Node000015"><a xlink:href="classstackchan_1_1display_1_1_rect_face.html" target="_top" xlink:title="[▯ ▯] face with round&#45;rectangle eyes and no mouth">
 <polygon fill="white" stroke="#666666" points="500.12,-128.5 404.62,-128.5 404.62,-98 500.12,-98 500.12,-128.5"/>
 <text text-anchor="start" x="412.62" y="-115" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="452.38" y="-103.75" font-family="Helvetica,sans-Serif" font-size="10.00">::RectFace</text>
@@ -324,7 +324,7 @@
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="classstackchan_1_1display_1_1_toon_face1.html" target="_top" xlink:title=" ">
+<g id="a_Node000016"><a xlink:href="classstackchan_1_1display_1_1_toon_face1.html" target="_top" xlink:title="Toon face with eyelid&#45;and&#45;eyelash eyes (ToonEye1) and ToonMouth1.">
 <polygon fill="white" stroke="#666666" points="500.12,-79.5 404.62,-79.5 404.62,-49 500.12,-49 500.12,-79.5"/>
 <text text-anchor="start" x="412.62" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="452.38" y="-54.75" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace1</text>
@@ -343,7 +343,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="classstackchan_1_1display_1_1_toon_face2.html" target="_top" xlink:title=" ">
+<g id="a_Node000017"><a xlink:href="classstackchan_1_1display_1_1_toon_face2.html" target="_top" xlink:title="Toon face with quadrilateral&#45;eyelid eyes (ToonEye2) and an omega mouth.">
 <polygon fill="white" stroke="#666666" points="500.12,-30.5 404.62,-30.5 404.62,0 500.12,0 500.12,-30.5"/>
 <text text-anchor="start" x="412.62" y="-17" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
 <text text-anchor="middle" x="452.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace2</text>

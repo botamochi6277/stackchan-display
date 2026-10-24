@@ -103,7 +103,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
 <p><a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/platformio-ci.yml/badge.svg" alt="PlatformIO CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/pioarduino-ci.yml/badge.svg" alt="pioarduino CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml"><img src="https://github.com/botamochi6277/stackchan-display/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a></p>
 <dl class="section warning"><dt>Warning</dt><dd>This library is WIP (<em>work in progress</em>) and unstable. Breaking changes can be installed easily!</dd></dl>
-<p>&lt;video src="https://github-production-user-asset-6210df.s3.amazonaws.com/14128408/598185770-549d8f23-19b5-4a1a-aad7-f31dbd15b2f8.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260526%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20260526T125213Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=0ec3d94f839498ef60fea996151d3d9024a500fd0045fb1a1e28f94d940dfc4b&amp;X-Amz-SignedHeaders=host&amp;response-content-type=video%2Fmp4" controls loop&gt;&lt;/video&gt;</p>
+<p><a href="https://github.com/user-attachments/assets/157a35d0-1dbd-4f46-ab33-0edde914f29c">https://github.com/user-attachments/assets/157a35d0-1dbd-4f46-ab33-0edde914f29c</a></p>
 <p><em>StackChan display</em> is an Arduino library to display stackchan faces. <em>StackChan display</em> depends on only <a href="https://github.com/m5stack/M5Unified">U5Unified</a> and drawing with it.</p>
 <p>This library is based on <a href="https://github.com/stack-chan/m5stack-avatar">stack-chan/m5stack-avatar</a>, <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a>, and <a href="https://github.com/m5stack/StackChan">m5stack/StackChan</a>.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
@@ -160,29 +160,82 @@ This Library Role for StackChan assembly</h1>
 <div class="line"> </div>
 <div class="line">planning--&gt;speaker</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+Features</h1>
+<ul>
+<li>6 faces: <code>Face</code> (default), <code>ToonFace1</code>, <code>ToonFace2</code>, <code>EllFace</code>, <code>OmegaFace</code>, <code>RectFace</code></li>
+<li>10 emotional expressions blended by weights (0-255): neutral, angry, sad, doubt, sleepy, smile, grin, surprised, upset, relax</li>
+<li>Smooth auto-blink and breathing</li>
+<li>Face parts that follow the expression: eyelash (smile), lower eyelid (grin), hair shadow (toon faces)</li>
+<li>Decorators that appear with the emotion: bubble (sleepy), anger mark (angry), water drop (upset), pale mark (sad), heart (smile) and cheek blush (smile)</li>
+<li>Speech balloon</li>
+<li>Color palette and <code>autoScale()</code> for various screen sizes</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
 How to use</h1>
-<p>Install this repository as an Arduino library.</p>
-<dl class="section note"><dt>Note</dt><dd>TODO: write install command here</dd></dl>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<p>Install this repository as an Arduino library. Add it to <code>lib_deps</code> of your <code>platformio.ini</code>:</p>
+<div class="fragment"><div class="line">[env:m5stack-cores3]</div>
+<div class="line">platform = https://github.com/pioarduino/platform-espressif32/releases/download/stable/platform-espressif32.zip</div>
+<div class="line">board = m5stack-cores3</div>
+<div class="line">framework = arduino</div>
+<div class="line">lib_deps =</div>
+<div class="line">  m5stack/M5Unified</div>
+<div class="line">  https://github.com/botamochi6277/stackchan-display.git</div>
+</div><!-- fragment --><p>The stock <code>espressif32</code> platform also works (see CI below).</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;M5Unified.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Display.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classstackchan_1_1display_1_1_display.html">stackchan::display::Display</a> stackchan_display;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">  M5.begin(M5.config());</div>
+<div class="line">  stackchan_display.getFace()-&gt;<a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952">autoScale</a>(); <span class="comment">// fit the face to the screen size</span></div>
+<div class="line">  stackchan_display.getExpressionWeight().setEmotionalExpression(</div>
+<div class="line">      stackchan::display::Expression::kSmile, 255); <span class="comment">// decorators appear automatically</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">  M5.update();</div>
+<div class="line">  stackchan_display.<a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">update</a>(); <span class="comment">// draw one frame</span></div>
+<div class="line">  delay(33);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html">stackchan::display::Display</a></div><div class="ttdef"><b>Definition</b> Display.h:16</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html_a940b105b6fb8dbcc6e23be0ee08fa246"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">stackchan::display::Display::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Update avatar, trigger all elements, decorators and modifiers to update.</div><div class="ttdef"><b>Definition</b> Display.h:125</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_aa5e49c8d027bc0c5f58a74e93b2ca952"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952">stackchan::display::Face::autoScale</a></div><div class="ttdeci">void autoScale()</div><div class="ttdoc">Scale and move the parts to fit the screen size of M5.Lcd</div><div class="ttdef"><b>Definition</b> Faces.cpp:113</div></div>
+</div><!-- fragment --><p>See <a href="./examples/Demo/Demo.ino">Demo.ino</a> for switching faces, palettes and expressions. The API reference is generated by Doxygen and deployed to GitHub Pages.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+CI</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">workflow   </th><th class="markdownTableHeadNone">what it checks    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="./.github/workflows/platformio-ci.yml">PlatformIO CI</a>   </td><td class="markdownTableBodyNone">builds the Demo with the stock <code>espressif32</code> platform for <code>m5stack-core-esp32</code>, <code>m5stack-core2</code> and <code>m5stack-cores3</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a href="./.github/workflows/pioarduino-ci.yml">pioarduino CI</a>   </td><td class="markdownTableBodyNone">builds the Demo with <a href="https://github.com/pioarduino/platform-espressif32">pioarduino</a> (Arduino-ESP32 3.x / ESP-IDF 5.x) for the same boards    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="./.github/workflows/doxygen.yml">Doxygen</a>   </td><td class="markdownTableBodyNone">builds the documents and deploys them to GitHub Pages   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Development</h2>
 <div class="fragment"><div class="line">git clone https://github.com/botamochi6277/stackchan-display</div>
 <div class="line">cd stackchan-display</div>
 </div><!-- fragment --><p><a href="https://marketplace.visualstudio.com/items?itemName=pioarduino.pioarduino-ide">pioarduino</a> is required to build and upload. Please install it from VSCode extension marketplace.</p>
-<h3><a class="anchor" id="autotoc_md4"></a>
+<h3><a class="anchor" id="autotoc_md6"></a>
 cores3</h3>
 <p><a href="./examples/Demo/Demo.ino">Demo.ino</a> is a demo arduino sketch to draw stackchan faces, please copy and build this.</p>
 <div class="fragment"><div class="line">cp ./examples/Demo/Demo.ino ./src/main.cpp</div>
 <div class="line">pio run -e cores3</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 native</h3>
 <p>You can validate faces in PC. Download <a href="https://github.com/m5stack/M5GFX/blob/master/examples/PlatformIO_SDL/src/sdl_main.cpp">sdl_main.cpp</a> and place it on <code>src/sdl_main.cpp</code></p>
 <div class="fragment"><div class="line">pio run -e native -t upload</div>
 </div><!-- fragment --><p>If you fail to upload, please retry by pioarduino VSCode extension.</p>
 <hr  />
  <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Developers Note</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Differences from m5stack-avatar</h2>
 <p>These changes are to improve functionality while keeping the code concise.</p>
 <ul>
@@ -191,10 +244,19 @@ Differences from m5stack-avatar</h2>
 <li>No <code>Avatar</code>: "Avatar" has to control whole behaviors of stackchan including motor motions and audio behaviors. <code>Display</code> class in this library only controls display behaviors.</li>
 <li>No lip-sync</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 TODO for Developers</h2>
 <ul class="check">
 <li class="unchecked">Increase #decorators</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Move <code>Display::drawEmotionalDecorator</code> to the <code>Decorator</code> pattern</li>
+</ul>
+<ul class="check">
+<li class="unchecked">ESP-IDF example and CI</li>
+</ul>
+<ul class="check">
+<li class="checked">Add hair shadow, eyelash, lower eyelid and cheek blush</li>
 </ul>
 <ul class="check">
 <li class="checked">Migrate more faces from <a href="https://github.com/botamochi6277/m5stack-avatar">botamochi6277/m5stack-avatar</a></li>

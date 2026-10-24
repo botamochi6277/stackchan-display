@@ -126,111 +126,141 @@ $(function(){initNavTree('_display_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> *color_palette_;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_speech_balloon.html">SpeechBalloon</a> speech_balloon_;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">void</span> drawEmotionalDecorator(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_display.html">Display</a>() : canvas_(&amp;M5.Lcd), expression_weight_(), speech_balloon_()</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            face_ = <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            color_palette_ = <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        };</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a> *getFace()</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">return</span> face_;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> setFace(<a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a> *face)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            face_ = face;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;getExpressionWeight()</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">return</span> expression_weight_;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_speech_balloon.html">SpeechBalloon</a> &amp;getSpeechBalloon()</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">return</span> speech_balloon_;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> *getColorPalette()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> color_palette_;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> setColorPalette(<a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> *color_palette)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            color_palette_ = color_palette;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        M5Canvas &amp;getCanvas()</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">return</span> canvas_;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// void setCanvas(M5Canvas &amp;canvas)</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// {</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">//     canvas_ = canvas;</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// }</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            canvas_.createSprite(320, 240); <span class="comment">// canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            face_-&gt;draw(canvas_, expression_weight_, *color_palette_);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            drawEmotionalDecorator(expression_weight_, *color_palette_);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            speech_balloon_.draw(canvas_, *color_palette_);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        };</div>
-<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">   83</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">update</a>()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">drawEmotionalDecorator</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                                    <span class="keywordtype">int</span> x = 320 - 40, <span class="keywordtype">int</span> y = 40);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_display.html#a609db4d40b5778e9d00631d6fefb27aa">   46</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a609db4d40b5778e9d00631d6fefb27aa">drawCheekDecorator</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="comment">// the blush appears automatically with a smile, or on demand with kBlush</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">if</span> (expression_weight.get(Expression::kBlush) &lt;= 128 &amp;&amp; expression_weight.get(Expression::kSmile) &lt;= 128)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            uint16_t color = canvas_.getColorDepth() == 1</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                 ? 1</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                 : (color_palette.contains(DrawingLocation::kCheek1) ? color_palette.get(DrawingLocation::kCheek1) : TFT_PINK);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *eyes[2] = {face_-&gt;getLeftEye(), face_-&gt;getRightEye()};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">int</span> mouth_y = face_-&gt;getMouth()-&gt;getPosition().y;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> eye : eyes)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordtype">int</span> eye_bottom = eye-&gt;getPosition().y + eye-&gt;getSize().height / 2;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="keywordtype">int</span> y = (eye_bottom + mouth_y) / 2;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                drawBlush(canvas_, eye-&gt;getPosition().x, y, eye-&gt;getSize().width * 0.6f, color);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_display.html">Display</a>() : canvas_(&amp;M5.Lcd), expression_weight_(), speech_balloon_()</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            face_ = <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            color_palette_ = <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        };</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        Face *getFace()</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> face_;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">void</span> setFace(Face *face)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            face_ = face;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        ExpressionWeight &amp;getExpressionWeight()</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            face_-&gt;updateState(expression_weight_);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            this-&gt;draw(expression_weight_, *color_palette_);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            canvas_.pushSprite(0, 0);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            canvas_.deleteSprite();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        };</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">return</span> expression_weight_;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        SpeechBalloon &amp;getSpeechBalloon()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> speech_balloon_;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        ColorPalette *getColorPalette()</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">return</span> color_palette_;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordtype">void</span> setColorPalette(ColorPalette *color_palette)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            color_palette_ = color_palette;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        M5Canvas &amp;getCanvas()</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="keywordflow">return</span> canvas_;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="comment">// void setCanvas(M5Canvas &amp;canvas)</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="comment">// {</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">//     canvas_ = canvas;</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">// }</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(ExpressionWeight &amp;expression_weight, ColorPalette &amp;palette)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            canvas_.createSprite(320, 240); <span class="comment">// canvas_.width() and canvas_.height() can be used if the canvas size is not fixed`</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            face_-&gt;<a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#acff08c9b3e18a5fe09ecd127ee8c6779">draw</a>(canvas_, expression_weight_, *color_palette_);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">drawEmotionalDecorator</a>(expression_weight_, *color_palette_,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                   canvas_.width() - 40, 40 + face_-&gt;<a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">getHairShadowHeight</a>()); <span class="comment">// draw the mark of the current emotion at the top-right corner</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a609db4d40b5778e9d00631d6fefb27aa">drawCheekDecorator</a>(expression_weight_, *color_palette_);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            speech_balloon_.draw(canvas_, *color_palette_);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        };</div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">  125</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">update</a>()</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            face_-&gt;<a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a107d4d67627f0adcafe7b2fc2274c516">updateState</a>(expression_weight_);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            this-&gt;draw(expression_weight_, *color_palette_);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            canvas_.pushSprite(0, 0);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            canvas_.deleteSprite();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        };</div>
 </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    };</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    };</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> Display::drawEmotionalDecorator(ExpressionWeight &amp;expression_weight, ColorPalette &amp;color_palette)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// FIXME: this is a temporary implementation for testing, should be refactored to use Decorator pattern and support more decorators and emotions</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordtype">int</span> x = 320 - 40;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordtype">int</span> y = 40;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        uint16_t color = canvas_.getColorDepth() == 1</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                             ? 1</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                             : color_palette_-&gt;get(DrawingLocation::kBalloonBackground);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        uint16_t background_color = canvas_.getColorDepth() == 1</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                        ? 0</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                        : color_palette_-&gt;get(DrawingLocation::kSkin);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="comment">// canvas_.fillCircle(x, y, 40, TFT_GREEN);</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSleepy) &gt; 128)</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            drawBubble(canvas_, x, y, 20, color);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kAngry) &gt; 128)</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            drawAngerMark(canvas_, x, y, 20, color, background_color);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kUpset) &gt; 128)</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            drawWaterDrop(canvas_, x, y, 20, color);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSad) &gt; 128)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            drawPaleMark(canvas_, x, y, 20, color);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSmile) &gt; 128)</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            drawHeart(canvas_, x, y, 20, color);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_color_palette_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_color_palette.html">stackchan::display::ColorPalette</a></div><div class="ttdef"><b>Definition</b> ColorPalette.h:48</div></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_display.html#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">  134</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_display.html#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">Display::drawEmotionalDecorator</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;color_palette, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="comment">// FIXME: this is a temporary implementation for testing, should be refactored to use Decorator pattern and support more decorators and emotions</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        uint16_t color = canvas_.getColorDepth() == 1</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                             ? 1</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                             : color_palette_-&gt;get(DrawingLocation::kBalloonBackground);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="comment">// canvas_.fillCircle(x, y, 40, TFT_GREEN);</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSleepy) &gt; 128)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            drawBubble(canvas_, x, y, 40, color);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kAngry) &gt; 128)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            drawAngerMark(canvas_, x, y, 40, color);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kUpset) &gt; 128)</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            drawWaterDrop(canvas_, x, y, 20, color);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSad) &gt; 128)</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            drawPaleMark(canvas_, x, y, 40, color);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">if</span> (expression_weight.get(Expression::kSmile) &gt; 128)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            drawHeart(canvas_, x, y, 40, color);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_base_eye_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_base_eye.html">stackchan::display::BaseEye</a></div><div class="ttdoc">Base class for Eye, draw nothing.</div><div class="ttdef"><b>Definition</b> Eyes.h:23</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_color_palette_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_color_palette.html">stackchan::display::ColorPalette</a></div><div class="ttdef"><b>Definition</b> ColorPalette.h:50</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_display_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html">stackchan::display::Display</a></div><div class="ttdef"><b>Definition</b> Display.h:16</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html_a940b105b6fb8dbcc6e23be0ee08fa246"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">stackchan::display::Display::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Update avatar, trigger all elements, decorators and modifiers to update.</div><div class="ttdef"><b>Definition</b> Display.h:83</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_expression_weight_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_expression_weight.html">stackchan::display::ExpressionWeight</a></div><div class="ttdef"><b>Definition</b> Expression.h:39</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html">stackchan::display::Face</a></div><div class="ttdef"><b>Definition</b> Faces.h:17</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html_a0ff2b03f7ebf1ea57f311f4b7c4eff7d"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html#a0ff2b03f7ebf1ea57f311f4b7c4eff7d">stackchan::display::Display::drawEmotionalDecorator</a></div><div class="ttdeci">void drawEmotionalDecorator(ExpressionWeight &amp;expression_weight, ColorPalette &amp;color_palette, int x=320 - 40, int y=40)</div><div class="ttdoc">Draw the mark of the current emotion (bubble, anger mark, water drop, pale mark, heart)</div><div class="ttdef"><b>Definition</b> Display.h:134</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html_a609db4d40b5778e9d00631d6fefb27aa"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html#a609db4d40b5778e9d00631d6fefb27aa">stackchan::display::Display::drawCheekDecorator</a></div><div class="ttdeci">void drawCheekDecorator(ExpressionWeight &amp;expression_weight, ColorPalette &amp;color_palette)</div><div class="ttdoc">Draw the cheek blush on both cheeks while Expression::kBlush or Expression::kSmile is strong.</div><div class="ttdef"><b>Definition</b> Display.h:46</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_display_html_a940b105b6fb8dbcc6e23be0ee08fa246"><div class="ttname"><a href="classstackchan_1_1display_1_1_display.html#a940b105b6fb8dbcc6e23be0ee08fa246">stackchan::display::Display::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Update avatar, trigger all elements, decorators and modifiers to update.</div><div class="ttdef"><b>Definition</b> Display.h:125</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_expression_weight_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_expression_weight.html">stackchan::display::ExpressionWeight</a></div><div class="ttdef"><b>Definition</b> Expression.h:41</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html">stackchan::display::Face</a></div><div class="ttdoc">Base face composed of two eyes and a mouth. Also the Stack-chan default face [・_・].</div><div class="ttdef"><b>Definition</b> Faces.h:23</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a107d4d67627f0adcafe7b2fc2274c516"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a107d4d67627f0adcafe7b2fc2274c516">stackchan::display::Face::updateState</a></div><div class="ttdeci">virtual void updateState(ExpressionWeight &amp;expression_weight)</div><div class="ttdoc">Update time-dependent state: smooth auto blink and breathing.</div><div class="ttdef"><b>Definition</b> Faces.cpp:23</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ac4f08f419fd345b983d65509cac8c49c"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">stackchan::display::Face::getHairShadowHeight</a></div><div class="ttdeci">uint16_t getHairShadowHeight() const</div><div class="ttdef"><b>Definition</b> Faces.h:109</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_acff08c9b3e18a5fe09ecd127ee8c6779"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#acff08c9b3e18a5fe09ecd127ee8c6779">stackchan::display::Face::draw</a></div><div class="ttdeci">virtual void draw(M5Canvas &amp;canvas, ExpressionWeight &amp;expression_weight, ColorPalette &amp;palette) override</div><div class="ttdoc">Fill the canvas with the skin color and draw the eyes and the mouth.</div><div class="ttdef"><b>Definition</b> Faces.cpp:58</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_speech_balloon_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_speech_balloon.html">stackchan::display::SpeechBalloon</a></div><div class="ttdef"><b>Definition</b> SpeechBalloon.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

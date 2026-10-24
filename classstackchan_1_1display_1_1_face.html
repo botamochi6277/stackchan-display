@@ -99,11 +99,17 @@ $(function(){initNavTree('classstackchan_1_1display_1_1_face.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classstackchan_1_1display_1_1_face-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">stackchan::display::Face Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base face composed of two eyes and a mouth. Also the Stack-chan default face <code>[・_・]</code>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_faces_8h_source.html">Faces.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for stackchan::display::Face:</div>
 <div class="dyncontent">
@@ -117,8 +123,12 @@ Collaboration diagram for stackchan::display::Face:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aabd7c897aaafe49fc6c4e5b1ce8ba8df" id="r_aabd7c897aaafe49fc6c4e5b1ce8ba8df"><td class="memItemLeft" align="right" valign="top"><a id="aabd7c897aaafe49fc6c4e5b1ce8ba8df" name="aabd7c897aaafe49fc6c4e5b1ce8ba8df"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Face</b> (<a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye, <a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye, <a class="el" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth)</td></tr>
+<tr class="memitem:a5536fd9f7dfe55156e1d682e6cf30352" id="r_a5536fd9f7dfe55156e1d682e6cf30352"><td class="memItemLeft" align="right" valign="top"><a id="a5536fd9f7dfe55156e1d682e6cf30352" name="a5536fd9f7dfe55156e1d682e6cf30352"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Face</b> ()</td></tr>
+<tr class="memdesc:a5536fd9f7dfe55156e1d682e6cf30352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the default face. <br /></td></tr>
+<tr class="separator:a5536fd9f7dfe55156e1d682e6cf30352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabd7c897aaafe49fc6c4e5b1ce8ba8df" id="r_aabd7c897aaafe49fc6c4e5b1ce8ba8df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabd7c897aaafe49fc6c4e5b1ce8ba8df">Face</a> (<a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye, <a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye, <a class="el" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth)</td></tr>
+<tr class="memdesc:aabd7c897aaafe49fc6c4e5b1ce8ba8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a face from parts.  <br /></td></tr>
 <tr class="separator:aabd7c897aaafe49fc6c4e5b1ce8ba8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11adce5cd6b900a0e4dd47e40f9cfaf3" id="r_a11adce5cd6b900a0e4dd47e40f9cfaf3"><td class="memItemLeft" align="right" valign="top"><a id="a11adce5cd6b900a0e4dd47e40f9cfaf3" name="a11adce5cd6b900a0e4dd47e40f9cfaf3"></a>
 <a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getLeftEye</b> ()</td></tr>
@@ -131,20 +141,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5e4214e970ca237b36c1b32f1e1cb56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a179c05dec9e2bb8557f18c36987efe2b" id="r_a179c05dec9e2bb8557f18c36987efe2b"><td class="memItemLeft" align="right" valign="top"><a id="a179c05dec9e2bb8557f18c36987efe2b" name="a179c05dec9e2bb8557f18c36987efe2b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>activateAutoBlink</b> ()</td></tr>
+<tr class="memdesc:a179c05dec9e2bb8557f18c36987efe2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable automatic blinking (enabled by default) <br /></td></tr>
 <tr class="separator:a179c05dec9e2bb8557f18c36987efe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98fa460dca06632c63b566f4fe7b36f" id="r_ae98fa460dca06632c63b566f4fe7b36f"><td class="memItemLeft" align="right" valign="top"><a id="ae98fa460dca06632c63b566f4fe7b36f" name="ae98fa460dca06632c63b566f4fe7b36f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>deactivateAutoBlink</b> ()</td></tr>
+<tr class="memdesc:ae98fa460dca06632c63b566f4fe7b36f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable automatic blinking. <br /></td></tr>
 <tr class="separator:ae98fa460dca06632c63b566f4fe7b36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b4fc5a20204e4c51934816697d5cbd" id="r_a18b4fc5a20204e4c51934816697d5cbd"><td class="memItemLeft" align="right" valign="top"><a id="a18b4fc5a20204e4c51934816697d5cbd" name="a18b4fc5a20204e4c51934816697d5cbd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>getIsAutoBlink</b> ()</td></tr>
+<tr class="memitem:a18b4fc5a20204e4c51934816697d5cbd" id="r_a18b4fc5a20204e4c51934816697d5cbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18b4fc5a20204e4c51934816697d5cbd">getIsAutoBlink</a> ()</td></tr>
 <tr class="separator:a18b4fc5a20204e4c51934816697d5cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5e49c8d027bc0c5f58a74e93b2ca952" id="r_aa5e49c8d027bc0c5f58a74e93b2ca952"><td class="memItemLeft" align="right" valign="top"><a id="aa5e49c8d027bc0c5f58a74e93b2ca952" name="aa5e49c8d027bc0c5f58a74e93b2ca952"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>autoScale</b> ()</td></tr>
+<tr class="memitem:a7b0c0225980046366237386398dfa32f" id="r_a7b0c0225980046366237386398dfa32f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b0c0225980046366237386398dfa32f">setHairShadowHeight</a> (uint16_t height)</td></tr>
+<tr class="memdesc:a7b0c0225980046366237386398dfa32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the height of the hair shadow on the top of the face.  <br /></td></tr>
+<tr class="separator:a7b0c0225980046366237386398dfa32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4f08f419fd345b983d65509cac8c49c" id="r_ac4f08f419fd345b983d65509cac8c49c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4f08f419fd345b983d65509cac8c49c">getHairShadowHeight</a> () const</td></tr>
+<tr class="separator:ac4f08f419fd345b983d65509cac8c49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e49c8d027bc0c5f58a74e93b2ca952" id="r_aa5e49c8d027bc0c5f58a74e93b2ca952"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5e49c8d027bc0c5f58a74e93b2ca952">autoScale</a> ()</td></tr>
+<tr class="memdesc:aa5e49c8d027bc0c5f58a74e93b2ca952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale and move the parts to fit the screen size of <code>M5.Lcd</code>  <br /></td></tr>
 <tr class="separator:aa5e49c8d027bc0c5f58a74e93b2ca952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a107d4d67627f0adcafe7b2fc2274c516" id="r_a107d4d67627f0adcafe7b2fc2274c516"><td class="memItemLeft" align="right" valign="top"><a id="a107d4d67627f0adcafe7b2fc2274c516" name="a107d4d67627f0adcafe7b2fc2274c516"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>updateState</b> (<a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight)</td></tr>
+<tr class="memitem:a107d4d67627f0adcafe7b2fc2274c516" id="r_a107d4d67627f0adcafe7b2fc2274c516"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a107d4d67627f0adcafe7b2fc2274c516">updateState</a> (<a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight)</td></tr>
+<tr class="memdesc:a107d4d67627f0adcafe7b2fc2274c516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update time-dependent state: smooth auto blink and breathing.  <br /></td></tr>
 <tr class="separator:a107d4d67627f0adcafe7b2fc2274c516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff08c9b3e18a5fe09ecd127ee8c6779" id="r_acff08c9b3e18a5fe09ecd127ee8c6779"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acff08c9b3e18a5fe09ecd127ee8c6779">draw</a> (M5Canvas &amp;canvas, <a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette) override</td></tr>
+<tr class="memdesc:acff08c9b3e18a5fe09ecd127ee8c6779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the canvas with the skin color and draw the eyes and the mouth.  <br /></td></tr>
 <tr class="separator:acff08c9b3e18a5fe09ecd127ee8c6779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classstackchan_1_1display_1_1_facial_drawable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classstackchan_1_1display_1_1_facial_drawable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classstackchan_1_1display_1_1_facial_drawable.html">stackchan::display::FacialDrawable</a></td></tr>
 <tr class="memitem:a416b0a02eb2f45890994a5fa779f7c7c inherit pub_methods_classstackchan_1_1display_1_1_facial_drawable" id="r_a416b0a02eb2f45890994a5fa779f7c7c"><td class="memItemLeft" align="right" valign="top">
@@ -199,6 +216,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (M5C
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
 <tr class="separator:aac2fad0e030904949b9357fa5f629f75 inherit pub_methods_classstackchan_1_1display_1_1_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab4dfa5220fa03f0a2887a231b7b4044e" id="r_ab4dfa5220fa03f0a2887a231b7b4044e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4dfa5220fa03f0a2887a231b7b4044e">drawBackground</a> (M5Canvas &amp;canvas, <a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette)</td></tr>
+<tr class="memdesc:ab4dfa5220fa03f0a2887a231b7b4044e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw things behind the facial components. Called right after the skin is filled.  <br /></td></tr>
+<tr class="separator:ab4dfa5220fa03f0a2887a231b7b4044e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aa329af0b64252332535c520b29adab5f" id="r_aa329af0b64252332535c520b29adab5f"><td class="memItemLeft" align="right" valign="top"><a id="aa329af0b64252332535c520b29adab5f" name="aa329af0b64252332535c520b29adab5f"></a>
@@ -225,6 +248,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>breath_frequency_</b
 <tr class="memitem:abb6960260846224a82470216728bf339" id="r_abb6960260846224a82470216728bf339"><td class="memItemLeft" align="right" valign="top"><a id="abb6960260846224a82470216728bf339" name="abb6960260846224a82470216728bf339"></a>
 <a class="el" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mouth_</b></td></tr>
 <tr class="separator:abb6960260846224a82470216728bf339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36733baec09151dbadf4d80069dbe74" id="r_ad36733baec09151dbadf4d80069dbe74"><td class="memItemLeft" align="right" valign="top"><a id="ad36733baec09151dbadf4d80069dbe74" name="ad36733baec09151dbadf4d80069dbe74"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>hair_shadow_height_</b> = 0</td></tr>
+<tr class="separator:ad36733baec09151dbadf4d80069dbe74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classstackchan_1_1display_1_1_drawable"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classstackchan_1_1display_1_1_drawable')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classstackchan_1_1display_1_1_drawable.html">stackchan::display::Drawable</a></td></tr>
 <tr class="memitem:a698d225939fbf1471eed8f54e32bcc17 inherit pro_attribs_classstackchan_1_1display_1_1_drawable" id="r_a698d225939fbf1471eed8f54e32bcc17"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classm5_1_1_vector2i.html">m5::Vector2i</a>&#160;</td><td class="memItemRight" valign="bottom"><b>position_</b> {0, 0}</td></tr>
@@ -242,7 +268,67 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>visible_</b> = true</
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>ignore_expression_</b> = false</td></tr>
 <tr class="separator:a9f84ab29df1e629d80d2bc24241e4e36 inherit pro_attribs_classstackchan_1_1display_1_1_drawable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base face composed of two eyes and a mouth. Also the Stack-chan default face <code>[・_・]</code>. </p>
+<p>The face owns its parts through raw pointers so that they can be exchanged. Subclasses only pass differently shaped parts and coordinates (laid out for a 320x240 canvas) to the constructor. <code><a class="el" href="#a107d4d67627f0adcafe7b2fc2274c516" title="Update time-dependent state: smooth auto blink and breathing.">updateState()</a></code> handles auto blink and breathing, and <code><a class="el" href="#acff08c9b3e18a5fe09ecd127ee8c6779" title="Fill the canvas with the skin color and draw the eyes and the mouth.">draw()</a></code> fills the canvas with the skin color then draws the eyes and the mouth. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aabd7c897aaafe49fc6c4e5b1ce8ba8df" name="aabd7c897aaafe49fc6c4e5b1ce8ba8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabd7c897aaafe49fc6c4e5b1ce8ba8df">&#9670;&#160;</a></span>Face()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">stackchan::display::Face::Face </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *</td>          <td class="paramname"><span class="paramname"><em>left_eye</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *</td>          <td class="paramname"><span class="paramname"><em>right_eye</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *</td>          <td class="paramname"><span class="paramname"><em>mouth</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a face from parts. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left_eye</td><td>left eye (on the right side of the screen) </td></tr>
+    <tr><td class="paramname">right_eye</td><td>right eye (on the left side of the screen) </td></tr>
+    <tr><td class="paramname">mouth</td><td>mouth </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa5e49c8d027bc0c5f58a74e93b2ca952" name="aa5e49c8d027bc0c5f58a74e93b2ca952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e49c8d027bc0c5f58a74e93b2ca952">&#9670;&#160;</a></span>autoScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Face::autoScale </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scale and move the parts to fit the screen size of <code>M5.Lcd</code> </p>
+<p>Parts are laid out for a 320x240 screen. Call this once after <code>M5.begin()</code>. </p>
+
+</div>
+</div>
 <a id="acff08c9b3e18a5fe09ecd127ee8c6779" name="acff08c9b3e18a5fe09ecd127ee8c6779"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acff08c9b3e18a5fe09ecd127ee8c6779">&#9670;&#160;</a></span>draw()</h2>
 
@@ -275,7 +361,174 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>ignore_expression_</b
 </table>
 </div><div class="memdoc">
 
+<p>Fill the canvas with the skin color and draw the eyes and the mouth. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">canvas</td><td>off-screen canvas to draw on </td></tr>
+    <tr><td class="paramname">expression_weight</td><td>expression weights used to blend the shapes </td></tr>
+    <tr><td class="paramname">palette</td><td>colors of each facial location </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Reimplemented from <a class="el" href="classstackchan_1_1display_1_1_facial_drawable.html">stackchan::display::FacialDrawable</a>.</p>
+
+</div>
+</div>
+<a id="ab4dfa5220fa03f0a2887a231b7b4044e" name="ab4dfa5220fa03f0a2887a231b7b4044e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4dfa5220fa03f0a2887a231b7b4044e">&#9670;&#160;</a></span>drawBackground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Face::drawBackground </td>
+          <td>(</td>
+          <td class="paramtype">M5Canvas &amp;</td>          <td class="paramname"><span class="paramname"><em>canvas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>expression_weight</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>palette</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw things behind the facial components. Called right after the skin is filled. </p>
+<p>Draws the hair shadow by default. </p>
+
+</div>
+</div>
+<a id="ac4f08f419fd345b983d65509cac8c49c" name="ac4f08f419fd345b983d65509cac8c49c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4f08f419fd345b983d65509cac8c49c">&#9670;&#160;</a></span>getHairShadowHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t stackchan::display::Face::getHairShadowHeight </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>height of the hair shadow in pixels. 0 means no shadow. </dd></dl>
+
+</div>
+</div>
+<a id="a18b4fc5a20204e4c51934816697d5cbd" name="a18b4fc5a20204e4c51934816697d5cbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b4fc5a20204e4c51934816697d5cbd">&#9670;&#160;</a></span>getIsAutoBlink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool stackchan::display::Face::getIsAutoBlink </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if automatic blinking is enabled </dd></dl>
+
+</div>
+</div>
+<a id="a7b0c0225980046366237386398dfa32f" name="a7b0c0225980046366237386398dfa32f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b0c0225980046366237386398dfa32f">&#9670;&#160;</a></span>setHairShadowHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Face::setHairShadowHeight </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>height</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the height of the hair shadow on the top of the face. </p>
+<p>The shadow is darkest at the top edge and fades into the skin color. The color can be set with <code>DrawingLocation::kHairShadow</code> of the palette, otherwise a darkened skin color is used. The height is scaled by <code><a class="el" href="#aa5e49c8d027bc0c5f58a74e93b2ca952" title="Scale and move the parts to fit the screen size of M5.Lcd">autoScale()</a></code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>height in pixels on a 320x240 screen. 0 disables the shadow. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a107d4d67627f0adcafe7b2fc2274c516" name="a107d4d67627f0adcafe7b2fc2274c516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a107d4d67627f0adcafe7b2fc2274c516">&#9670;&#160;</a></span>updateState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stackchan::display::Face::updateState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>expression_weight</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update time-dependent state: smooth auto blink and breathing. </p>
+<p>The blink is a triangle pulse written to <code>Expression::kBlink</code>, and the breath is a sine wave written to <code>Expression::kBreath</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expression_weight</td><td>weights to be updated </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
