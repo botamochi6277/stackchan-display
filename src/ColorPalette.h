@@ -36,6 +36,8 @@ namespace stackchan::display
     // Cheek
     kCheek1,
     kCheek2,
+    // Hair
+    kHairShadow, // optional, a darkened skin color is used if not set
     // Chat Balloon
     kBalloonForeground,
     kBalloonBackground

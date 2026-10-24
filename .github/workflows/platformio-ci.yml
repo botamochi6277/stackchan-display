@@ -1,12 +1,13 @@
 # CI documents: https://docs.platformio.org/en/latest/integration/ci/github-actions.html#integration
 name: PlatformIO CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         example: [ ./examples/Demo/Demo.ino]
         pio_board: ["m5stack-core-esp32", "m5stack-core2", "m5stack-cores3"]
@@ -17,11 +18,11 @@ jobs:
       with:
         path: |
                 ~/.cache/pip
-                ~/.platformio/.cache
-        key: ${{ runner.os }}-pio
+                ~/.platformio
+        key: ${{ runner.os }}-pio-${{ matrix.pio_board }}-${{ hashFiles('platformio.ini') }}
     - uses: actions/setup-python@v6
       with:
-          python-version: '3.11'
+          python-version: '3.12'
     - name: Install PlatformIO Core
       run: pip install --upgrade platformio
     - name: Build PlatformIO examples

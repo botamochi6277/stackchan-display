@@ -134,9 +134,6 @@ namespace stackchan::display
             tilt = (this->is_left_ ? ref_tilt : -ref_tilt) * (weight / 255.0f);
         }
 
-        weight = expression_weight.get(Expression::kGrin);
-        // TODO:
-
         weight = expression_weight.get(Expression::kSurprised);
         if (weight > 12)
         {
@@ -183,16 +180,19 @@ namespace stackchan::display
         // draw eyelid
 
         // masking
-        uint16_t mask_height = eye_lash_height;
-        uint16_t mask_offset = eye_lash_height / 2;
-        if ((eyelid_bottom_y - eye_lash_height) > (position_.y - size_.height / 2))
-        {
-            mask_height = (position_.y - size_.height / 2);
-            mask_offset = mask_height / 2;
-        }
+        // The mask hides the iris above the eyelid arc. Its thickness only needs to reach the top of the iris
+        // (iris radius is 0.45 * height), so the skin color does not paint over the area above the eye.
+        int iris_top_y = iris_position_.y - 0.45f * size_.height;
+        // margin for the arc ends lowered by the tilt
+        int mask_height = eyelid_c.y - iris_top_y + 2 + fabsf(tilt) * 0.6f * eyelid_width;
+        mask_height = m5::clamp(mask_height, 0, static_cast<int>(size_.height));
+        uint16_t mask_offset = mask_height / 2; // the mask spans from the arc up to mask_height
 
-        m5::fillArc(canvas, eyelid_med.x, eyelid_med.y, eyelid_lat.x, eyelid_lat.y,
-                    eyelid_c.x, eyelid_c.y, mask_height, eyelid_color, mask_offset);
+        if (mask_height > 0)
+        {
+            m5::fillArc(canvas, eyelid_med.x, eyelid_med.y, eyelid_lat.x, eyelid_lat.y,
+                        eyelid_c.x, eyelid_c.y, mask_height, eyelid_color, mask_offset);
+        }
         // arc curve
         m5::fillArc(canvas, eyelid_med.x, eyelid_med.y, eyelid_lat.x, eyelid_lat.y,
                     eyelid_c.x, eyelid_c.y, thickness, eyelash_color);
@@ -236,6 +236,7 @@ namespace stackchan::display
         {
             // iris
             this->drawIris(canvas, expression_weight, palette);
+            this->drawLowerEyelid(canvas, expression_weight, palette);
         }
 
         // eyelid

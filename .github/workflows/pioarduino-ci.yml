@@ -23,10 +23,10 @@ jobs:
         path: |
           ~/.cache/pip
           ~/.platformio
-        key: ${{ runner.os }}-pioarduino-${{ matrix.pio_board }}
+        key: ${{ runner.os }}-pioarduino-${{ matrix.pio_board }}-${{ hashFiles('platformio.ini') }}
     - uses: actions/setup-python@v6
       with:
-        python-version: '3.11'
+        python-version: '3.12'
     - name: Install PlatformIO Core
       run: pip install --upgrade platformio
     - name: Build example with pioarduino

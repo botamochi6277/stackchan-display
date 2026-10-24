@@ -40,16 +40,6 @@ namespace stackchan::display
         // blink
         if (is_auto_blink_)
         {
-            // if (expression_weight.get(Expression::kBlink) > 127)
-            // {
-            //     expression_weight.set(Expression::kBlink, 0);        // weight to open eye
-            //     blink_interval = auto_blink_interval_ + rand() % 20; // add random to avoid fixed interval
-            // }
-            // else
-            // {
-            //     expression_weight.set(Expression::kBlink, 255); // weight to close eye
-            //     blink_interval = blink_duration_;
-            // }
             expression_weight.set(Expression::kBlink, static_cast<unsigned char>(blink_signal * 255.0f));
         }
 
@@ -74,6 +64,7 @@ namespace stackchan::display
                                   ? 0
                                   : palette.get(DrawingLocation::kSkin);
         canvas.fillSprite(skin_color);
+        this->drawBackground(canvas, expression_weight, palette);
         left_eye_->draw(canvas, expression_weight, palette);
         right_eye_->draw(canvas, expression_weight, palette);
         mouth_->draw(canvas, expression_weight, palette);
@@ -81,6 +72,42 @@ namespace stackchan::display
         // bar plot for debugging the blink weight
         // auto weight = expression_weight.get(stackchan::display::Expression::kBlink);
         // canvas.fillRect(0, 40, weight + 8, 10, TFT_GREEN);
+    }
+
+    void Face::drawBackground(M5Canvas &canvas, ExpressionWeight &expression_weight, ColorPalette &palette)
+    {
+        if (hair_shadow_height_ == 0 || canvas.getColorDepth() == 1)
+        {
+            return; // no shadow, or no gradient on a monochrome canvas
+        }
+
+        uint16_t skin_color = palette.get(DrawingLocation::kSkin);
+        uint16_t shadow_color;
+        if (palette.contains(DrawingLocation::kHairShadow))
+        {
+            shadow_color = palette.get(DrawingLocation::kHairShadow);
+        }
+        else
+        {
+            // darken the skin color for the shadow
+            uint8_t r = (skin_color >> 11) & 0x1F;
+            uint8_t g = (skin_color >> 5) & 0x3F;
+            uint8_t b = skin_color & 0x1F;
+
+            r = static_cast<uint8_t>(r * 0.2f);
+            g = static_cast<uint8_t>(g * 0.2f);
+            b = static_cast<uint8_t>(b * 0.2f);
+
+            shadow_color = (r << 11) | (g << 5) | b;
+        }
+
+        // fillGradientRect is too rough for the hair shadow. maybe  it is 5 steps
+        // so implement the shadow with a simple rectangle
+        canvas.fillRect(0, 0, canvas.width(), hair_shadow_height_, shadow_color);
+
+        // canvas.fillGradientRect(
+        //     0, 0, canvas.width(), hair_shadow_height_, shadow_color, skin_color,
+        //     lgfx::fill_style_t::vertical_linear);
     }
 
     void Face::autoScale()
@@ -93,6 +120,7 @@ namespace stackchan::display
         int16_t base_length = size_.min();
         float scale = base_length / 240.0f;
         m5::Vector2i offset = {0, 0};
+        hair_shadow_height_ = hair_shadow_height_ * scale;
 
         // left eye
         offset = left_eye_->getPosition() - original_center;
