@@ -66,7 +66,9 @@ namespace stackchan::display
         }
 
     public:
-        Display() : canvas_(&M5.Lcd), expression_weight_(), speech_balloon_()
+        // The canvas has no parent: M5.Lcd is not valid until M5 is constructed, and a global Display
+        // may be constructed before it. The canvas is pushed to M5.Lcd explicitly in update().
+        Display() : canvas_(nullptr), expression_weight_(), speech_balloon_()
         {
             face_ = new Face();
             color_palette_ = new ColorPalette();
@@ -126,7 +128,7 @@ namespace stackchan::display
         {
             face_->updateState(expression_weight_);
             this->draw(expression_weight_, *color_palette_);
-            canvas_.pushSprite(0, 0);
+            canvas_.pushSprite(&M5.Lcd, 0, 0);
             canvas_.deleteSprite();
         };
     };

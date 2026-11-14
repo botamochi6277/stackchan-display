@@ -73,7 +73,7 @@ planning-->speaker
 
 ## Features
 
-- 6 faces: `Face` (default), `ToonFace1`, `ToonFace2`, `EllFace`, `OmegaFace`, `RectFace`
+- 7 faces: `Face` (default), `ToonFace1`, `ToonFace2`, `EllFace`, `OmegaFace`, `RectFace`, `MonoEyeFace` (one bullseye eye, no mouth)
 - 10 emotional expressions blended by weights (0-255): neutral, angry, sad, doubt, sleepy, smile, grin, surprised, upset, relax
 - Smooth auto-blink and breathing
 - Face parts that follow the expression: eyelash (smile), lower eyelid (grin), hair shadow (toon faces)
