@@ -1,9 +1,0 @@
-<map id="stackchan::display::MonoEyeFace" name="stackchan::display::MonoEyeFace">
-<area shape="rect" id="Node000001" title="Face with a single bullseye eye at the center and no mouth." alt="" coords="26,1146,143,1227"/>
-<area shape="rect" id="Node000002" href="$classstackchan_1_1display_1_1_face.html" title="Base face composed of two eyes and a mouth. Also the Stack&#45;chan default face [・_・]." alt="" coords="5,589,164,1098"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,1113,88,1146,82,1146,82,1113"/>
-<area shape="rect" id="Node000003" href="$classstackchan_1_1display_1_1_facial_drawable.html" title=" " alt="" coords="26,419,143,541"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,556,88,590,82,590,82,556"/>
-<area shape="rect" id="Node000004" href="$classstackchan_1_1display_1_1_drawable.html" title=" " alt="" coords="17,5,152,371"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,386,88,420,82,420,82,386"/>
-</map>

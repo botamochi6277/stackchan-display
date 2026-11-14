@@ -7,7 +7,6 @@ var hierarchy =
         [ "stackchan::display::BaseEye", "classstackchan_1_1display_1_1_base_eye.html", [
           [ "stackchan::display::EllipseEye", "classstackchan_1_1display_1_1_ellipse_eye.html", null ],
           [ "stackchan::display::Eye", "classstackchan_1_1display_1_1_eye.html", null ],
-          [ "stackchan::display::MonoEye", "classstackchan_1_1display_1_1_mono_eye.html", null ],
           [ "stackchan::display::RoundRectEye", "classstackchan_1_1display_1_1_round_rect_eye.html", null ],
           [ "stackchan::display::ToonEye1", "classstackchan_1_1display_1_1_toon_eye1.html", null ],
           [ "stackchan::display::ToonEye2", "classstackchan_1_1display_1_1_toon_eye2.html", null ]
@@ -19,7 +18,6 @@ var hierarchy =
         ] ],
         [ "stackchan::display::Face", "classstackchan_1_1display_1_1_face.html", [
           [ "stackchan::display::EllFace", "classstackchan_1_1display_1_1_ell_face.html", null ],
-          [ "stackchan::display::MonoEyeFace", "classstackchan_1_1display_1_1_mono_eye_face.html", null ],
           [ "stackchan::display::OmegaFace", "classstackchan_1_1display_1_1_omega_face.html", null ],
           [ "stackchan::display::RectFace", "classstackchan_1_1display_1_1_rect_face.html", null ],
           [ "stackchan::display::ToonFace1", "classstackchan_1_1display_1_1_toon_face1.html", null ],

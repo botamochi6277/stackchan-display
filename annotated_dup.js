@@ -17,8 +17,6 @@ var annotated_dup =
         [ "Eye", "classstackchan_1_1display_1_1_eye.html", null ],
         [ "Face", "classstackchan_1_1display_1_1_face.html", "classstackchan_1_1display_1_1_face" ],
         [ "FacialDrawable", "classstackchan_1_1display_1_1_facial_drawable.html", null ],
-        [ "MonoEye", "classstackchan_1_1display_1_1_mono_eye.html", null ],
-        [ "MonoEyeFace", "classstackchan_1_1display_1_1_mono_eye_face.html", null ],
         [ "Mouth", "classstackchan_1_1display_1_1_mouth.html", null ],
         [ "OmegaFace", "classstackchan_1_1display_1_1_omega_face.html", null ],
         [ "OmegaMouth", "classstackchan_1_1display_1_1_omega_mouth.html", null ],

@@ -106,203 +106,189 @@ $(function(){initNavTree('_faces_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../eyes/Eyes.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;../eyes/ToonEye1.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../eyes/ToonEye2.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../eyes/MonoEye.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../mouths/Mouth.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../mouths/OmegaMouth.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../mouths/ToonMouth1.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>stackchan::display</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html">   23</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_facial_drawable.html">FacialDrawable</a></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// auto blink parameters</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">bool</span> is_auto_blink_ = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        uint32_t auto_blink_interval_ = 3000; <span class="comment">// [msec] base interval between blinks (a random offset is added)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        uint32_t last_blink_time_ = 0;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        uint32_t blink_duration_ = 200; <span class="comment">// 0.2 seconds, which is the duration of closed eye</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">float</span> breath_frequency_ = 0.25f; <span class="comment">// in Hz,</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// child facial components</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// NOTE: use object pointers for exchanging components</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye_;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye_;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth_;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        uint16_t hair_shadow_height_ = 0; <span class="comment">// [px] on a 320x240 screen, 0 disables the shadow</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ab4dfa5220fa03f0a2887a231b7b4044e">drawBackground</a>(M5Canvas &amp;canvas, <a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>             <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>             <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *getLeftEye()</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> left_eye_;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *getRightEye()</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> right_eye_;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *getMouth()</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> mouth_;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">   80</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">activateAutoBlink</a>()</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            is_auto_blink_ = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;../mouths/Mouth.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../mouths/OmegaMouth.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../mouths/ToonMouth1.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>stackchan::display</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html">   22</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_facial_drawable.html">FacialDrawable</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// auto blink parameters</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">bool</span> is_auto_blink_ = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        uint32_t auto_blink_interval_ = 3000; <span class="comment">// [msec] base interval between blinks (a random offset is added)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        uint32_t last_blink_time_ = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        uint32_t blink_duration_ = 200; <span class="comment">// 0.2 seconds, which is the duration of closed eye</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">float</span> breath_frequency_ = 0.25f; <span class="comment">// in Hz,</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// child facial components</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// NOTE: use object pointers for exchanging components</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye_;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye_;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth_;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        uint16_t hair_shadow_height_ = 0; <span class="comment">// [px] on a 320x240 screen, 0 disables the shadow</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ab4dfa5220fa03f0a2887a231b7b4044e">drawBackground</a>(M5Canvas &amp;canvas, <a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *left_eye,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>             <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *right_eye,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>             <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *mouth);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *getLeftEye()</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">return</span> left_eye_;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a> *getRightEye()</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> right_eye_;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a> *getMouth()</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">return</span> mouth_;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">   79</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">activateAutoBlink</a>()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            is_auto_blink_ = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 </div>
-<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">   85</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">deactivateAutoBlink</a>()</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            is_auto_blink_ = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">   84</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">deactivateAutoBlink</a>()</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            is_auto_blink_ = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
 </div>
-<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">   90</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">getIsAutoBlink</a>()</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">return</span> is_auto_blink_;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">   89</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">getIsAutoBlink</a>()</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">return</span> is_auto_blink_;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        }</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">  104</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">setHairShadowHeight</a>(uint16_t height)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            hair_shadow_height_ = height;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">  103</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">setHairShadowHeight</a>(uint16_t height)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            hair_shadow_height_ = height;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">  110</a></span>        uint16_t <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">getHairShadowHeight</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">return</span> hair_shadow_height_;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">  109</a></span>        uint16_t <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">getHairShadowHeight</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keywordflow">return</span> hair_shadow_height_;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
 </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952">autoScale</a>();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a107d4d67627f0adcafe7b2fc2274c516">updateState</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#acff08c9b3e18a5fe09ecd127ee8c6779">draw</a>(M5Canvas &amp;canvas, <a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="comment">// virtual void update() override;</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    };</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952">autoScale</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a107d4d67627f0adcafe7b2fc2274c516">updateState</a>(<a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#acff08c9b3e18a5fe09ecd127ee8c6779">draw</a>(M5Canvas &amp;canvas, <a class="code hl_class" href="classstackchan_1_1display_1_1_expression_weight.html">ExpressionWeight</a> &amp;expression_weight, <a class="code hl_class" href="classstackchan_1_1display_1_1_color_palette.html">ColorPalette</a> &amp;palette) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment">// virtual void update() override;</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    };</div>
 </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// custom faces</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="foldopen" id="foldopen00148" data-start="{" data-end="};">
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_ell_face.html">  148</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_ell_face.html">EllFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_ell_face.html">EllFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a>(0, 0, 0, 0)) {};</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    };</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="comment">// custom faces</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="foldopen" id="foldopen00147" data-start="{" data-end="};">
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_ell_face.html">  147</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_ell_face.html">EllFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_ell_face.html">EllFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, <span class="keyword">true</span>),</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 3, <span class="keyword">false</span>),</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                        <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a>(0, 0, 0, 0)) {};</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    };</div>
 </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="foldopen" id="foldopen00160" data-start="{" data-end="};">
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_omega_face.html">  160</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_omega_face.html">OmegaFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    {</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_face.html">OmegaFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(84 + 154, 165, 36, 70, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(84, 165, 36, 70, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_mouth.html">OmegaMouth</a>(160, 225, 72, 30)) {};</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    };</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="foldopen" id="foldopen00159" data-start="{" data-end="};">
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_omega_face.html">  159</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_omega_face.html">OmegaFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_face.html">OmegaFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(84 + 154, 165, 36, 70, <span class="keyword">true</span>),</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_ellipse_eye.html">EllipseEye</a>(84, 165, 36, 70, <span class="keyword">false</span>),</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_mouth.html">OmegaMouth</a>(160, 225, 72, 30)) {};</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    };</div>
 </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="foldopen" id="foldopen00172" data-start="{" data-end="};">
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_rect_face.html">  172</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_rect_face.html">RectFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_rect_face.html">RectFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_round_rect_eye.html">RoundRectEye</a>(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_round_rect_eye.html">RoundRectEye</a>(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a>(0, 0, 0, 0)) {};</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    };</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="};">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_rect_face.html">  171</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_rect_face.html">RectFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_rect_face.html">RectFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_round_rect_eye.html">RoundRectEye</a>(160 + 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, <span class="keyword">true</span>),</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_round_rect_eye.html">RoundRectEye</a>(160 - 160 / 2, 240 / 2, 320 / 5, 320 / 5 * 2, <span class="keyword">false</span>),</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                         <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a>(0, 0, 0, 0)) {};</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    };</div>
 </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="foldopen" id="foldopen00184" data-start="{" data-end="};">
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_toon_face1.html">  184</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face1.html">ToonFace1</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face1.html">ToonFace1</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye1.html">ToonEye1</a>(256, 163, 68, 60, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye1.html">ToonEye1</a>(64, 163, 68, 60, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_mouth1.html">ToonMouth1</a>(160, 222, 48, 24))</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            hair_shadow_height_ = 48;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        };</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    };</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="};">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_toon_face1.html">  183</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face1.html">ToonFace1</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face1.html">ToonFace1</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye1.html">ToonEye1</a>(256, 163, 68, 60, <span class="keyword">true</span>),</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye1.html">ToonEye1</a>(64, 163, 68, 60, <span class="keyword">false</span>),</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_mouth1.html">ToonMouth1</a>(160, 222, 48, 24))</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            hair_shadow_height_ = 48;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        };</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    };</div>
 </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="foldopen" id="foldopen00199" data-start="{" data-end="};">
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_toon_face2.html">  199</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face2.html">ToonFace2</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    {</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face2.html">ToonFace2</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye2.html">ToonEye2</a>(256, 163, 60, 84, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye2.html">ToonEye2</a>(64, 163, 60, 84, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_mouth.html">OmegaMouth</a>(160, 225, 72, 30))</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            hair_shadow_height_ = 48;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        };</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    };</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="};">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_toon_face2.html">  198</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face2.html">ToonFace2</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_face2.html">ToonFace2</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye2.html">ToonEye2</a>(256, 163, 60, 84, <span class="keyword">true</span>),</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_toon_eye2.html">ToonEye2</a>(64, 163, 60, 84, <span class="keyword">false</span>),</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                          <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_omega_mouth.html">OmegaMouth</a>(160, 225, 72, 30))</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            hair_shadow_height_ = 48;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        };</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    };</div>
 </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="foldopen" id="foldopen00216" data-start="{" data-end="};">
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classstackchan_1_1display_1_1_mono_eye_face.html">  216</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classstackchan_1_1display_1_1_mono_eye_face.html">MonoEyeFace</a> : <span class="keyword">public</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_face.html">Face</a></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <a class="code hl_class" href="classstackchan_1_1display_1_1_mono_eye_face.html">MonoEyeFace</a>() : <a class="code hl_function" href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">Face</a>(</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                            <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_mono_eye.html">MonoEye</a>(160, 120, 120, 120, <span class="keyword">true</span>),</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                            <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_eye.html">BaseEye</a>(0, 0, 0, 0, <span class="keyword">false</span>),</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                            <span class="keyword">new</span> <a class="code hl_class" href="classstackchan_1_1display_1_1_base_mouth.html">BaseMouth</a>(0, 0, 0, 0)) {};</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    };</div>
-</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>} <span class="comment">// namespace stackchan::display</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>} <span class="comment">// namespace stackchan::display</span></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_base_eye_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_base_eye.html">stackchan::display::BaseEye</a></div><div class="ttdoc">Base class for Eye, draw nothing.</div><div class="ttdef"><b>Definition</b> Eyes.h:23</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_base_mouth_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_base_mouth.html">stackchan::display::BaseMouth</a></div><div class="ttdef"><b>Definition</b> Mouth.h:8</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_color_palette_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_color_palette.html">stackchan::display::ColorPalette</a></div><div class="ttdef"><b>Definition</b> ColorPalette.h:50</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_ell_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_ell_face.html">stackchan::display::EllFace</a></div><div class="ttdoc">[O O] face with tall ellipse eyes and no mouth</div><div class="ttdef"><b>Definition</b> Faces.h:149</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_ell_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_ell_face.html">stackchan::display::EllFace</a></div><div class="ttdoc">[O O] face with tall ellipse eyes and no mouth</div><div class="ttdef"><b>Definition</b> Faces.h:148</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_ellipse_eye_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_ellipse_eye.html">stackchan::display::EllipseEye</a></div><div class="ttdef"><b>Definition</b> Eyes.h:64</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_expression_weight_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_expression_weight.html">stackchan::display::ExpressionWeight</a></div><div class="ttdef"><b>Definition</b> Expression.h:41</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html">stackchan::display::Face</a></div><div class="ttdoc">Base face composed of two eyes and a mouth. Also the Stack-chan default face [・_・].</div><div class="ttdef"><b>Definition</b> Faces.h:24</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html">stackchan::display::Face</a></div><div class="ttdoc">Base face composed of two eyes and a mouth. Also the Stack-chan default face [・_・].</div><div class="ttdef"><b>Definition</b> Faces.h:23</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a107d4d67627f0adcafe7b2fc2274c516"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a107d4d67627f0adcafe7b2fc2274c516">stackchan::display::Face::updateState</a></div><div class="ttdeci">virtual void updateState(ExpressionWeight &amp;expression_weight)</div><div class="ttdoc">Update time-dependent state: smooth auto blink and breathing.</div><div class="ttdef"><b>Definition</b> Faces.cpp:23</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a179c05dec9e2bb8557f18c36987efe2b"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">stackchan::display::Face::activateAutoBlink</a></div><div class="ttdeci">void activateAutoBlink()</div><div class="ttdoc">Enable automatic blinking (enabled by default)</div><div class="ttdef"><b>Definition</b> Faces.h:80</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a18b4fc5a20204e4c51934816697d5cbd"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">stackchan::display::Face::getIsAutoBlink</a></div><div class="ttdeci">bool getIsAutoBlink()</div><div class="ttdef"><b>Definition</b> Faces.h:90</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a179c05dec9e2bb8557f18c36987efe2b"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a179c05dec9e2bb8557f18c36987efe2b">stackchan::display::Face::activateAutoBlink</a></div><div class="ttdeci">void activateAutoBlink()</div><div class="ttdoc">Enable automatic blinking (enabled by default)</div><div class="ttdef"><b>Definition</b> Faces.h:79</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a18b4fc5a20204e4c51934816697d5cbd"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a18b4fc5a20204e4c51934816697d5cbd">stackchan::display::Face::getIsAutoBlink</a></div><div class="ttdeci">bool getIsAutoBlink()</div><div class="ttdef"><b>Definition</b> Faces.h:89</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a5536fd9f7dfe55156e1d682e6cf30352"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a5536fd9f7dfe55156e1d682e6cf30352">stackchan::display::Face::Face</a></div><div class="ttdeci">Face()</div><div class="ttdoc">Construct the default face.</div><div class="ttdef"><b>Definition</b> Faces.cpp:15</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a7b0c0225980046366237386398dfa32f"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">stackchan::display::Face::setHairShadowHeight</a></div><div class="ttdeci">void setHairShadowHeight(uint16_t height)</div><div class="ttdoc">Set the height of the hair shadow on the top of the face.</div><div class="ttdef"><b>Definition</b> Faces.h:104</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_a7b0c0225980046366237386398dfa32f"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#a7b0c0225980046366237386398dfa32f">stackchan::display::Face::setHairShadowHeight</a></div><div class="ttdeci">void setHairShadowHeight(uint16_t height)</div><div class="ttdoc">Set the height of the hair shadow on the top of the face.</div><div class="ttdef"><b>Definition</b> Faces.h:103</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_aa5e49c8d027bc0c5f58a74e93b2ca952"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#aa5e49c8d027bc0c5f58a74e93b2ca952">stackchan::display::Face::autoScale</a></div><div class="ttdeci">void autoScale()</div><div class="ttdoc">Scale and move the parts to fit the screen size of M5.Lcd</div><div class="ttdef"><b>Definition</b> Faces.cpp:113</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ab4dfa5220fa03f0a2887a231b7b4044e"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ab4dfa5220fa03f0a2887a231b7b4044e">stackchan::display::Face::drawBackground</a></div><div class="ttdeci">virtual void drawBackground(M5Canvas &amp;canvas, ExpressionWeight &amp;expression_weight, ColorPalette &amp;palette)</div><div class="ttdoc">Draw things behind the facial components. Called right after the skin is filled.</div><div class="ttdef"><b>Definition</b> Faces.cpp:77</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ac4f08f419fd345b983d65509cac8c49c"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">stackchan::display::Face::getHairShadowHeight</a></div><div class="ttdeci">uint16_t getHairShadowHeight() const</div><div class="ttdef"><b>Definition</b> Faces.h:110</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ac4f08f419fd345b983d65509cac8c49c"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ac4f08f419fd345b983d65509cac8c49c">stackchan::display::Face::getHairShadowHeight</a></div><div class="ttdeci">uint16_t getHairShadowHeight() const</div><div class="ttdef"><b>Definition</b> Faces.h:109</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_acff08c9b3e18a5fe09ecd127ee8c6779"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#acff08c9b3e18a5fe09ecd127ee8c6779">stackchan::display::Face::draw</a></div><div class="ttdeci">virtual void draw(M5Canvas &amp;canvas, ExpressionWeight &amp;expression_weight, ColorPalette &amp;palette) override</div><div class="ttdoc">Fill the canvas with the skin color and draw the eyes and the mouth.</div><div class="ttdef"><b>Definition</b> Faces.cpp:58</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ae98fa460dca06632c63b566f4fe7b36f"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">stackchan::display::Face::deactivateAutoBlink</a></div><div class="ttdeci">void deactivateAutoBlink()</div><div class="ttdoc">Disable automatic blinking.</div><div class="ttdef"><b>Definition</b> Faces.h:85</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_face_html_ae98fa460dca06632c63b566f4fe7b36f"><div class="ttname"><a href="classstackchan_1_1display_1_1_face.html#ae98fa460dca06632c63b566f4fe7b36f">stackchan::display::Face::deactivateAutoBlink</a></div><div class="ttdeci">void deactivateAutoBlink()</div><div class="ttdoc">Disable automatic blinking.</div><div class="ttdef"><b>Definition</b> Faces.h:84</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_facial_drawable_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_facial_drawable.html">stackchan::display::FacialDrawable</a></div><div class="ttdef"><b>Definition</b> FacialDrawable.h:11</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_mono_eye_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_mono_eye_face.html">stackchan::display::MonoEyeFace</a></div><div class="ttdoc">Face with a single bullseye eye at the center and no mouth.</div><div class="ttdef"><b>Definition</b> Faces.h:217</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_mono_eye_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_mono_eye.html">stackchan::display::MonoEye</a></div><div class="ttdoc">A single round eye made of concentric rings (bullseye), for a face with one eye.</div><div class="ttdef"><b>Definition</b> MonoEye.h:26</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_omega_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_omega_face.html">stackchan::display::OmegaFace</a></div><div class="ttdoc">[OωO] face with ellipse eyes and an omega-shaped mouth</div><div class="ttdef"><b>Definition</b> Faces.h:161</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_omega_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_omega_face.html">stackchan::display::OmegaFace</a></div><div class="ttdoc">[OωO] face with ellipse eyes and an omega-shaped mouth</div><div class="ttdef"><b>Definition</b> Faces.h:160</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_omega_mouth_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_omega_mouth.html">stackchan::display::OmegaMouth</a></div><div class="ttdef"><b>Definition</b> OmegaMouth.h:8</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_rect_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_rect_face.html">stackchan::display::RectFace</a></div><div class="ttdoc">[▯ ▯] face with round-rectangle eyes and no mouth</div><div class="ttdef"><b>Definition</b> Faces.h:173</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_rect_face_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_rect_face.html">stackchan::display::RectFace</a></div><div class="ttdoc">[▯ ▯] face with round-rectangle eyes and no mouth</div><div class="ttdef"><b>Definition</b> Faces.h:172</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_round_rect_eye_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_round_rect_eye.html">stackchan::display::RoundRectEye</a></div><div class="ttdef"><b>Definition</b> Eyes.h:71</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_toon_eye1_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_eye1.html">stackchan::display::ToonEye1</a></div><div class="ttdef"><b>Definition</b> ToonEye1.h:8</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_toon_eye2_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_eye2.html">stackchan::display::ToonEye2</a></div><div class="ttdef"><b>Definition</b> ToonEye2.h:8</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_toon_face1_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_face1.html">stackchan::display::ToonFace1</a></div><div class="ttdoc">Toon face with eyelid-and-eyelash eyes (ToonEye1) and ToonMouth1.</div><div class="ttdef"><b>Definition</b> Faces.h:185</div></div>
-<div class="ttc" id="aclassstackchan_1_1display_1_1_toon_face2_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_face2.html">stackchan::display::ToonFace2</a></div><div class="ttdoc">Toon face with quadrilateral-eyelid eyes (ToonEye2) and an omega mouth.</div><div class="ttdef"><b>Definition</b> Faces.h:200</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_toon_face1_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_face1.html">stackchan::display::ToonFace1</a></div><div class="ttdoc">Toon face with eyelid-and-eyelash eyes (ToonEye1) and ToonMouth1.</div><div class="ttdef"><b>Definition</b> Faces.h:184</div></div>
+<div class="ttc" id="aclassstackchan_1_1display_1_1_toon_face2_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_face2.html">stackchan::display::ToonFace2</a></div><div class="ttdoc">Toon face with quadrilateral-eyelid eyes (ToonEye2) and an omega mouth.</div><div class="ttdef"><b>Definition</b> Faces.h:199</div></div>
 <div class="ttc" id="aclassstackchan_1_1display_1_1_toon_mouth1_html"><div class="ttname"><a href="classstackchan_1_1display_1_1_toon_mouth1.html">stackchan::display::ToonMouth1</a></div><div class="ttdef"><b>Definition</b> ToonMouth1.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
