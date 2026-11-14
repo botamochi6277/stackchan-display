@@ -47,7 +47,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 520;
+var viewWidth = 626;
 var viewHeight = 924;
 var sectionId = 'dynsection-0';
 </script>
@@ -59,59 +59,59 @@ var sectionId = 'dynsection-0';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Base face composed of two eyes and a mouth. Also the Stack&#45;chan default face [・_・].">
-<polygon fill="#999999" stroke="none" points="315.38,-478.25 196.12,-478.25 196.12,-97 315.38,-97 315.38,-478.25"/>
-<text text-anchor="start" x="216" y="-464.75" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="242.62" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Face</text>
-<text text-anchor="start" x="200.5" y="-438.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-438.25" font-family="Helvetica,sans-Serif" font-size="10.00">is_auto_blink_</text>
-<text text-anchor="start" x="200.5" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">auto_blink_interval_</text>
-<text text-anchor="start" x="200.5" y="-407.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-407.75" font-family="Helvetica,sans-Serif" font-size="10.00">last_blink_time_</text>
-<text text-anchor="start" x="200.5" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">blink_duration_</text>
-<text text-anchor="start" x="200.5" y="-377.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-377.25" font-family="Helvetica,sans-Serif" font-size="10.00">breath_frequency_</text>
-<text text-anchor="start" x="200.5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">left_eye_</text>
-<text text-anchor="start" x="200.5" y="-346.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-346.75" font-family="Helvetica,sans-Serif" font-size="10.00">right_eye_</text>
-<text text-anchor="start" x="200.5" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">mouth_</text>
-<text text-anchor="start" x="200.5" y="-316.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-316.25" font-family="Helvetica,sans-Serif" font-size="10.00">hair_shadow_height_</text>
-<text text-anchor="start" x="200.12" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">Face()</text>
-<text text-anchor="start" x="200.12" y="-285.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-285.75" font-family="Helvetica,sans-Serif" font-size="10.00">Face()</text>
-<text text-anchor="start" x="200.12" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">getLeftEye()</text>
-<text text-anchor="start" x="200.12" y="-255.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-255.25" font-family="Helvetica,sans-Serif" font-size="10.00">getRightEye()</text>
-<text text-anchor="start" x="200.12" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00">getMouth()</text>
-<text text-anchor="start" x="200.12" y="-224.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-224.75" font-family="Helvetica,sans-Serif" font-size="10.00">activateAutoBlink()</text>
-<text text-anchor="start" x="200.12" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">deactivateAutoBlink()</text>
-<text text-anchor="start" x="200.12" y="-194.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-194.25" font-family="Helvetica,sans-Serif" font-size="10.00">getIsAutoBlink()</text>
-<text text-anchor="start" x="200.12" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">setHairShadowHeight()</text>
-<text text-anchor="start" x="200.12" y="-163.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-163.75" font-family="Helvetica,sans-Serif" font-size="10.00">getHairShadowHeight()</text>
-<text text-anchor="start" x="200.12" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00">autoScale()</text>
-<text text-anchor="start" x="200.12" y="-133.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-133.25" font-family="Helvetica,sans-Serif" font-size="10.00">updateState()</text>
-<text text-anchor="start" x="200.12" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="210.12" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">draw()</text>
-<text text-anchor="start" x="200.5" y="-102.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="210.12" y="-102.75" font-family="Helvetica,sans-Serif" font-size="10.00">drawBackground()</text>
-<polygon fill="#666666" stroke="#666666" points="196.12,-449.75 196.12,-449.75 315.38,-449.75 315.38,-449.75 196.12,-449.75"/>
-<polygon fill="#666666" stroke="#666666" points="196.12,-312.5 196.12,-312.5 208.12,-312.5 208.12,-312.5 196.12,-312.5"/>
-<polygon fill="#666666" stroke="#666666" points="208.12,-312.5 208.12,-312.5 315.38,-312.5 315.38,-312.5 208.12,-312.5"/>
-<polygon fill="none" stroke="#666666" points="196.12,-97 196.12,-478.25 315.38,-478.25 315.38,-97 196.12,-97"/>
+<polygon fill="#999999" stroke="none" points="368.38,-478.25 249.12,-478.25 249.12,-97 368.38,-97 368.38,-478.25"/>
+<text text-anchor="start" x="269" y="-464.75" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
+<text text-anchor="start" x="295.62" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Face</text>
+<text text-anchor="start" x="253.5" y="-438.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-438.25" font-family="Helvetica,sans-Serif" font-size="10.00">is_auto_blink_</text>
+<text text-anchor="start" x="253.5" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-423" font-family="Helvetica,sans-Serif" font-size="10.00">auto_blink_interval_</text>
+<text text-anchor="start" x="253.5" y="-407.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-407.75" font-family="Helvetica,sans-Serif" font-size="10.00">last_blink_time_</text>
+<text text-anchor="start" x="253.5" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00">blink_duration_</text>
+<text text-anchor="start" x="253.5" y="-377.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-377.25" font-family="Helvetica,sans-Serif" font-size="10.00">breath_frequency_</text>
+<text text-anchor="start" x="253.5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">left_eye_</text>
+<text text-anchor="start" x="253.5" y="-346.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-346.75" font-family="Helvetica,sans-Serif" font-size="10.00">right_eye_</text>
+<text text-anchor="start" x="253.5" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">mouth_</text>
+<text text-anchor="start" x="253.5" y="-316.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-316.25" font-family="Helvetica,sans-Serif" font-size="10.00">hair_shadow_height_</text>
+<text text-anchor="start" x="253.12" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">Face()</text>
+<text text-anchor="start" x="253.12" y="-285.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-285.75" font-family="Helvetica,sans-Serif" font-size="10.00">Face()</text>
+<text text-anchor="start" x="253.12" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-270.5" font-family="Helvetica,sans-Serif" font-size="10.00">getLeftEye()</text>
+<text text-anchor="start" x="253.12" y="-255.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-255.25" font-family="Helvetica,sans-Serif" font-size="10.00">getRightEye()</text>
+<text text-anchor="start" x="253.12" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-240" font-family="Helvetica,sans-Serif" font-size="10.00">getMouth()</text>
+<text text-anchor="start" x="253.12" y="-224.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-224.75" font-family="Helvetica,sans-Serif" font-size="10.00">activateAutoBlink()</text>
+<text text-anchor="start" x="253.12" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-209.5" font-family="Helvetica,sans-Serif" font-size="10.00">deactivateAutoBlink()</text>
+<text text-anchor="start" x="253.12" y="-194.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-194.25" font-family="Helvetica,sans-Serif" font-size="10.00">getIsAutoBlink()</text>
+<text text-anchor="start" x="253.12" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00">setHairShadowHeight()</text>
+<text text-anchor="start" x="253.12" y="-163.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-163.75" font-family="Helvetica,sans-Serif" font-size="10.00">getHairShadowHeight()</text>
+<text text-anchor="start" x="253.12" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00">autoScale()</text>
+<text text-anchor="start" x="253.12" y="-133.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-133.25" font-family="Helvetica,sans-Serif" font-size="10.00">updateState()</text>
+<text text-anchor="start" x="253.12" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="263.12" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">draw()</text>
+<text text-anchor="start" x="253.5" y="-102.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="263.12" y="-102.75" font-family="Helvetica,sans-Serif" font-size="10.00">drawBackground()</text>
+<polygon fill="#666666" stroke="#666666" points="249.12,-449.75 249.12,-449.75 368.38,-449.75 368.38,-449.75 249.12,-449.75"/>
+<polygon fill="#666666" stroke="#666666" points="249.12,-312.5 249.12,-312.5 261.12,-312.5 261.12,-312.5 249.12,-312.5"/>
+<polygon fill="#666666" stroke="#666666" points="261.12,-312.5 261.12,-312.5 368.38,-312.5 368.38,-312.5 261.12,-312.5"/>
+<polygon fill="none" stroke="#666666" points="249.12,-97 249.12,-478.25 368.38,-478.25 368.38,-97 249.12,-97"/>
 </a>
 </g>
 </g>
@@ -135,21 +135,21 @@ var sectionId = 'dynsection-0';
 <g id="edge3_Node000001_Node000004" class="edge">
 <title>Node1&#45;&gt;Node4</title>
 <g id="a_edge3_Node000001_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M188.82,-206.08C147.64,-156.52 97.31,-95.95 68.05,-60.75"/>
-<polygon fill="none" stroke="#63b8ff" points="186.08,-208.26 195.16,-213.72 191.47,-203.79 186.08,-208.26"/>
+<path fill="none" stroke="#63b8ff" d="M241.16,-221.55C187.41,-169.8 114.73,-99.84 74.23,-60.85"/>
+<polygon fill="none" stroke="#63b8ff" points="238.56,-223.91 248.19,-228.32 243.41,-218.86 238.56,-223.91"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classstackchan_1_1display_1_1_omega_face.html" target="_top" xlink:title="[OωO] face with ellipse eyes and an omega&#45;shaped mouth">
+<g id="a_Node000005"><a xlink:href="classstackchan_1_1display_1_1_mono_eye_face.html" target="_top" xlink:title="Face with a single bullseye eye at the center and no mouth.">
 <polygon fill="white" stroke="none" points="193.5,-61 106,-61 106,0 193.5,0 193.5,-61"/>
 <text text-anchor="start" x="110" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="120.88" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::OmegaFace</text>
+<text text-anchor="start" x="116.75" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::MonoEyeFace</text>
 <text text-anchor="start" x="148.25" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="112.56" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="125.12" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">OmegaFace()</text>
+<text text-anchor="start" x="110.5" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="121" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">MonoEyeFace()</text>
 <polygon fill="#666666" stroke="#666666" points="106,-32.5 106,-32.5 193.5,-32.5 193.5,-32.5 106,-32.5"/>
 <polygon fill="#666666" stroke="#666666" points="106,-17.25 106,-17.25 193.5,-17.25 193.5,-17.25 106,-17.25"/>
 <polygon fill="none" stroke="#666666" points="106,0 106,-61 193.5,-61 193.5,0 106,0"/>
@@ -160,21 +160,21 @@ var sectionId = 'dynsection-0';
 <g id="edge4_Node000001_Node000005" class="edge">
 <title>Node1&#45;&gt;Node5</title>
 <g id="a_edge4_Node000001_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M191.84,-132.81C180.44,-105.36 169.73,-79.6 161.98,-60.93"/>
-<polygon fill="none" stroke="#63b8ff" points="188.59,-134.11 195.66,-142 195.06,-131.43 188.59,-134.11"/>
+<path fill="none" stroke="#63b8ff" d="M243.36,-181.7C216.08,-137.92 186.51,-90.48 168.06,-60.87"/>
+<polygon fill="none" stroke="#63b8ff" points="240.26,-183.34 248.52,-189.98 246.2,-179.64 240.26,-183.34"/>
 </a>
 </g>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classstackchan_1_1display_1_1_rect_face.html" target="_top" xlink:title="[▯ ▯] face with round&#45;rectangle eyes and no mouth">
+<g id="a_Node000006"><a xlink:href="classstackchan_1_1display_1_1_omega_face.html" target="_top" xlink:title="[OωO] face with ellipse eyes and an omega&#45;shaped mouth">
 <polygon fill="white" stroke="none" points="299.5,-61 212,-61 212,0 299.5,0 299.5,-61"/>
 <text text-anchor="start" x="216" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="232.5" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::RectFace</text>
+<text text-anchor="start" x="226.88" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::OmegaFace</text>
 <text text-anchor="start" x="254.25" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="221.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="236.75" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">RectFace()</text>
+<text text-anchor="start" x="218.56" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="231.12" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">OmegaFace()</text>
 <polygon fill="#666666" stroke="#666666" points="212,-32.5 212,-32.5 299.5,-32.5 299.5,-32.5 212,-32.5"/>
 <polygon fill="#666666" stroke="#666666" points="212,-17.25 212,-17.25 299.5,-17.25 299.5,-17.25 212,-17.25"/>
 <polygon fill="none" stroke="#666666" points="212,0 212,-61 299.5,-61 299.5,0 212,0"/>
@@ -185,21 +185,21 @@ var sectionId = 'dynsection-0';
 <g id="edge5_Node000001_Node000006" class="edge">
 <title>Node1&#45;&gt;Node6</title>
 <g id="a_edge5_Node000001_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M255.75,-85.7C255.75,-76.56 255.75,-68.18 255.75,-60.89"/>
-<polygon fill="none" stroke="#63b8ff" points="252.25,-85.69 255.75,-95.69 259.25,-85.69 252.25,-85.69"/>
+<path fill="none" stroke="#63b8ff" d="M267.07,-86C265.15,-76.74 263.39,-68.26 261.85,-60.89"/>
+<polygon fill="none" stroke="#63b8ff" points="263.63,-86.64 269.09,-95.72 270.48,-85.22 263.63,-86.64"/>
 </a>
 </g>
 </g>
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classstackchan_1_1display_1_1_toon_face1.html" target="_top" xlink:title="Toon face with eyelid&#45;and&#45;eyelash eyes (ToonEye1) and ToonMouth1.">
+<g id="a_Node000007"><a xlink:href="classstackchan_1_1display_1_1_rect_face.html" target="_top" xlink:title="[▯ ▯] face with round&#45;rectangle eyes and no mouth">
 <polygon fill="white" stroke="none" points="405.5,-61 318,-61 318,0 405.5,0 405.5,-61"/>
 <text text-anchor="start" x="322" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="335.12" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace1</text>
+<text text-anchor="start" x="338.5" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::RectFace</text>
 <text text-anchor="start" x="360.25" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="325.69" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="339.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">ToonFace1()</text>
+<text text-anchor="start" x="327.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="342.75" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">RectFace()</text>
 <polygon fill="#666666" stroke="#666666" points="318,-32.5 318,-32.5 405.5,-32.5 405.5,-32.5 318,-32.5"/>
 <polygon fill="#666666" stroke="#666666" points="318,-17.25 318,-17.25 405.5,-17.25 405.5,-17.25 318,-17.25"/>
 <polygon fill="none" stroke="#666666" points="318,0 318,-61 405.5,-61 405.5,0 318,0"/>
@@ -210,21 +210,21 @@ var sectionId = 'dynsection-0';
 <g id="edge6_Node000001_Node000007" class="edge">
 <title>Node1&#45;&gt;Node7</title>
 <g id="a_edge6_Node000001_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M319.66,-132.81C331.06,-105.36 341.77,-79.6 349.52,-60.93"/>
-<polygon fill="none" stroke="#63b8ff" points="316.44,-131.43 315.84,-142 322.91,-134.11 316.44,-131.43"/>
+<path fill="none" stroke="#63b8ff" d="M350.43,-86C352.35,-76.74 354.11,-68.26 355.65,-60.89"/>
+<polygon fill="none" stroke="#63b8ff" points="347.02,-85.22 348.41,-95.72 353.87,-86.64 347.02,-85.22"/>
 </a>
 </g>
 </g>
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="classstackchan_1_1display_1_1_toon_face2.html" target="_top" xlink:title="Toon face with quadrilateral&#45;eyelid eyes (ToonEye2) and an omega mouth.">
+<g id="a_Node000008"><a xlink:href="classstackchan_1_1display_1_1_toon_face1.html" target="_top" xlink:title="Toon face with eyelid&#45;and&#45;eyelash eyes (ToonEye1) and ToonMouth1.">
 <polygon fill="white" stroke="none" points="511.5,-61 424,-61 424,0 511.5,0 511.5,-61"/>
 <text text-anchor="start" x="428" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="441.12" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace2</text>
+<text text-anchor="start" x="441.12" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace1</text>
 <text text-anchor="start" x="466.25" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 <text text-anchor="start" x="431.69" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="445.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">ToonFace2()</text>
+<text text-anchor="start" x="445.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">ToonFace1()</text>
 <polygon fill="#666666" stroke="#666666" points="424,-32.5 424,-32.5 511.5,-32.5 511.5,-32.5 424,-32.5"/>
 <polygon fill="#666666" stroke="#666666" points="424,-17.25 424,-17.25 511.5,-17.25 511.5,-17.25 424,-17.25"/>
 <polygon fill="none" stroke="#666666" points="424,0 424,-61 511.5,-61 511.5,0 424,0"/>
@@ -235,8 +235,33 @@ var sectionId = 'dynsection-0';
 <g id="edge7_Node000001_Node000008" class="edge">
 <title>Node1&#45;&gt;Node8</title>
 <g id="a_edge7_Node000001_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M322.68,-206.08C363.86,-156.52 414.19,-95.95 443.45,-60.75"/>
-<polygon fill="none" stroke="#63b8ff" points="320.03,-203.79 316.34,-213.72 325.42,-208.26 320.03,-203.79"/>
+<path fill="none" stroke="#63b8ff" d="M374.14,-181.7C401.42,-137.92 430.99,-90.48 449.44,-60.87"/>
+<polygon fill="none" stroke="#63b8ff" points="371.3,-179.64 368.98,-189.98 377.24,-183.34 371.3,-179.64"/>
+</a>
+</g>
+</g>
+<!-- Node9 -->
+<g id="Node000009" class="node">
+<title>Node9</title>
+<g id="a_Node000009"><a xlink:href="classstackchan_1_1display_1_1_toon_face2.html" target="_top" xlink:title="Toon face with quadrilateral&#45;eyelid eyes (ToonEye2) and an omega mouth.">
+<polygon fill="white" stroke="none" points="617.5,-61 530,-61 530,0 617.5,0 617.5,-61"/>
+<text text-anchor="start" x="534" y="-47.5" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
+<text text-anchor="start" x="547.12" y="-36.25" font-family="Helvetica,sans-Serif" font-size="10.00">::ToonFace2</text>
+<text text-anchor="start" x="572.25" y="-21" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="537.69" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="551.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">ToonFace2()</text>
+<polygon fill="#666666" stroke="#666666" points="530,-32.5 530,-32.5 617.5,-32.5 617.5,-32.5 530,-32.5"/>
+<polygon fill="#666666" stroke="#666666" points="530,-17.25 530,-17.25 617.5,-17.25 617.5,-17.25 530,-17.25"/>
+<polygon fill="none" stroke="#666666" points="530,0 530,-61 617.5,-61 617.5,0 530,0"/>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node9 -->
+<g id="edge8_Node000001_Node000009" class="edge">
+<title>Node1&#45;&gt;Node9</title>
+<g id="a_edge8_Node000001_Node000009"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M376.34,-221.55C430.09,-169.8 502.77,-99.84 543.27,-60.85"/>
+<polygon fill="none" stroke="#63b8ff" points="374.09,-218.86 369.31,-228.32 378.94,-223.91 374.09,-218.86"/>
 </a>
 </g>
 </g>
@@ -244,19 +269,19 @@ var sectionId = 'dynsection-0';
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="classstackchan_1_1display_1_1_facial_drawable.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="none" points="299.5,-605.75 212,-605.75 212,-514.25 299.5,-514.25 299.5,-605.75"/>
-<text text-anchor="start" x="216" y="-592.25" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="220.12" y="-581" font-family="Helvetica,sans-Serif" font-size="10.00">::FacialDrawable</text>
-<text text-anchor="start" x="254.25" y="-565.75" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="221.75" y="-550.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="237.5" y="-550.5" font-family="Helvetica,sans-Serif" font-size="10.00">draw()</text>
-<text text-anchor="start" x="221.75" y="-535.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="237.5" y="-535.25" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
-<text text-anchor="start" x="221.75" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="237.5" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="212,-577.25 212,-577.25 299.5,-577.25 299.5,-577.25 212,-577.25"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="212,-562 212,-562 299.5,-562 299.5,-562 212,-562"/>
-<polygon fill="none" stroke="#bfbfbf" points="212,-514.25 212,-605.75 299.5,-605.75 299.5,-514.25 212,-514.25"/>
+<polygon fill="white" stroke="none" points="352.5,-605.75 265,-605.75 265,-514.25 352.5,-514.25 352.5,-605.75"/>
+<text text-anchor="start" x="269" y="-592.25" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
+<text text-anchor="start" x="273.12" y="-581" font-family="Helvetica,sans-Serif" font-size="10.00">::FacialDrawable</text>
+<text text-anchor="start" x="307.25" y="-565.75" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="274.75" y="-550.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="290.5" y="-550.5" font-family="Helvetica,sans-Serif" font-size="10.00">draw()</text>
+<text text-anchor="start" x="274.75" y="-535.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="290.5" y="-535.25" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
+<text text-anchor="start" x="274.75" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="290.5" y="-520" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="265,-577.25 265,-577.25 352.5,-577.25 352.5,-577.25 265,-577.25"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="265,-562 265,-562 352.5,-562 352.5,-562 265,-562"/>
+<polygon fill="none" stroke="#bfbfbf" points="265,-514.25 265,-605.75 352.5,-605.75 352.5,-514.25 265,-514.25"/>
 </a>
 </g>
 </g>
@@ -264,8 +289,8 @@ var sectionId = 'dynsection-0';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M255.75,-502.93C255.75,-495.11 255.75,-486.74 255.75,-478.02"/>
-<polygon fill="none" stroke="#63b8ff" points="252.25,-502.84 255.75,-512.84 259.25,-502.84 252.25,-502.84"/>
+<path fill="none" stroke="#63b8ff" d="M308.75,-502.93C308.75,-495.11 308.75,-486.74 308.75,-478.02"/>
+<polygon fill="none" stroke="#63b8ff" points="305.25,-502.84 308.75,-512.84 312.25,-502.84 305.25,-502.84"/>
 </a>
 </g>
 </g>
@@ -273,44 +298,44 @@ var sectionId = 'dynsection-0';
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="classstackchan_1_1display_1_1_drawable.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="none" points="306.38,-916.25 205.12,-916.25 205.12,-641.75 306.38,-641.75 306.38,-916.25"/>
-<text text-anchor="start" x="216" y="-902.75" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
-<text text-anchor="start" x="233.25" y="-891.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Drawable</text>
-<text text-anchor="start" x="209.5" y="-876.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="219.12" y="-876.25" font-family="Helvetica,sans-Serif" font-size="10.00">position_</text>
-<text text-anchor="start" x="209.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="219.12" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">rotation_</text>
-<text text-anchor="start" x="209.5" y="-845.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="219.12" y="-845.75" font-family="Helvetica,sans-Serif" font-size="10.00">size_</text>
-<text text-anchor="start" x="209.5" y="-830.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="219.12" y="-830.5" font-family="Helvetica,sans-Serif" font-size="10.00">visible_</text>
-<text text-anchor="start" x="209.5" y="-815.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="219.12" y="-815.25" font-family="Helvetica,sans-Serif" font-size="10.00">ignore_expression_</text>
-<text text-anchor="start" x="209.12" y="-800" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-800" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
-<text text-anchor="start" x="209.12" y="-784.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-784.75" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
-<text text-anchor="start" x="209.12" y="-769.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-769.5" font-family="Helvetica,sans-Serif" font-size="10.00">~Drawable()</text>
-<text text-anchor="start" x="209.12" y="-754.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-754.25" font-family="Helvetica,sans-Serif" font-size="10.00">setPosition()</text>
-<text text-anchor="start" x="209.12" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">getPosition()</text>
-<text text-anchor="start" x="209.12" y="-723.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-723.75" font-family="Helvetica,sans-Serif" font-size="10.00">setRotation()</text>
-<text text-anchor="start" x="209.12" y="-708.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-708.5" font-family="Helvetica,sans-Serif" font-size="10.00">getRotation()</text>
-<text text-anchor="start" x="209.12" y="-693.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-693.25" font-family="Helvetica,sans-Serif" font-size="10.00">setSize()</text>
-<text text-anchor="start" x="209.12" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">getSize()</text>
-<text text-anchor="start" x="209.12" y="-662.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="219.12" y="-662.75" font-family="Helvetica,sans-Serif" font-size="10.00">setVisible()</text>
-<text text-anchor="start" x="219.12" y="-647.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 7 more...</text>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="205.12,-887.75 205.12,-887.75 306.38,-887.75 306.38,-887.75 205.12,-887.75"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="205.12,-811.5 205.12,-811.5 217.12,-811.5 217.12,-811.5 205.12,-811.5"/>
-<polygon fill="#bfbfbf" stroke="#bfbfbf" points="217.12,-811.5 217.12,-811.5 306.38,-811.5 306.38,-811.5 217.12,-811.5"/>
-<polygon fill="none" stroke="#bfbfbf" points="205.12,-641.75 205.12,-916.25 306.38,-916.25 306.38,-641.75 205.12,-641.75"/>
+<polygon fill="white" stroke="none" points="359.38,-916.25 258.12,-916.25 258.12,-641.75 359.38,-641.75 359.38,-916.25"/>
+<text text-anchor="start" x="269" y="-902.75" font-family="Helvetica,sans-Serif" font-size="10.00">stackchan::display</text>
+<text text-anchor="start" x="286.25" y="-891.5" font-family="Helvetica,sans-Serif" font-size="10.00">::Drawable</text>
+<text text-anchor="start" x="262.5" y="-876.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="272.12" y="-876.25" font-family="Helvetica,sans-Serif" font-size="10.00">position_</text>
+<text text-anchor="start" x="262.5" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="272.12" y="-861" font-family="Helvetica,sans-Serif" font-size="10.00">rotation_</text>
+<text text-anchor="start" x="262.5" y="-845.75" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="272.12" y="-845.75" font-family="Helvetica,sans-Serif" font-size="10.00">size_</text>
+<text text-anchor="start" x="262.5" y="-830.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="272.12" y="-830.5" font-family="Helvetica,sans-Serif" font-size="10.00">visible_</text>
+<text text-anchor="start" x="262.5" y="-815.25" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="272.12" y="-815.25" font-family="Helvetica,sans-Serif" font-size="10.00">ignore_expression_</text>
+<text text-anchor="start" x="262.12" y="-800" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-800" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
+<text text-anchor="start" x="262.12" y="-784.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-784.75" font-family="Helvetica,sans-Serif" font-size="10.00">Drawable()</text>
+<text text-anchor="start" x="262.12" y="-769.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-769.5" font-family="Helvetica,sans-Serif" font-size="10.00">~Drawable()</text>
+<text text-anchor="start" x="262.12" y="-754.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-754.25" font-family="Helvetica,sans-Serif" font-size="10.00">setPosition()</text>
+<text text-anchor="start" x="262.12" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">getPosition()</text>
+<text text-anchor="start" x="262.12" y="-723.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-723.75" font-family="Helvetica,sans-Serif" font-size="10.00">setRotation()</text>
+<text text-anchor="start" x="262.12" y="-708.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-708.5" font-family="Helvetica,sans-Serif" font-size="10.00">getRotation()</text>
+<text text-anchor="start" x="262.12" y="-693.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-693.25" font-family="Helvetica,sans-Serif" font-size="10.00">setSize()</text>
+<text text-anchor="start" x="262.12" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-678" font-family="Helvetica,sans-Serif" font-size="10.00">getSize()</text>
+<text text-anchor="start" x="262.12" y="-662.75" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="272.12" y="-662.75" font-family="Helvetica,sans-Serif" font-size="10.00">setVisible()</text>
+<text text-anchor="start" x="272.12" y="-647.5" font-family="Helvetica,sans-Serif" font-size="10.00">and 7 more...</text>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="258.12,-887.75 258.12,-887.75 359.38,-887.75 359.38,-887.75 258.12,-887.75"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="258.12,-811.5 258.12,-811.5 270.12,-811.5 270.12,-811.5 258.12,-811.5"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="270.12,-811.5 270.12,-811.5 359.38,-811.5 359.38,-811.5 270.12,-811.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="258.12,-641.75 258.12,-916.25 359.38,-916.25 359.38,-641.75 258.12,-641.75"/>
 </a>
 </g>
 </g>
@@ -318,8 +343,8 @@ var sectionId = 'dynsection-0';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node3&#45;&gt;Node2</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M255.75,-630.45C255.75,-621.63 255.75,-613.21 255.75,-605.47"/>
-<polygon fill="none" stroke="#63b8ff" points="252.25,-630.29 255.75,-640.29 259.25,-630.29 252.25,-630.29"/>
+<path fill="none" stroke="#63b8ff" d="M308.75,-630.45C308.75,-621.63 308.75,-613.21 308.75,-605.47"/>
+<polygon fill="none" stroke="#63b8ff" points="305.25,-630.29 308.75,-640.29 312.25,-630.29 305.25,-630.29"/>
 </a>
 </g>
 </g>
