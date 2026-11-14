@@ -4,6 +4,7 @@
 #include "../eyes/Eyes.h"
 #include "../eyes/ToonEye1.h"
 #include "../eyes/ToonEye2.h"
+#include "../eyes/MonoEye.h"
 #include "../mouths/Mouth.h"
 #include "../mouths/OmegaMouth.h"
 #include "../mouths/ToonMouth1.h"
@@ -205,6 +206,20 @@ namespace stackchan::display
         {
             hair_shadow_height_ = 48;
         };
+    };
+
+    /**
+     * @brief Face with a single bullseye eye at the center and no mouth
+     *
+     * Made for a body whose visor has one slit. The right eye and the mouth draw nothing.
+     */
+    class MonoEyeFace : public Face
+    {
+    public:
+        MonoEyeFace() : Face(
+                            new MonoEye(160, 120, 120, 120, true),
+                            new BaseEye(0, 0, 0, 0, false),
+                            new BaseMouth(0, 0, 0, 0)) {};
     };
 
 } // namespace stackchan::display

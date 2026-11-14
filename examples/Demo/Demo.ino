@@ -10,7 +10,7 @@ stackchan::display::Display stackchan_display;
 unsigned int count = 0;
 unsigned char emotion = 0;
 
-stackchan::display::Face *faces[6];
+stackchan::display::Face *faces[7];
 const uint8_t num_faces = sizeof(faces) / sizeof(
                                               stackchan::display::Face *);
 uint8_t face_idx = 0; // face index
@@ -34,6 +34,7 @@ void setup()
   faces[3] = new stackchan::display::EllFace();
   faces[4] = new stackchan::display::OmegaFace();
   faces[5] = new stackchan::display::RectFace();
+  faces[6] = new stackchan::display::MonoEyeFace();
 
   color_palettes[0] = new stackchan::display::ColorPalette();
   color_palettes[1] = new stackchan::display::ColorPalette();
